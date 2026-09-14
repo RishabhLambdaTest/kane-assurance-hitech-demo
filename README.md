@@ -16,7 +16,8 @@ A PRD goes in. kane-cli extracts use-cases, designs tests from them, runs those 
 | `.testmuai/variables/novatech.json` | Test data for the `{{placeholders}}` in those tests |
 | `.testmuai/tests/output-*/` | Each test's recording and `Result.md` — what makes re-runs replay instead of re-author |
 | `.github/workflows/` | `run-tests.yml` (run the committed tests) and `assurance-pipeline.yml` (the full flow) |
-| `RUN-GUIDE.md` | **Line-by-line runbook — start here** |
+| `RUN-GUIDE.md` | Line-by-line runbook: every command from ingest to execution |
+| `DEMO.md` | **The 10-minute demo script — start here** |
 
 ## The app under test
 
@@ -62,12 +63,12 @@ Every command, in order, with expected output: **[RUN-GUIDE.md](RUN-GUIDE.md)**.
 
 ## Demo in 10 minutes
 
-1. **Show the PRD** — `docs/prd-enterprise-procurement.md`. An ordinary requirements doc.
-2. **Show the use-cases** — `kane-cli context list --type usecase`. The AI read the PRD and extracted 9, each cited to it.
-3. **Show a designed test** — open `.testmuai/tests/laptop-configurator-…_test.md`. Plain English, with `@verifies ac-…` tags tying each step to an acceptance criterion.
-4. **Run it** — `kane-cli testmd run …`. A real browser, and a share link to the report.
-5. **Show coverage** — `kane-cli cover gaps`. Designed × proven per use-case. This replaces the traceability spreadsheet.
-6. **Change the requirements** — reconcile against the v2 PRD and watch the suite go stale where the PRD moved. See RUN-GUIDE Step 10.
+Two moments carry the whole story, and both are in **[DEMO.md](DEMO.md)**:
+
+1. **The coverage ribbon** — `kane-cli cover gaps`. Designed × proven, per requirement, with the gaps showing honestly. This replaces the traceability spreadsheet.
+2. **The PRD changes** — reconcile against the v2 PRD and watch the suite go stale exactly where the requirements moved.
+
+Run both live. `.context/` is committed, so `git checkout .context` resets to the pre-demo state.
 
 ## GitHub Actions
 
