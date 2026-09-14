@@ -1,5 +1,26 @@
 {
-  "start_url": { "value": "http://localhost:3000/?reset=1", "secret": false },
-  "laptop_product": { "value": "NovaBook 14 Business", "secret": false },
-  "workstation_product": { "value": "NovaStation X Workstation", "secret": false }
+  "start_url": {
+    "value": "http://localhost:3000/?reset=1",
+    "secret": false
+  },
+  "laptop_product": {
+    "value": "NovaBook 14 Business",
+    "secret": false
+  },
+  "workstation_product": {
+    "value": "NovaStation X Workstation",
+    "secret": false
+  },
+  "over_limit_quote_locator": {
+    "value": "http://localhost:3000/quote?reset=1&seed=d1:30",
+    "secret": false
+  },
+  "valid_po_number": {
+    "value": "PO-123456",
+    "secret": false
+  },
+  "tax_exempt_id": {
+    "value": "EXM-123456",
+    "secret": false
+  }
 }

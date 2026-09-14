@@ -1,0 +1,27 @@
+{
+  "buyer_login": {
+    "value": "",
+    "secret": false,
+    "description": "Buyer account username or email for signing in to the NovaTech Business Store web tests."
+  },
+  "buyer_password": {
+    "value": "",
+    "secret": true,
+    "description": "Buyer account password for signing in to the NovaTech Business Store web tests."
+  },
+  "over_limit_quote_locator": {
+    "value": "",
+    "secret": false,
+    "description": "Buyer-visible quote or cart identifier whose order review total including tax and delivery is greater than $25,000."
+  },
+  "exact_limit_quote_locator": {
+    "value": "",
+    "secret": false,
+    "description": "Buyer-visible quote or cart identifier whose order review total including tax and delivery is exactly $25,000."
+  },
+  "valid_po_number": {
+    "value": "",
+    "secret": false,
+    "description": "Purchase-order number accepted by the Buyer account for these order-submission tests."
+  }
+}

@@ -1,0 +1,1 @@
+{"label":"ac","content":{"text":"An order whose total including tax and delivery exceeds $25,000 requires Procurement Manager approval.","kind":"bound","risk":"high","derived":true,"expected_answer":{"operator":"gte","operand":25000.01,"unit":"USD"}}}

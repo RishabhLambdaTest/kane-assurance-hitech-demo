@@ -1,0 +1,1 @@
+{"label":"ac","content":{"text":"Submitting an over-limit order for approval records the request status as \"Pending Approval\".","kind":"absolute","risk":"high","derived":true,"expected_answer":{"operator":"equals","operand":"Pending Approval"}}}

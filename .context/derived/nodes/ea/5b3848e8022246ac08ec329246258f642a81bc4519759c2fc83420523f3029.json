@@ -1,0 +1,1 @@
+{"label":"ac","content":{"text":"An order whose total including tax and delivery is exactly $25,000 is placed directly without approval.","kind":"state-transition","risk":"high","derived":true,"expected_answer":{"operator":"equals","baseline":"order review with total including tax and delivery of $25,000","operand":"placed directly without approval"}}}

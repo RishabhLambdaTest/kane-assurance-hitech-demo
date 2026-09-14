@@ -1,0 +1,1 @@
+{"label":"ac","content":{"text":"On order review for an over-limit order, the primary action reads \"Submit for Approval\" instead of \"Place Order\".","kind":"absolute","risk":"high","derived":true,"expected_answer":{"operator":"equals","operand":"Submit for Approval"}}}
