@@ -1,0 +1,187 @@
+name: "3 · Test Design"
+
+# ─────────────────────────────────────────────────────────
+# STLC Phase: Test Design
+# Kane CLI:   design tests
+#
+# What it demonstrates:
+#   - AI designing acceptance criteria from use-cases
+#   - Systematic scenario generation (happy, negative,
+#     boundary, edge)
+#   - One test per scenario with @verifies traceability
+#   - Budget control (--max) and depth control (--strength)
+#
+# What the prospect should notice:
+#   - Tests are technique-driven, not person-dependent
+#   - Every test traces to a specific acceptance criterion
+#   - The rationale is recorded and replayable
+#
+# Prerequisites:
+#   Run workflows 1 and 2 first
+# ─────────────────────────────────────────────────────────
+
+on:
+  workflow_dispatch:
+    inputs:
+      use_case:
+        description: 'Specific use-case ref (blank = design all approved use-cases)'
+        required: false
+        default: ''
+      max_tests:
+        description: 'Max tests per use-case'
+        required: true
+        default: '5'
+      auto_approve:
+        description: 'Auto-approve designed tests'
+        required: true
+        default: true
+        type: boolean
+
+env:
+  LT_USERNAME: ${{ secrets.LT_USERNAME }}
+  LT_ACCESS_KEY: ${{ secrets.LT_ACCESS_KEY }}
+
+jobs:
+  test-design:
+    name: Design Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Kane CLI
+        run: npm install -g @testmuai/kane-cli && kane-cli --version
+
+      - name: Install Kane CLI skill
+        run: kane-cli install skill || echo "Skill already installed or not available"
+
+
+      - name: Authenticate
+        run: kane-cli login --username "$LT_USERNAME" --access-key "$LT_ACCESS_KEY"
+
+      - name: Restore context graph
+        uses: actions/cache@v4
+        with:
+          path: .context/
+          key: context-${{ hashFiles('docs/**') }}-${{ github.run_number }}
+          restore-keys: context-${{ hashFiles('docs/**') }}-
+
+      # ── DESIGN ─────────────────────────────────────────
+      - name: "Design: Generate tests from approved use-cases"
+        run: |
+          MAX=${{ inputs.max_tests }}
+
+          if [ -n "${{ inputs.use_case }}" ]; then
+            # Design for a specific use-case
+            UC="${{ inputs.use_case }}"
+            echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+            echo "  Designing tests for: $UC (max $MAX)"
+            echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+            kane-cli design tests \
+              --use-case "$UC" \
+              --mode override \
+              --max "$MAX"
+          else
+            # Design for all approved use-cases
+            echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+            echo "  Designing tests for ALL approved use-cases"
+            echo "  Max per use-case: $MAX"
+            echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+
+            USECASES=$(kane-cli context list --type use-case --trust trusted --json \
+              | jq -r '.[].ref // empty' 2>/dev/null || true)
+
+            if [ -z "$USECASES" ]; then
+              echo "⚠️  No approved use-cases found"
+              echo "   Run workflow 2 (Test Planning) first"
+              exit 1
+            fi
+
+            TOTAL=$(echo "$USECASES" | wc -l | tr -d ' ')
+            CURRENT=0
+
+            for UC in $USECASES; do
+              CURRENT=$((CURRENT + 1))
+              echo ""
+              echo "── [$CURRENT/$TOTAL] Designing: $UC ──"
+              kane-cli design tests \
+                --use-case "$UC" \
+                --mode override \
+                --max "$MAX" \
+                || echo "⚠️  Design for $UC completed with warnings"
+            done
+          fi
+
+      # ── REVIEW DESIGNED TESTS ──────────────────────────
+      - name: "Review: Approve designed tests"
+        if: inputs.auto_approve
+        run: |
+          echo "✅ Auto-approving designed tests"
+          kane-cli context review \
+            --approve-all \
+            --mode ci \
+            || echo "All items already reviewed"
+
+      # ── SHOW DESIGNED TEST FILES ───────────────────────
+      - name: "Result: List designed test files"
+        run: |
+          echo ""
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          echo "  Designed test files"
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          echo ""
+          if [ -d ".testmuai/tests" ]; then
+            find .testmuai/tests -name '*_test.md' | sort
+            echo ""
+            echo "Total: $(find .testmuai/tests -name '*_test.md' | wc -l | tr -d ' ') test files"
+          else
+            echo "No test files generated yet"
+          fi
+
+      - name: "Result: Show a sample test file"
+        run: |
+          SAMPLE=$(find .testmuai/tests -name '*_test.md' 2>/dev/null | head -1)
+          if [ -n "$SAMPLE" ]; then
+            echo ""
+            echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+            echo "  Sample test: $SAMPLE"
+            echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+            echo ""
+            head -40 "$SAMPLE"
+            echo ""
+            echo "  ... (truncated for readability)"
+          fi
+
+      - name: "Result: Explain a designed test"
+        run: |
+          REF=$(kane-cli context list --type test --json \
+            | jq -r '.[0].ref // empty' 2>/dev/null || true)
+          if [ -n "$REF" ]; then
+            echo ""
+            echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+            echo "  Why does this test exist?"
+            echo "  kane-cli design explain $REF"
+            echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+            echo ""
+            kane-cli design explain "$REF" 2>/dev/null || true
+          fi
+
+      - name: Save outputs
+        run: |
+          kane-cli context list --json > context-list-designed.json
+          kane-cli cover gaps --stage design --json > design-gaps-post.json 2>/dev/null || echo "[]" > design-gaps-post.json
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: 3-test-design-${{ github.run_number }}
+          retention-days: 30
+          path: |
+            context-list-designed.json
+            design-gaps-post.json
+            .testmuai/tests/
+            .context/

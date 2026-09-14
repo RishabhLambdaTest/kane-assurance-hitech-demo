@@ -1,0 +1,10 @@
+[
+  {"id":"d1","name":"NovaBook 14 Business","category":"Laptop","basePrice":1099,"image":"https://picsum.photos/seed/novabook14/300/300","configurable":true,"stock":800,"leadTimeDays":0,"eol":false,"failAtPlacement":false},
+  {"id":"d2","name":"NovaBook 16 Pro","category":"Laptop","basePrice":1599,"image":"https://picsum.photos/seed/novabook16/300/300","configurable":true,"stock":120,"leadTimeDays":14,"eol":false,"failAtPlacement":false},
+  {"id":"d3","name":"NovaStation X Workstation","category":"Workstation","basePrice":2899,"image":"https://picsum.photos/seed/novastation/300/300","configurable":true,"stock":40,"leadTimeDays":21,"eol":false,"failAtPlacement":false},
+  {"id":"d4","name":"NovaBook 13 Classic","category":"Laptop","basePrice":899,"image":"https://picsum.photos/seed/novabook13/300/300","configurable":true,"stock":0,"leadTimeDays":0,"eol":true,"replacement":"NovaBook 14 Business","failAtPlacement":false},
+  {"id":"d5","name":"NovaTab Rugged 11","category":"Tablet","basePrice":899,"image":"https://picsum.photos/seed/novatab/300/300","configurable":false,"stock":0,"leadTimeDays":21,"eol":false,"failAtPlacement":false},
+  {"id":"d6","name":"NovaDock TB4 Docking Station","category":"Accessory","basePrice":249,"image":"https://picsum.photos/seed/novadock/300/300","configurable":false,"stock":1000,"leadTimeDays":0,"eol":false,"failAtPlacement":false},
+  {"id":"d7","name":"NovaView 27\" 4K Monitor","category":"Accessory","basePrice":429,"image":"https://picsum.photos/seed/novaview/300/300","configurable":false,"stock":12,"leadTimeDays":10,"eol":false,"failAtPlacement":false},
+  {"id":"d8","name":"NovaSecure Smart Card Reader","category":"Accessory","basePrice":39,"image":"https://picsum.photos/seed/novasecure/300/300","configurable":false,"stock":50,"leadTimeDays":0,"eol":false,"failAtPlacement":true}
+]

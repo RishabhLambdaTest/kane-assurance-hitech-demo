@@ -1,0 +1,25 @@
+# Kane CLI local stores
+.context/
+.testmuai/
+
+# Pipeline outputs
+coverage.json
+coverage-gaps.json
+context-list*.json
+context-before.json
+context-after.json
+context-graph.html
+design-gaps*.json
+execution-gaps.json
+
+# App build
+app/node_modules/
+app/.next/
+app/out/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node
+node_modules/

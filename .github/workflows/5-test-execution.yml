@@ -1,0 +1,131 @@
+name: "5 · Test Execution"
+
+# ─────────────────────────────────────────────────────────
+# STLC Phase: Test Execution
+# Kane CLI:   testrun run + HyperExecute
+#
+# What it demonstrates:
+#   - Batch replay of authored tests (fast, no AI needed)
+#   - Execution on HyperExecute cloud grid
+#   - Sealed evidence packs per test
+#   - Every run is linked to the context graph
+#
+# What the prospect should notice:
+#   - Tests replay without the AI agent (deterministic)
+#   - Evidence packs are sealed and timestamped
+#   - Same tests, multiple environments
+#
+# Prerequisites:
+#   Run workflows 1-4 first, and have the app deployed
+# ─────────────────────────────────────────────────────────
+
+on:
+  workflow_dispatch:
+    inputs:
+      app_url:
+        description: 'URL of the NovaTech Business app to test against'
+        required: true
+        default: 'http://localhost:3000'
+      match_pattern:
+        description: 'Test name pattern to match (e.g., t- for all designed tests)'
+        required: true
+        default: 't-'
+      execution_target:
+        description: 'Where to run: local or hyperexecute'
+        required: true
+        default: 'local'
+        type: choice
+        options: [local, hyperexecute]
+
+env:
+  LT_USERNAME: ${{ secrets.LT_USERNAME }}
+  LT_ACCESS_KEY: ${{ secrets.LT_ACCESS_KEY }}
+
+jobs:
+  test-execution:
+    name: Execute Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Kane CLI
+        run: npm install -g @testmuai/kane-cli && kane-cli --version
+
+      - name: Authenticate
+        run: kane-cli login --username "$LT_USERNAME" --access-key "$LT_ACCESS_KEY"
+
+      - name: Install Google Chrome
+        if: inputs.execution_target == 'local'
+        run: |
+          wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo dpkg -i google-chrome-stable_current_amd64.deb || sudo apt-get -f install -y
+
+      - name: Restore context graph, tests, and evidence
+        uses: actions/cache@v4
+        with:
+          path: |
+            .context/
+            .testmuai/
+          key: context-tests-${{ hashFiles('docs/**') }}-${{ github.run_number }}
+          restore-keys: |
+            context-tests-${{ hashFiles('docs/**') }}-
+
+      # ── EXECUTE ────────────────────────────────────────
+      - name: "Execute: Batch replay of authored tests (local)"
+        if: inputs.execution_target == 'local'
+        run: |
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          echo "  Test execution — local"
+          echo "  App URL: ${{ inputs.app_url }}"
+          echo "  Pattern: ${{ inputs.match_pattern }}"
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          echo ""
+          kane-cli testrun run \
+            --match "${{ inputs.match_pattern }}" \
+            --url "${{ inputs.app_url }}" \
+            --headless \
+            || echo "⚠️  Some tests may have failed — check evidence packs"
+
+      - name: "Execute: Run on HyperExecute cloud grid"
+        if: inputs.execution_target == 'hyperexecute'
+        run: |
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          echo "  Test execution — HyperExecute"
+          echo "  App URL: ${{ inputs.app_url }}"
+          echo "  Pattern: ${{ inputs.match_pattern }}"
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          echo ""
+          kane-cli testrun run \
+            --match "${{ inputs.match_pattern }}" \
+            --url "${{ inputs.app_url }}" \
+            --grid \
+            || echo "⚠️  Some tests may have failed — check evidence packs"
+
+      # ── RESULTS ────────────────────────────────────────
+      - name: "Result: List evidence packs"
+        run: |
+          echo ""
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          echo "  Evidence packs from this run"
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          if [ -d ".testmuai/evidence" ]; then
+            ls -la .testmuai/evidence/ 2>/dev/null || echo "No evidence directory"
+            echo ""
+            echo "Total packs: $(find .testmuai/evidence -maxdepth 1 -type d | wc -l | tr -d ' ')"
+          else
+            echo "No evidence packs found"
+          fi
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: 5-test-execution-${{ github.run_number }}
+          retention-days: 30
+          path: |
+            .testmuai/evidence/
+            .context/

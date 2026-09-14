@@ -1,0 +1,134 @@
+name: "6 · Coverage & Reporting"
+
+# ─────────────────────────────────────────────────────────
+# STLC Phase: Coverage & Reporting
+# Kane CLI:   cover + cover gaps
+#
+# What it demonstrates:
+#   - Two-axis coverage: depth (proven) + completeness (owed)
+#   - The ribbon view showing every use-case's status
+#   - Risk-ranked gaps with fix commands
+#   - Per use-case dossier with full AC breakdown
+#
+# What the prospect should notice:
+#   - Coverage is about REQUIREMENTS, not code lines
+#   - Two questions answered: "what passed?" AND "what's missing?"
+#   - Debt tags show exactly what needs attention
+#
+# This is the MONEY SLIDE in a demo. Lead with this.
+#
+# Prerequisites:
+#   Run workflows 1-5 for full coverage, or 1-3 for design-only
+# ─────────────────────────────────────────────────────────
+
+on:
+  workflow_dispatch:
+    inputs:
+      use_case:
+        description: 'Specific use-case for detailed dossier (blank = show ribbon)'
+        required: false
+        default: ''
+      top_gaps:
+        description: 'Number of top gaps to show'
+        required: true
+        default: '10'
+
+env:
+  LT_USERNAME: ${{ secrets.LT_USERNAME }}
+  LT_ACCESS_KEY: ${{ secrets.LT_ACCESS_KEY }}
+
+jobs:
+  coverage:
+    name: Coverage Report
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Kane CLI
+        run: npm install -g @testmuai/kane-cli && kane-cli --version
+
+      - name: Authenticate
+        run: kane-cli login --username "$LT_USERNAME" --access-key "$LT_ACCESS_KEY"
+
+      - name: Restore context graph and evidence
+        uses: actions/cache@v4
+        with:
+          path: |
+            .context/
+            .testmuai/
+          key: context-tests-${{ hashFiles('docs/**') }}-${{ github.run_number }}
+          restore-keys: |
+            context-tests-${{ hashFiles('docs/**') }}-
+
+      # ── COVERAGE PANEL ─────────────────────────────────
+      - name: "Coverage: Two-axis coverage panel"
+        run: |
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          echo "  Coverage report"
+          echo "  Depth  = what did the last run prove?"
+          echo "  Compl. = what does the design still owe?"
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          echo ""
+          kane-cli cover 2>/dev/null || echo "No evidence packs yet — run workflow 5 first"
+
+      # ── RIBBON VIEW ────────────────────────────────────
+      - name: "Ribbon: Bird's-eye project coverage"
+        run: |
+          echo ""
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          echo "  Coverage ribbon — all use-cases"
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          echo ""
+          kane-cli cover gaps 2>/dev/null || echo "Run workflows 1-3 first for design coverage"
+
+      # ── DOSSIER (optional) ─────────────────────────────
+      - name: "Dossier: Detailed breakdown for one use-case"
+        if: inputs.use_case != ''
+        run: |
+          echo ""
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          echo "  Dossier: ${{ inputs.use_case }}"
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          echo ""
+          kane-cli cover gaps "${{ inputs.use_case }}" 2>/dev/null \
+            || echo "Use-case not found or no coverage data"
+
+      # ── GAPS WORKLIST ──────────────────────────────────
+      - name: "Gaps: Top ${{ inputs.top_gaps }} by risk"
+        run: |
+          echo ""
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          echo "  Top ${{ inputs.top_gaps }} gaps — ranked by risk"
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          echo ""
+          kane-cli cover gaps \
+            --top ${{ inputs.top_gaps }} \
+            2>/dev/null || echo "No gaps"
+
+      # ── SAVE JSON ──────────────────────────────────────
+      - name: Save machine-readable outputs
+        run: |
+          kane-cli cover --json > coverage.json 2>/dev/null || echo "{}" > coverage.json
+          kane-cli cover gaps --json > coverage-gaps.json 2>/dev/null || echo "[]" > coverage-gaps.json
+          kane-cli cover gaps --stage design --json > design-gaps.json 2>/dev/null || echo "[]" > design-gaps.json
+          kane-cli cover gaps --stage cover --json > execution-gaps.json 2>/dev/null || echo "[]" > execution-gaps.json
+
+      - name: Generate visual graph
+        run: kane-cli context view --output context-graph.html 2>/dev/null || true
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: 6-coverage-report-${{ github.run_number }}
+          retention-days: 30
+          path: |
+            coverage.json
+            coverage-gaps.json
+            design-gaps.json
+            execution-gaps.json
+            context-graph.html

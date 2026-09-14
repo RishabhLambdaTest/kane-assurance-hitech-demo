@@ -1,0 +1,113 @@
+name: "1 · Requirements Analysis"
+
+# ─────────────────────────────────────────────────────────
+# STLC Phase: Requirements Analysis
+# Kane CLI:   context ingest + context extract
+#
+# What it demonstrates:
+#   - Ingesting the enterprise procurement PRD into the local context graph
+#   - AI agent reading the PRD and extracting use-cases
+#     (configurator rules, volume pricing, approval workflow, PO/credit limits)
+#   - Every use-case cited back to the exact source line
+#   - Clarifying questions when the PRD is ambiguous
+#
+# What the prospect should notice:
+#   - The AI doesn't invent requirements - it cites them
+#   - Ambiguities (e.g. approval expiry, open question #1) are surfaced
+#   - The output is structured, not a wall of text
+# ─────────────────────────────────────────────────────────
+
+on:
+  workflow_dispatch:
+    inputs:
+      source_file:
+        description: 'Requirement doc path (relative to repo root)'
+        required: true
+        default: 'docs/prd-enterprise-procurement.md'
+      source_id:
+        description: 'Source ID in the context graph'
+        required: true
+        default: 'prd-enterprise-procurement'
+      mode:
+        description: 'override = accept all defaults, ci = fail on ambiguity'
+        required: true
+        default: 'override'
+        type: choice
+        options: [override, ci]
+
+env:
+  LT_USERNAME: ${{ secrets.LT_USERNAME }}
+  LT_ACCESS_KEY: ${{ secrets.LT_ACCESS_KEY }}
+
+jobs:
+  requirements-analysis:
+    name: Ingest & Extract
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install Kane CLI
+        run: npm install -g @testmuai/kane-cli && kane-cli --version
+
+      - name: Authenticate
+        run: kane-cli login --username "$LT_USERNAME" --access-key "$LT_ACCESS_KEY"
+
+      - name: Restore context graph
+        uses: actions/cache@v4
+        with:
+          path: .context/
+          key: context-${{ hashFiles('docs/**') }}-${{ github.run_number }}
+          restore-keys: context-${{ hashFiles('docs/**') }}-
+
+      # ── INGEST ─────────────────────────────────────────
+      - name: "Ingest: Snapshot the requirement document"
+        run: |
+          echo "Ingesting: ${{ inputs.source_file }}"
+          echo "Source ID: ${{ inputs.source_id }}"
+          echo ""
+          kane-cli context ingest "./${{ inputs.source_file }}" \
+            --as "${{ inputs.source_id }}" \
+            --mode ci
+
+      # ── EXTRACT ────────────────────────────────────────
+      - name: "Extract: AI reads the PRD and proposes use-cases"
+        run: |
+          echo "Extracting use-cases from: ${{ inputs.source_id }}"
+          echo "Mode: ${{ inputs.mode }}"
+          echo ""
+          kane-cli context extract \
+            --mode ${{ inputs.mode }} \
+            --source "${{ inputs.source_id }}" \
+            || echo "⚠️  Extract completed with warnings"
+
+      # ── RESULTS ────────────────────────────────────────
+      - name: "Result: List extracted use-cases"
+        run: |
+          echo ""
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          echo "  Extracted use-cases"
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          echo ""
+          kane-cli context list
+
+      - name: Save outputs
+        run: kane-cli context list --json > context-list.json 2>/dev/null || echo "[]" > context-list.json
+
+      - name: Generate visual graph
+        run: kane-cli context view --output context-graph.html 2>/dev/null || true
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: 1-requirements-analysis-${{ github.run_number }}
+          retention-days: 30
+          path: |
+            context-list.json
+            context-graph.html
+            .context/

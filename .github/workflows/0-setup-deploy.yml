@@ -1,0 +1,84 @@
+name: "0 · Setup — Deploy NovaTech Business App"
+
+# ─────────────────────────────────────────────────────────
+# Deploys the NovaTech Business sample app so the test execution
+# workflows have a live URL to run against.
+#
+# The app runs on Vercel (free tier) or as a local dev
+# server in subsequent workflow jobs.
+# ─────────────────────────────────────────────────────────
+
+on:
+  workflow_dispatch:
+  workflow_call:
+    outputs:
+      app_url:
+        description: 'The URL of the deployed NovaTech Business app'
+        value: ${{ jobs.deploy.outputs.app_url }}
+
+env:
+  LT_USERNAME: ${{ secrets.LT_USERNAME }}
+  LT_ACCESS_KEY: ${{ secrets.LT_ACCESS_KEY }}
+  # Exposed at workflow level so the Vercel step's `if:` can see it
+  VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+
+jobs:
+  deploy:
+    name: Build and deploy NovaTech Business
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      app_url: ${{ steps.set-url.outputs.url }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: app/package-lock.json
+
+      - name: Install app dependencies
+        working-directory: app
+        run: npm ci
+
+      - name: Build the app
+        working-directory: app
+        run: npm run build
+
+      # Option A: Deploy to Vercel (if VERCEL_TOKEN is set)
+      - name: Deploy to Vercel
+        if: env.VERCEL_TOKEN != ''
+        id: vercel-deploy
+        working-directory: app
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: |
+          npx vercel --prod --token "$VERCEL_TOKEN" --yes 2>&1 | tee deploy.log
+          URL=$(tail -1 deploy.log)
+          echo "url=$URL" >> "$GITHUB_OUTPUT"
+
+      # Option B: Use a fixed staging URL (fallback)
+      - name: Set app URL
+        id: set-url
+        run: |
+          if [ -n "${{ steps.vercel-deploy.outputs.url }}" ]; then
+            echo "url=${{ steps.vercel-deploy.outputs.url }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "url=http://localhost:3000" >> "$GITHUB_OUTPUT"
+            echo "⚠️  No Vercel deployment — tests will need a local app running"
+            echo "    Set VERCEL_TOKEN, VERCEL_ORG_ID, VERCEL_PROJECT_ID secrets"
+            echo "    or run the app locally before triggering test execution"
+          fi
+
+      - name: Print deployment URL
+        run: |
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          echo "  NovaTech Business deployed at:"
+          echo "  ${{ steps.set-url.outputs.url }}"
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
