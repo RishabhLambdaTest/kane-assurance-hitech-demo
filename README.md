@@ -70,7 +70,19 @@ Every command, in order, with expected output: **[RUN-GUIDE.md](RUN-GUIDE.md)**.
 
 ## GitHub Actions
 
-`.github/workflows/assurance-pipeline.yml` runs the same flow in CI and builds the app on the runner, so nothing needs deploying. It needs two repo secrets, `LT_USERNAME` and `LT_ACCESS_KEY`, before it will pass.
+Both workflows build and serve the app on the runner, so nothing needs deploying. Both need two repo secrets first — **Settings → Secrets and variables → Actions**:
+
+- `LT_USERNAME`
+- `LT_ACCESS_KEY`
+
+| Workflow | What it does | When |
+|---|---|---|
+| **Run Tests** (`run-tests.yml`) | Runs the tests already in `.testmuai/tests/`, then prints results and coverage in the job summary. A few minutes, no design credits | **Use this for a demo** |
+| **KaneAI Assurance Pipeline** (`assurance-pipeline.yml`) | The full flow, including designing tests for the 7 use-cases that have none. 45–60 min, spends design credits | When you want the whole story end to end |
+
+Both are manual: **Actions → pick the workflow → Run workflow**. Nothing runs automatically on push.
+
+`Run Tests` takes an optional `test_file` input to run a single test instead of all of them. Results land in the job summary with a Test Manager link per test, and the evidence packs are uploaded as an artifact.
 
 ## Notes
 

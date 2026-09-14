@@ -14,18 +14,10 @@ name: KaneAI Assurance Pipeline
 # to test against a different TestmuAI/LambdaTest account without touching
 # repo secrets.
 
+# Manual only. This pipeline DESIGNS tests for every use-case that has none
+# (~45-60 min, spends design credits). To just run the tests already in the
+# repo, use the "Run Tests" workflow instead.
 on:
-  push:
-    branches: [main]
-    paths:
-      - "docs/**"
-      - "app/**"
-      - ".testmuai/tests/**"
-      - ".github/workflows/assurance-pipeline.yml"
-  pull_request:
-    branches: [main]
-  schedule:
-    - cron: "0 3 * * *" # nightly regression (stage 5)
   workflow_dispatch:
     inputs:
       prd_path:

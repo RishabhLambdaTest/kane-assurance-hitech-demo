@@ -210,6 +210,33 @@ v2 adds Device-as-a-Service, a second approver above $100K, and Net 45 terms. Th
 
 ---
 
+## Running it from GitHub Actions
+
+One-time, in the repo on GitHub:
+
+1. **Settings → Secrets and variables → Actions → New repository secret**
+   - `LT_USERNAME` — your TestMu AI / LambdaTest username
+   - `LT_ACCESS_KEY` — the matching access key
+2. **Actions** tab → if prompted, enable workflows for this repo.
+
+Then, to run the tests already in the repo:
+
+3. **Actions → Run Tests → Run workflow** (leave `test_file` blank to run all of them, or paste one path like `.testmuai/tests/submit-an-over-limit-order-from-review-into-a-pending_test.md`).
+
+The job builds the app, serves it on `localhost:3000` inside the runner, runs each test headless, and writes to the run summary:
+
+- a row per test with status and a Test Manager link
+- the `cover gaps` ribbon
+- an artifact (`test-results`) with the evidence packs and each `Result.md`
+
+Nothing needs deploying, and no design credits are spent — the tests are already authored, so this is a replay.
+
+**The other workflow, KaneAI Assurance Pipeline**, is the full flow: ingest → design → run → coverage → maintain → evidence → publish. It designs tests for the 7 use-cases that don't have any, so expect 45–60 minutes and design credits. Useful inputs on that one: `max_tests` (cap tests designed per use-case, try `2`), `test_limit` (cap how many tests run, try `3`), and `reconcile_prd` (`docs/prd-enterprise-procurement-v2.md`, for the maintenance demo).
+
+Both workflows are manual only — nothing fires on push.
+
+---
+
 ## Troubleshooting
 
 | Symptom | Fix |

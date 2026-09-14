@@ -1,0 +1,102 @@
+name: Run Tests
+
+# Runs the tests already committed in .testmuai/tests/ against the NovaTech
+# app, which is built and served on the runner itself. No extraction, no
+# design — so it is fast and spends no design credits. This is the workflow
+# to use for a demo.
+#
+# Needs two repo secrets: LT_USERNAME and LT_ACCESS_KEY.
+
+on:
+  workflow_dispatch:
+    inputs:
+      test_file:
+        description: "Run one test file (optional - blank = run every *_test.md)"
+        required: false
+        type: string
+
+env:
+  KANE_CLI_USER_AGENT: github-actions
+  KANE_CLI_USERNAME: ${{ secrets.LT_USERNAME }}
+  KANE_CLI_ACCESS_KEY: ${{ secrets.LT_ACCESS_KEY }}
+
+jobs:
+  run-tests:
+    name: Run committed tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/kane-setup
+      - uses: ./.github/actions/start-app
+
+      - name: Run tests
+        run: |
+          mkdir -p evidence-packs
+          echo "[]" > run-summary.json
+          BEFORE=$(mktemp) && touch "$BEFORE"
+          OVERALL=0
+
+          if [ -n "${{ inputs.test_file }}" ]; then
+            TESTS="${{ inputs.test_file }}"
+          else
+            TESTS=$(find .testmuai/tests -name '*_test.md' | sort)
+          fi
+
+          if [ -z "$TESTS" ]; then
+            echo "::error::no *_test.md files found"
+            exit 1
+          fi
+
+          for t in $TESTS; do
+            echo "=================================================================="
+            echo "  $t"
+            echo "=================================================================="
+            OUT=$(mktemp)
+            kane-cli testmd run "$t" \
+              --agent --headless \
+              --variables-file .testmuai/variables/novatech.json \
+              > "$OUT" 2>&1 || OVERALL=1
+            python3 .github/scripts/record-run.py "$OUT" "$t" run-summary.json
+            tail -c 3000 "$OUT"
+            rm -f "$OUT"
+          done
+
+          # stage every evidence pack this job produced
+          find "$HOME/.testmuai/kaneai/sessions" -name '*.evidence' -newer "$BEFORE" -print0 2>/dev/null \
+            | xargs -0 -I{} cp {} evidence-packs/ 2>/dev/null || true
+
+          exit $OVERALL
+
+      - name: Coverage
+        if: always()
+        run: kane-cli cover gaps | tee coverage.txt
+
+      - name: Job summary
+        if: always()
+        run: |
+          {
+            echo "## Test results"
+            echo ""
+            echo "| Test | Status | Report |"
+            echo "|---|---|---|"
+            python3 .github/scripts/summarize-run.py run-summary.json
+            echo ""
+            echo "## Coverage"
+            echo ""
+            echo '```'
+            cat coverage.txt
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-results
+          path: |
+            run-summary.json
+            coverage.txt
+            evidence-packs/
+            .testmuai/tests/output-*/Result.md
+          retention-days: 30
