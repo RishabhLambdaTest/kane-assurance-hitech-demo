@@ -1,7 +1,9 @@
-# Kane CLI — commit the assurance graph and suite; ignore runtime scratch
+# Kane CLI — commit the assurance graph and the designed suite.
+# Ignore run artifacts: evidence packs are 2-11 MB each of screenshots and
+# traces, produced fresh by every run and uploaded by CI as an artifact.
 .context/locks/
 .context/sessions/
-.testmuai/evidence/*.tmp
+.testmuai/evidence/
 
 # Pipeline outputs (CI artifacts, not source)
 coverage-report.json

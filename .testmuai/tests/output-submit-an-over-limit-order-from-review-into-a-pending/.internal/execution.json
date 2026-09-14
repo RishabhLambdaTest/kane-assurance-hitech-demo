@@ -2,24 +2,24 @@
   "test_id": "f4c03ea6-0e7b-4dc8-8aeb-833cd73bfef8",
   "version": "v4",
   "auto_heal_version": "AH2",
-  "session_id": "861e556d-e6cc-4c42-9c79-d98b027452e4",
+  "session_id": "20b2e40e-a1a7-4efd-bbd4-dde48e9048df",
   "org_id": "588659",
   "user_id": "3151891",
   "url": "",
-  "start_timestamp": "2026-09-14T12:40:39.457Z",
-  "end_timestamp": "2026-09-14T12:46:26.811Z",
+  "start_timestamp": "2026-09-14T12:55:18.629Z",
+  "end_timestamp": "2026-09-14T13:00:16.675Z",
   "status": "success",
-  "commit_id": "861e556d-e6cc-4c42-9c79-d98b027452e4",
+  "commit_id": "20b2e40e-a1a7-4efd-bbd4-dde48e9048df",
   "instructions": [
     {
       "content_type": "generative_block",
-      "instruction_id": "generative_block_f22a1348df9743ca991e334bc4f74937",
-      "generative_id": "f22a1348df9743ca991e334bc4f74937",
+      "instruction_id": "generative_block_93ec4dfffdb84c41bd25ddb67f61e4d0",
+      "generative_id": "93ec4dfffdb84c41bd25ddb67f61e4d0",
       "objective": "Open {{global.over_limit_quote_locator}} in a browser. The store signs in as the Buyer persona automatically, so no login is required. Assert the Quote Builder page shows a line for {{global.laptop_product}} with quantity 30, then click \"Proceed to Checkout\".",
       "status": "success",
       "children": [
         {
-          "instruction_id": "c42a800f-ad95-4682-b61d-32599e1afdb3",
+          "instruction_id": "b4c734c6-b65e-4df0-a1b1-2e8c71918c51",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Navigate to {{global.over_limit_quote_locator}}",
@@ -31,11 +31,11 @@
           "operations": [
             {
               "operation_id": "18bfca69-9693-4707-8284-78e75675c48d",
-              "instruction_id": "c42a800f-ad95-4682-b61d-32599e1afdb3",
+              "instruction_id": "b4c734c6-b65e-4df0-a1b1-2e8c71918c51",
               "instruction": "Navigate to {{global.over_limit_quote_locator}}",
               "intent": "Navigate to {{global.over_limit_quote_locator}}",
-              "operation_start": "2026-09-14T12:40:54.577259+00:00",
-              "operation_end": "2026-09-14T12:40:54.629Z",
+              "operation_start": "2026-09-14T12:56:15.533336+00:00",
+              "operation_end": "2026-09-14T12:56:15.591Z",
               "status": "success",
               "command": "OPEN",
               "name": "",
@@ -155,8 +155,8 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-09-14T12:40:54.577259+00:00",
-          "end_timestamp": "2026-09-14T12:40:54.629Z",
+          "start_timestamp": "2026-09-14T12:56:15.533336+00:00",
+          "end_timestamp": "2026-09-14T12:56:15.591Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -182,7 +182,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "f22a1348df9743ca991e334bc4f74937",
+          "generative_id": "93ec4dfffdb84c41bd25ddb67f61e4d0",
           "plan_id": "",
           "generative_objective": "Open {{global.over_limit_quote_locator}} in a browser. The store signs in as the Buyer persona automatically, so no login is required. Assert the Quote Builder page shows a line for {{global.laptop_product}} with quantity 30, then click \"Proceed to Checkout\".",
           "error_message": "",
@@ -193,7 +193,7 @@
           "reasoning": "Navigate to {{global.over_limit_quote_locator}}"
         },
         {
-          "instruction_id": "5964e273-267e-4860-82a7-1d67bd009a73",
+          "instruction_id": "79777f9d-c9a2-47d1-9e1d-4584939da716",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Clicking Proceed to Checkout button",
@@ -205,11 +205,11 @@
           "operations": [
             {
               "operation_id": "e808f4ca-ab7b-48e1-827e-792e7d10b6bf",
-              "instruction_id": "5964e273-267e-4860-82a7-1d67bd009a73",
+              "instruction_id": "79777f9d-c9a2-47d1-9e1d-4584939da716",
               "instruction": "Clicking Proceed to Checkout button",
               "intent": "Clicking Proceed to Checkout button",
-              "operation_start": "2026-09-14T12:41:05.436254+00:00",
-              "operation_end": "2026-09-14T12:41:05.471Z",
+              "operation_start": "2026-09-14T12:56:15.682369+00:00",
+              "operation_end": "2026-09-14T12:56:15.729Z",
               "status": "success",
               "command": "CLICK",
               "name": "",
@@ -354,8 +354,8 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-09-14T12:41:05.436254+00:00",
-          "end_timestamp": "2026-09-14T12:41:05.471Z",
+          "start_timestamp": "2026-09-14T12:56:15.682369+00:00",
+          "end_timestamp": "2026-09-14T12:56:15.729Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -381,7 +381,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "f22a1348df9743ca991e334bc4f74937",
+          "generative_id": "93ec4dfffdb84c41bd25ddb67f61e4d0",
           "plan_id": "",
           "generative_objective": "Open {{global.over_limit_quote_locator}} in a browser. The store signs in as the Buyer persona automatically, so no login is required. Assert the Quote Builder page shows a line for {{global.laptop_product}} with quantity 30, then click \"Proceed to Checkout\".",
           "error_message": "",
@@ -392,7 +392,7 @@
           "reasoning": "PRIMARY: Proceed to Checkout button; role=button; text=\"Proceed to Checkout\" | HINTS: container=Quote Summary"
         },
         {
-          "instruction_id": "a87878f9-6cf7-4606-be78-050d12802721",
+          "instruction_id": "c1546ed6-25f8-45ad-95df-1ea37f5d290f",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Waiting 1000 ms for the shipping checkout page to finish loading",
@@ -404,11 +404,11 @@
           "operations": [
             {
               "operation_id": "71bae043-1141-448e-8059-7dd40bae9c7a",
-              "instruction_id": "a87878f9-6cf7-4606-be78-050d12802721",
+              "instruction_id": "c1546ed6-25f8-45ad-95df-1ea37f5d290f",
               "instruction": "Waiting 1000 ms for the shipping checkout page to finish loading",
               "intent": "Waiting 1000 ms for the shipping checkout page to finish loading",
-              "operation_start": "2026-09-14T12:41:12.745663+00:00",
-              "operation_end": "2026-09-14T12:41:13.754Z",
+              "operation_start": "2026-09-14T12:56:17.341779+00:00",
+              "operation_end": "2026-09-14T12:56:18.345Z",
               "status": "success",
               "command": "WAIT",
               "name": "",
@@ -528,8 +528,8 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-09-14T12:41:12.745663+00:00",
-          "end_timestamp": "2026-09-14T12:41:13.754Z",
+          "start_timestamp": "2026-09-14T12:56:17.341779+00:00",
+          "end_timestamp": "2026-09-14T12:56:18.345Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -555,7 +555,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "f22a1348df9743ca991e334bc4f74937",
+          "generative_id": "93ec4dfffdb84c41bd25ddb67f61e4d0",
           "plan_id": "",
           "generative_objective": "Open {{global.over_limit_quote_locator}} in a browser. The store signs in as the Buyer persona automatically, so no login is required. Assert the Quote Builder page shows a line for {{global.laptop_product}} with quantity 30, then click \"Proceed to Checkout\".",
           "error_message": "",
@@ -566,7 +566,7 @@
           "reasoning": "PRIMARY: wait 1000 ms for the shipping checkout page to finish loading"
         },
         {
-          "instruction_id": "0caa9837-1bf3-4755-9813-114aa350cca2",
+          "instruction_id": "8d565997-aa18-48a8-b909-ecab4c14c5d0",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Navigate back",
@@ -578,11 +578,11 @@
           "operations": [
             {
               "operation_id": "94299c9e-e9d7-44f5-8c30-8d5f958e9cc2",
-              "instruction_id": "0caa9837-1bf3-4755-9813-114aa350cca2",
+              "instruction_id": "8d565997-aa18-48a8-b909-ecab4c14c5d0",
               "instruction": "Navigate back",
               "intent": "Navigate back",
-              "operation_start": "2026-09-14T12:41:28.122038+00:00",
-              "operation_end": "2026-09-14T12:41:28.203Z",
+              "operation_start": "2026-09-14T12:56:17.411038+00:00",
+              "operation_end": "2026-09-14T12:56:17.420Z",
               "status": "success",
               "command": "NAVIGATE",
               "name": "",
@@ -604,7 +604,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/94299c9e-e9d7-44f5-8c30-8d5f958e9cc2.png",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/94299c9e-e9d7-44f5-8c30-8d5f958e9cc2.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -702,8 +702,8 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-09-14T12:41:28.122038+00:00",
-          "end_timestamp": "2026-09-14T12:41:28.203Z",
+          "start_timestamp": "2026-09-14T12:56:17.411038+00:00",
+          "end_timestamp": "2026-09-14T12:56:17.420Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -729,7 +729,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "f22a1348df9743ca991e334bc4f74937",
+          "generative_id": "93ec4dfffdb84c41bd25ddb67f61e4d0",
           "plan_id": "",
           "generative_objective": "Open {{global.over_limit_quote_locator}} in a browser. The store signs in as the Buyer persona automatically, so no login is required. Assert the Quote Builder page shows a line for {{global.laptop_product}} with quantity 30, then click \"Proceed to Checkout\".",
           "error_message": "",
@@ -740,7 +740,7 @@
           "reasoning": "Navigate back"
         },
         {
-          "instruction_id": "86ea22fe-040e-4952-942c-5f5262e0fa8b",
+          "instruction_id": "76e11594-b4b4-42a4-b9fa-ffbf3f0a8ef8",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Waiting for the Quote Builder page to finish loading",
@@ -752,11 +752,11 @@
           "operations": [
             {
               "operation_id": "fa708239-26c1-478b-896c-4d3850bf850a",
-              "instruction_id": "86ea22fe-040e-4952-942c-5f5262e0fa8b",
+              "instruction_id": "76e11594-b4b4-42a4-b9fa-ffbf3f0a8ef8",
               "instruction": "Waiting for the Quote Builder page to finish loading",
               "intent": "Waiting for the Quote Builder page to finish loading",
-              "operation_start": "2026-09-14T12:41:32.121100+00:00",
-              "operation_end": "2026-09-14T12:41:33.207Z",
+              "operation_start": "2026-09-14T12:56:18.503955+00:00",
+              "operation_end": "2026-09-14T12:56:19.504Z",
               "status": "success",
               "command": "WAIT",
               "name": "",
@@ -876,8 +876,8 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-09-14T12:41:32.121100+00:00",
-          "end_timestamp": "2026-09-14T12:41:33.207Z",
+          "start_timestamp": "2026-09-14T12:56:18.503955+00:00",
+          "end_timestamp": "2026-09-14T12:56:19.504Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -903,7 +903,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "f22a1348df9743ca991e334bc4f74937",
+          "generative_id": "93ec4dfffdb84c41bd25ddb67f61e4d0",
           "plan_id": "",
           "generative_objective": "Open {{global.over_limit_quote_locator}} in a browser. The store signs in as the Buyer persona automatically, so no login is required. Assert the Quote Builder page shows a line for {{global.laptop_product}} with quantity 30, then click \"Proceed to Checkout\".",
           "error_message": "",
@@ -914,7 +914,7 @@
           "reasoning": "PRIMARY: wait 1000 ms for the Quote Builder page to finish loading"
         },
         {
-          "instruction_id": "b98e9f8b-97f4-4a1a-8e6a-ff6697125099",
+          "instruction_id": "50742468-f215-406d-b41f-4d2e42d52559",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Checking the Quote Builder product line",
@@ -926,11 +926,11 @@
           "operations": [
             {
               "operation_id": "6a963348-3fbb-410a-9200-2667571c0b12",
-              "instruction_id": "b98e9f8b-97f4-4a1a-8e6a-ff6697125099",
+              "instruction_id": "50742468-f215-406d-b41f-4d2e42d52559",
               "instruction": "Checking the Quote Builder product line",
               "intent": "Checking the Quote Builder product line",
-              "operation_start": "2026-09-14T12:41:43.060639+00:00",
-              "operation_end": "",
+              "operation_start": "2026-09-14T12:56:18.585945+00:00",
+              "operation_end": "2026-09-14T12:56:18.601Z",
               "status": "success",
               "command": "TEXTUAL_ANALYZER",
               "name": "",
@@ -1052,8 +1052,8 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-09-14T12:41:43.060639+00:00",
-          "end_timestamp": "",
+          "start_timestamp": "2026-09-14T12:56:18.585945+00:00",
+          "end_timestamp": "2026-09-14T12:56:18.601Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -1079,7 +1079,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "f22a1348df9743ca991e334bc4f74937",
+          "generative_id": "93ec4dfffdb84c41bd25ddb67f61e4d0",
           "plan_id": "",
           "generative_objective": "Open {{global.over_limit_quote_locator}} in a browser. The store signs in as the Buyer persona automatically, so no login is required. Assert the Quote Builder page shows a line for {{global.laptop_product}} with quantity 30, then click \"Proceed to Checkout\".",
           "error_message": "",
@@ -1090,7 +1090,7 @@
           "reasoning": "whether the Quote Builder product line for {{global.laptop_product}} is present"
         },
         {
-          "instruction_id": "b231b249-6fab-492f-9eb5-eb910b5d8733",
+          "instruction_id": "794e0b2d-9e4a-4cfd-85c0-943ed6aba9b6",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Reading the Quote Builder product quantity",
@@ -1102,11 +1102,11 @@
           "operations": [
             {
               "operation_id": "96fbaf7b-e84f-4358-a5ad-3dd133c8fef8",
-              "instruction_id": "b231b249-6fab-492f-9eb5-eb910b5d8733",
+              "instruction_id": "794e0b2d-9e4a-4cfd-85c0-943ed6aba9b6",
               "instruction": "Reading the Quote Builder product quantity",
               "intent": "Reading the Quote Builder product quantity",
-              "operation_start": "2026-09-14T12:41:43.060803+00:00",
-              "operation_end": "",
+              "operation_start": "2026-09-14T12:56:18.659728+00:00",
+              "operation_end": "2026-09-14T12:56:18.667Z",
               "status": "success",
               "command": "TEXTUAL_ANALYZER",
               "name": "",
@@ -1228,8 +1228,8 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-09-14T12:41:43.060803+00:00",
-          "end_timestamp": "",
+          "start_timestamp": "2026-09-14T12:56:18.659728+00:00",
+          "end_timestamp": "2026-09-14T12:56:18.667Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -1255,7 +1255,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "f22a1348df9743ca991e334bc4f74937",
+          "generative_id": "93ec4dfffdb84c41bd25ddb67f61e4d0",
           "plan_id": "",
           "generative_objective": "Open {{global.over_limit_quote_locator}} in a browser. The store signs in as the Buyer persona automatically, so no login is required. Assert the Quote Builder page shows a line for {{global.laptop_product}} with quantity 30, then click \"Proceed to Checkout\".",
           "error_message": "",
@@ -1266,7 +1266,7 @@
           "reasoning": "the quantity for {{global.laptop_product}} in the Quote Builder"
         },
         {
-          "instruction_id": "80013d09-84cf-425c-9463-63795452f9f8",
+          "instruction_id": "fc9cf972-9877-4259-bd4b-d512afb8d8a8",
           "instruction_class": "non_driver_action",
           "module_id": "",
           "instruction": "Assertion check",
@@ -1351,11 +1351,11 @@
           "operations": [
             {
               "operation_id": "afd8192c-667b-46b7-bbfa-53e85859d61c",
-              "instruction_id": "80013d09-84cf-425c-9463-63795452f9f8",
+              "instruction_id": "fc9cf972-9877-4259-bd4b-d512afb8d8a8",
               "instruction": "Assertion check",
               "intent": "Assertion check",
-              "operation_start": "2026-09-14T12:41:43.669822+00:00",
-              "operation_end": "",
+              "operation_start": "2026-09-14T12:56:19.150446+00:00",
+              "operation_end": "2026-09-14T12:56:19.585Z",
               "status": "success",
               "command": "ASSERTION",
               "name": "",
@@ -1385,7 +1385,7 @@
               "navigation_direction": "",
               "tagified_image_url": "",
               "query_variable_name": "",
-              "query_variable_value": "",
+              "query_variable_value": "{'status': 'passed', 'composite_operator': 'and', 'sub_results': [{'description': 'The Quote Builder page shows a line for NovaBook 14 Business.', 'passed': True, 'operator': 'equals', 'transforms': ['strip'], 'expected': 'true', 'extracted_value': 'true'}, {'description': 'The Quote Builder page shows quantity 30 for NovaBook 14 Business.', 'passed': True, 'operator': 'equals', 'transforms': ['strip'], 'expected': '30', 'extracted_value': '30'}]}",
               "query_variable_type": "",
               "expected_value": "",
               "queried_value": "",
@@ -1539,7 +1539,39 @@
                 "is_final": true,
                 "verification": "The Quote Builder page shows a line for {{global.laptop_product}} with quantity 30.",
                 "error_message": null,
-                "duration_ms": 0
+                "duration_ms": 0,
+                "sub_checks": [
+                  {
+                    "description": "The Quote Builder page shows a line for {{global.laptop_product}}.",
+                    "passed": true,
+                    "operator": "equals",
+                    "transforms": [],
+                    "json_path": null,
+                    "extracted_value": "{{quote_builder_product_line_check}}",
+                    "store_key": "quote_builder_product_line_check",
+                    "variable_refs": {
+                      "{{quote_builder_product_line_check}}": "true",
+                      "{{global.laptop_product}}": "NovaBook 14 Business"
+                    },
+                    "expected_value": "true"
+                  },
+                  {
+                    "description": "The Quote Builder page shows quantity 30 for {{global.laptop_product}}.",
+                    "passed": true,
+                    "operator": "equals",
+                    "transforms": [
+                      "strip"
+                    ],
+                    "json_path": null,
+                    "extracted_value": "{{quote_builder_product_quantity_check}}",
+                    "store_key": "quote_builder_product_quantity_check",
+                    "variable_refs": {
+                      "{{quote_builder_product_quantity_check}}": "30",
+                      "{{global.laptop_product}}": "NovaBook 14 Business"
+                    },
+                    "expected_value": "30"
+                  }
+                ]
               },
               "assertion_tree_simplified": {},
               "network_throttle": {},
@@ -1579,8 +1611,8 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-09-14T12:41:43.669822+00:00",
-          "end_timestamp": "",
+          "start_timestamp": "2026-09-14T12:56:19.150446+00:00",
+          "end_timestamp": "2026-09-14T12:56:19.585Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -1606,7 +1638,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "f22a1348df9743ca991e334bc4f74937",
+          "generative_id": "93ec4dfffdb84c41bd25ddb67f61e4d0",
           "plan_id": "",
           "generative_objective": "Open {{global.over_limit_quote_locator}} in a browser. The store signs in as the Buyer persona automatically, so no login is required. Assert the Quote Builder page shows a line for {{global.laptop_product}} with quantity 30, then click \"Proceed to Checkout\".",
           "error_message": "",
@@ -1619,24 +1651,20 @@
       ],
       "error_message": null,
       "error_code": null,
-      "result_code": null,
+      "result_code": 100,
       "bifurcation_context": [],
-      "approach_reason": [
-        "The Quote Builder was checked to confirm it included NovaBook 14 Business with a quantity of 30.",
-        "Clicked “Proceed to Checkout” as requested.",
-        "The checkout action was completed; the page URL remained on the Quote Builder link."
-      ],
+      "approach_reason": [],
       "one_liner": null
     },
     {
       "content_type": "generative_block",
-      "instruction_id": "generative_block_9cbaefc0b1d449039d25fb3ad2f45a13",
-      "generative_id": "9cbaefc0b1d449039d25fb3ad2f45a13",
+      "instruction_id": "generative_block_13e056b91dbc47cbad0c1349d2da7611",
+      "generative_id": "13e056b91dbc47cbad0c1349d2da7611",
       "objective": "On the Ship-to Site & Delivery page, click the saved site \"HQ — San Jose\", select the \"Standard Ground\" delivery method, and click \"Continue to Payment\".",
       "status": "success",
       "children": [
         {
-          "instruction_id": "9af580e4-0034-44f0-a9ae-071736962ace",
+          "instruction_id": "dd5afaa8-db40-4c23-aabe-ecec7da2c8ee",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Clicking Proceed to Checkout button",
@@ -1648,11 +1676,11 @@
           "operations": [
             {
               "operation_id": "92711efc-f111-4793-aa4f-89f7c5a19021",
-              "instruction_id": "9af580e4-0034-44f0-a9ae-071736962ace",
+              "instruction_id": "dd5afaa8-db40-4c23-aabe-ecec7da2c8ee",
               "instruction": "Clicking Proceed to Checkout button",
               "intent": "Clicking Proceed to Checkout button",
-              "operation_start": "2026-09-14T12:41:59.951591+00:00",
-              "operation_end": "2026-09-14T12:42:00.003Z",
+              "operation_start": "2026-09-14T12:56:19.262134+00:00",
+              "operation_end": "2026-09-14T12:56:19.288Z",
               "status": "success",
               "command": "CLICK",
               "name": "",
@@ -1797,8 +1825,8 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-09-14T12:41:59.951591+00:00",
-          "end_timestamp": "2026-09-14T12:42:00.003Z",
+          "start_timestamp": "2026-09-14T12:56:19.262134+00:00",
+          "end_timestamp": "2026-09-14T12:56:19.288Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -1824,7 +1852,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "9cbaefc0b1d449039d25fb3ad2f45a13",
+          "generative_id": "13e056b91dbc47cbad0c1349d2da7611",
           "plan_id": "",
           "generative_objective": "On the Ship-to Site & Delivery page, click the saved site \"HQ — San Jose\", select the \"Standard Ground\" delivery method, and click \"Continue to Payment\".",
           "error_message": "",
@@ -1835,7 +1863,7 @@
           "reasoning": "PRIMARY: Proceed to Checkout button; role=button; text=\"Proceed to Checkout\" | HINTS: container=Quote Summary panel"
         },
         {
-          "instruction_id": "df8ab5b8-e95b-4165-8fd7-b4bacb144112",
+          "instruction_id": "2e039927-60cd-4825-b6da-8a086ca75d5c",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Waiting for the next step to load",
@@ -1847,11 +1875,11 @@
           "operations": [
             {
               "operation_id": "161a64a9-e284-4886-b22d-045ebc355a2e",
-              "instruction_id": "df8ab5b8-e95b-4165-8fd7-b4bacb144112",
+              "instruction_id": "2e039927-60cd-4825-b6da-8a086ca75d5c",
               "instruction": "Waiting for the next step to load",
               "intent": "Waiting for the next step to load",
-              "operation_start": "2026-09-14T12:42:11.267547+00:00",
-              "operation_end": "2026-09-14T12:42:12.277Z",
+              "operation_start": "2026-09-14T12:56:20.904050+00:00",
+              "operation_end": "2026-09-14T12:56:21.906Z",
               "status": "success",
               "command": "WAIT",
               "name": "",
@@ -1971,8 +1999,8 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-09-14T12:42:11.267547+00:00",
-          "end_timestamp": "2026-09-14T12:42:12.277Z",
+          "start_timestamp": "2026-09-14T12:56:20.904050+00:00",
+          "end_timestamp": "2026-09-14T12:56:21.906Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -1998,7 +2026,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "9cbaefc0b1d449039d25fb3ad2f45a13",
+          "generative_id": "13e056b91dbc47cbad0c1349d2da7611",
           "plan_id": "",
           "generative_objective": "On the Ship-to Site & Delivery page, click the saved site \"HQ — San Jose\", select the \"Standard Ground\" delivery method, and click \"Continue to Payment\".",
           "error_message": "",
@@ -2009,7 +2037,7 @@
           "reasoning": "queued plan (3 steps): click \"HQ — San Jose 100 Innovation Way, San Jose 95134, United States\"; click \"Standard Ground 5–7 business days — est. delivery Sep 23, 2026 FREE\"; click \"Continue to Payment\""
         },
         {
-          "instruction_id": "ca619cb5-7289-4df5-99a5-24dc3b55f182",
+          "instruction_id": "5ea1b0a7-668d-4639-b23d-ff2d4fe16fe4",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Click \"HQ — San Jose 100 Innovation Way, San Jose 95134, United States\"",
@@ -2021,11 +2049,11 @@
           "operations": [
             {
               "operation_id": "0532b235-534e-4742-928a-ec8ca343e261",
-              "instruction_id": "ca619cb5-7289-4df5-99a5-24dc3b55f182",
+              "instruction_id": "5ea1b0a7-668d-4639-b23d-ff2d4fe16fe4",
               "instruction": "Click \"HQ — San Jose 100 Innovation Way, San Jose 95134, United States\"",
               "intent": "Click \"HQ — San Jose 100 Innovation Way, San Jose 95134, United States\"",
-              "operation_start": "2026-09-14T12:42:12.113759+00:00",
-              "operation_end": "2026-09-14T12:42:12.129Z",
+              "operation_start": "2026-09-14T12:56:21.050552+00:00",
+              "operation_end": "2026-09-14T12:56:21.124Z",
               "status": "success",
               "command": "CLICK",
               "name": "",
@@ -2170,8 +2198,8 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-09-14T12:42:12.113759+00:00",
-          "end_timestamp": "2026-09-14T12:42:12.129Z",
+          "start_timestamp": "2026-09-14T12:56:21.050552+00:00",
+          "end_timestamp": "2026-09-14T12:56:21.124Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -2197,7 +2225,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "9cbaefc0b1d449039d25fb3ad2f45a13",
+          "generative_id": "13e056b91dbc47cbad0c1349d2da7611",
           "plan_id": "",
           "generative_objective": "On the Ship-to Site & Delivery page, click the saved site \"HQ — San Jose\", select the \"Standard Ground\" delivery method, and click \"Continue to Payment\".",
           "error_message": "",
@@ -2208,7 +2236,7 @@
           "reasoning": "PRIMARY: saved site selector; role=button; text=\"HQ — San Jose 100 Innovation Way, San Jose 95134, United States\" | HINTS: container=Saved sites section"
         },
         {
-          "instruction_id": "29c1d074-ba35-442c-84d5-b746b80c7b97",
+          "instruction_id": "c4282df7-44c6-43f8-8985-261226230105",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Clicking Standard Ground delivery option",
@@ -2220,11 +2248,11 @@
           "operations": [
             {
               "operation_id": "d528bc9f-edf8-42b6-9f51-8f7a8c855055",
-              "instruction_id": "29c1d074-ba35-442c-84d5-b746b80c7b97",
+              "instruction_id": "c4282df7-44c6-43f8-8985-261226230105",
               "instruction": "Clicking Standard Ground delivery option",
               "intent": "Clicking Standard Ground delivery option",
-              "operation_start": "2026-09-14T12:42:20.041130+00:00",
-              "operation_end": "2026-09-14T12:42:20.061Z",
+              "operation_start": "2026-09-14T12:56:21.713369+00:00",
+              "operation_end": "2026-09-14T12:56:21.739Z",
               "status": "success",
               "command": "CLICK",
               "name": "",
@@ -2369,8 +2397,8 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-09-14T12:42:20.041130+00:00",
-          "end_timestamp": "2026-09-14T12:42:20.061Z",
+          "start_timestamp": "2026-09-14T12:56:21.713369+00:00",
+          "end_timestamp": "2026-09-14T12:56:21.739Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -2396,7 +2424,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "9cbaefc0b1d449039d25fb3ad2f45a13",
+          "generative_id": "13e056b91dbc47cbad0c1349d2da7611",
           "plan_id": "",
           "generative_objective": "On the Ship-to Site & Delivery page, click the saved site \"HQ — San Jose\", select the \"Standard Ground\" delivery method, and click \"Continue to Payment\".",
           "error_message": "",
@@ -2407,7 +2435,7 @@
           "reasoning": "PRIMARY: Standard Ground delivery method; role=radio; text=\"Standard Ground 5–7 business days — est. delivery Sep 23, 2026 FREE\" | HINTS: container=Delivery method section"
         },
         {
-          "instruction_id": "ccda1cb9-d137-4b64-bd59-0ee0a2df4426",
+          "instruction_id": "fd67acb9-0738-41aa-b1bb-9e4ae60b8042",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Clicking Continue to Payment button",
@@ -2419,11 +2447,11 @@
           "operations": [
             {
               "operation_id": "b4370cb8-b970-4f27-abfd-7ccb340bbe96",
-              "instruction_id": "ccda1cb9-d137-4b64-bd59-0ee0a2df4426",
+              "instruction_id": "fd67acb9-0738-41aa-b1bb-9e4ae60b8042",
               "instruction": "Clicking Continue to Payment button",
               "intent": "Clicking Continue to Payment button",
-              "operation_start": "2026-09-14T12:42:27.143041+00:00",
-              "operation_end": "2026-09-14T12:42:27.172Z",
+              "operation_start": "2026-09-14T12:56:22.362903+00:00",
+              "operation_end": "2026-09-14T12:56:22.390Z",
               "status": "success",
               "command": "CLICK",
               "name": "",
@@ -2568,8 +2596,8 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-09-14T12:42:27.143041+00:00",
-          "end_timestamp": "2026-09-14T12:42:27.172Z",
+          "start_timestamp": "2026-09-14T12:56:22.362903+00:00",
+          "end_timestamp": "2026-09-14T12:56:22.390Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -2595,7 +2623,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "9cbaefc0b1d449039d25fb3ad2f45a13",
+          "generative_id": "13e056b91dbc47cbad0c1349d2da7611",
           "plan_id": "",
           "generative_objective": "On the Ship-to Site & Delivery page, click the saved site \"HQ — San Jose\", select the \"Standard Ground\" delivery method, and click \"Continue to Payment\".",
           "error_message": "",
@@ -2608,27 +2636,23 @@
       ],
       "error_message": null,
       "error_code": null,
-      "result_code": null,
+      "result_code": 100,
       "bifurcation_context": [],
-      "approach_reason": [
-        "Selected the saved shipping site “HQ — San Jose” and the “Standard Ground” delivery method as requested.",
-        "Continued to the payment step.",
-        "The checkout is now on the payment page."
-      ],
+      "approach_reason": [],
       "one_liner": null
     },
     {
       "content_type": "generative_block",
-      "instruction_id": "generative_block_133eaa5267274554b0f8606b6317d3ae",
-      "generative_id": "133eaa5267274554b0f8606b6317d3ae",
+      "instruction_id": "generative_block_dd3f054b07b4434eac2976ab459e50dd",
+      "generative_id": "dd3f054b07b4434eac2976ab459e50dd",
       "objective": "On the Payment page, keep the \"Purchase Order\" tab selected, enter {{global.valid_po_number}} in the PO number field, and click \"Continue to Review\", then on the Order Review page assert the banner reads \"This order exceeds the $25,000 spending limit and requires Procurement Manager approval.\", the primary action button reads \"Submit for Approval\", and the displayed Order Total is greater than $25,000.",
       "status": "success",
       "children": [
         {
-          "instruction_id": "d8c9fafb-cd88-43d9-af01-3dc98aa179a7",
+          "instruction_id": "48de7d93-a097-4834-a043-0a36e97c47d6",
           "instruction_class": "driver_action",
           "module_id": "",
-          "instruction": "Typing PO number in PO number field",
+          "instruction": "Entering purchase order number in the PO number input field",
           "command": "TYPE",
           "error": null,
           "parent_instruction_id": "",
@@ -2636,23 +2660,23 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "7d9d2855-5f49-4525-b4ae-abdc5409a2f9",
-              "instruction_id": "d8c9fafb-cd88-43d9-af01-3dc98aa179a7",
-              "instruction": "Typing PO number in PO number field",
-              "intent": "Typing PO number in PO number field",
-              "operation_start": "2026-09-14T12:42:57.503473+00:00",
-              "operation_end": "2026-09-14T12:42:57.541Z",
+              "operation_id": "32afeb1f-5058-43f1-9138-9b80dd6736dc",
+              "instruction_id": "48de7d93-a097-4834-a043-0a36e97c47d6",
+              "instruction": "Entering purchase order number in the PO number input field",
+              "intent": "Entering purchase order number in the PO number input field",
+              "operation_start": "2026-09-14T12:56:40.467028+00:00",
+              "operation_end": "2026-09-14T12:56:40.494Z",
               "status": "success",
               "command": "TYPE",
               "name": "",
               "target": "",
-              "value": "{{global.valid_po_number}}",
+              "value": "{{global.valid_po_number}}},",
               "message": "",
               "operation_dict": "",
               "frame": "",
               "error_message": "",
               "code_snippet": "",
-              "sub_instruction_obj": "{\"operation\":\"Typing PO number in PO number field\",\"agent\":\"Vision Agent\",\"operation_dict\":{\"operation_type\":\"TYPE\"},\"reasoning\":\"PRIMARY: PO number input; role=textbox; text=\\\"PO number *\\\" | HINTS: container=Purchase Order payment tab\",\"variable\":{\"value\":\"{{global.valid_po_number}}\"},\"secrets\":{},\"params\":{}}",
+              "sub_instruction_obj": "{\"operation\":\"Entering purchase order number in the PO number input field\",\"agent\":\"Vision Agent\",\"operation_dict\":{\"operation_type\":\"TYPE\"},\"reasoning\":\"PRIMARY: purchase order number input; role=textbox; text=\\\"PO number *\\\" | HINTS: container=Payment method Purchase Order tab\",\"variable\":{\"value\":\"{{global.valid_po_number}}},\"},\"secrets\":{},\"params\":{}}",
               "test_id": "",
               "test_version": "",
               "action": "",
@@ -2663,7 +2687,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/7d9d2855-5f49-4525-b4ae-abdc5409a2f9.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/32afeb1f-5058-43f1-9138-9b80dd6736dc.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -2764,30 +2788,30 @@
               "api_data": {},
               "output_variables": {},
               "visual_context": {
-                "x": 656,
-                "y": 339,
+                "x": 431,
+                "y": 338,
                 "confidence": 0,
                 "bbox": {
-                  "x": 430,
-                  "y": 327,
+                  "x": 205,
+                  "y": 326,
                   "width": 452,
                   "height": 24
                 },
                 "bbox_source": "accessibility_tree",
-                "viewport_width": 1920,
-                "viewport_height": 993,
+                "viewport_width": 1470,
+                "viewport_height": 746,
                 "scale_factor": null,
-                "raw_image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/7d9d2855-5f49-4525-b4ae-abdc5409a2f9.webp",
+                "raw_image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/32afeb1f-5058-43f1-9138-9b80dd6736dc.webp",
                 "raw_image_sas_url": "",
                 "annotated_image_url": "",
                 "annotated_image_sas_url": ""
               },
-              "reasoning": "PRIMARY: PO number input; role=textbox; text=\"PO number *\" | HINTS: container=Purchase Order payment tab"
+              "reasoning": "PRIMARY: purchase order number input; role=textbox; text=\"PO number *\" | HINTS: container=Payment method Purchase Order tab"
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-09-14T12:42:57.503473+00:00",
-          "end_timestamp": "2026-09-14T12:42:57.541Z",
+          "start_timestamp": "2026-09-14T12:56:40.467028+00:00",
+          "end_timestamp": "2026-09-14T12:56:40.494Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -2813,7 +2837,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "133eaa5267274554b0f8606b6317d3ae",
+          "generative_id": "dd3f054b07b4434eac2976ab459e50dd",
           "plan_id": "",
           "generative_objective": "On the Payment page, keep the \"Purchase Order\" tab selected, enter {{global.valid_po_number}} in the PO number field, and click \"Continue to Review\", then on the Order Review page assert the banner reads \"This order exceeds the $25,000 spending limit and requires Procurement Manager approval.\", the primary action button reads \"Submit for Approval\", and the displayed Order Total is greater than $25,000.",
           "error_message": "",
@@ -2821,37 +2845,37 @@
           "reason": "",
           "title": "",
           "used_variables": [],
-          "reasoning": "PRIMARY: PO number input; role=textbox; text=\"PO number *\" | HINTS: container=Purchase Order payment tab"
+          "reasoning": "PRIMARY: purchase order number input; role=textbox; text=\"PO number *\" | HINTS: container=Payment method Purchase Order tab"
         },
         {
-          "instruction_id": "d5bfb0b4-f3da-4e2e-af2f-6b432ffafd4c",
+          "instruction_id": "c0a35470-9871-4d60-9df0-0465cfbf4390",
           "instruction_class": "driver_action",
           "module_id": "",
-          "instruction": "Clicking Continue to Review button",
-          "command": "CLICK",
+          "instruction": "Typing purchase order number in PO number field",
+          "command": "TYPE",
           "error": null,
           "parent_instruction_id": "",
           "classification_layer_resp": [],
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "98391d81-fa62-4163-9bf0-e3e07be6f23d",
-              "instruction_id": "d5bfb0b4-f3da-4e2e-af2f-6b432ffafd4c",
-              "instruction": "Clicking Continue to Review button",
-              "intent": "Clicking Continue to Review button",
-              "operation_start": "2026-09-14T12:43:05.398673+00:00",
-              "operation_end": "2026-09-14T12:43:05.410Z",
+              "operation_id": "24df11c7-8e4f-4671-b5ab-1438a2c33697",
+              "instruction_id": "c0a35470-9871-4d60-9df0-0465cfbf4390",
+              "instruction": "Typing purchase order number in PO number field",
+              "intent": "Typing purchase order number in PO number field",
+              "operation_start": "2026-09-14T12:56:50.117225+00:00",
+              "operation_end": "2026-09-14T12:56:50.165Z",
               "status": "success",
-              "command": "CLICK",
+              "command": "TYPE",
               "name": "",
               "target": "",
-              "value": "",
+              "value": "{{global.valid_po_number}}",
               "message": "",
               "operation_dict": "",
               "frame": "",
               "error_message": "",
               "code_snippet": "",
-              "sub_instruction_obj": "{\"operation\":\"Clicking Continue to Review button\",\"agent\":\"Vision Agent\",\"operation_dict\":{\"operation_type\":\"CLICK\"},\"reasoning\":\"PRIMARY: Continue to Review button; role=button; text=\\\"Continue to Review\\\" | HINTS: container=Payment form below available credit\",\"variable\":{},\"secrets\":{},\"params\":{}}",
+              "sub_instruction_obj": "{\"operation\":\"Typing purchase order number in PO number field\",\"agent\":\"Vision Agent\",\"operation_dict\":{\"operation_type\":\"TYPE\"},\"reasoning\":\"PRIMARY: purchase order number input; role=textbox; text=\\\"PO number *\\\" | HINTS: container=Payment method Purchase Order tab\",\"variable\":{\"value\":\"{{global.valid_po_number}}\"},\"secrets\":{},\"params\":{}}",
               "test_id": "",
               "test_version": "",
               "action": "",
@@ -2862,7 +2886,206 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/98391d81-fa62-4163-9bf0-e3e07be6f23d.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/24df11c7-8e4f-4671-b5ab-1438a2c33697.webp",
+              "alternative_xpaths": [],
+              "attribute": "",
+              "value_description": "",
+              "url": "",
+              "navigation_direction": "",
+              "tagified_image_url": "",
+              "query_variable_name": "",
+              "query_variable_value": "",
+              "query_variable_type": "",
+              "expected_value": "",
+              "queried_value": "",
+              "operator": "",
+              "assertion_status": "",
+              "query_info_dict": {},
+              "query_content_confidence": "none",
+              "debugging_logs": [],
+              "locator_index": 0,
+              "query_html": "",
+              "user_variables": "[]",
+              "optional_flag": false,
+              "max_retries": 0,
+              "retries_delay": 0,
+              "explicit_wait": 0,
+              "implicit_wait": 0,
+              "tab_index": "",
+              "tab_identifier": "",
+              "scroll_value": 1,
+              "scroll_direction": "",
+              "mi_scroll_payload": {},
+              "sleep_duration": 0,
+              "app_id": "",
+              "manual_interaction_tag": "",
+              "string_to_float_list": [],
+              "js_snippet": "",
+              "code_error": "",
+              "hide": false,
+              "dismiss_dialog": false,
+              "use_v2_mobile_tagging": false,
+              "multiple_inputs": false,
+              "dialog_action": "",
+              "dialog_type": "",
+              "is_coordinates_used_for_interaction": false,
+              "element_coordinates_ratio": [],
+              "element_bounds_ratio": [],
+              "x_coord": null,
+              "y_coord": null,
+              "target_x_coord": null,
+              "target_y_coord": null,
+              "source_description": null,
+              "target_description": null,
+              "use_coordinates": false,
+              "kaneaiMobileTaggingImageLimit": 1,
+              "clicks_order_code": "se_js_ac",
+              "selector": [
+                {
+                  "selector": "internal:role=textbox[name=\"PO number *\"i]",
+                  "score": 100,
+                  "isXPath": false,
+                  "type": "css"
+                }
+              ],
+              "selector_target": "",
+              "math_result_variable_name": "",
+              "math_result_variable_value": "",
+              "expression_tree": {},
+              "assertion_tree": {},
+              "assertion_tree_simplified": {},
+              "network_throttle": {},
+              "is_mobile_offline": false,
+              "autoheal": false,
+              "reprobe": false,
+              "click_modifier": null,
+              "db_query": "",
+              "db_details": {},
+              "db_query_decoded": "",
+              "is_global_variable": false,
+              "is_global_variable_persist": false,
+              "global_variable_id": "",
+              "wait_for_element_timeout": 0,
+              "failure_condition": "",
+              "screenshot_command": "",
+              "smartui_contents": {},
+              "smartui_results": {},
+              "result_type": "",
+              "result_hint": "",
+              "drag_offset": {},
+              "drag_displacement": {},
+              "hold_duration_ms": null,
+              "move_duration_ms": null,
+              "hold_at_destination_ms": null,
+              "start_coordinates": {},
+              "end_coordinates": {},
+              "element_rect": null,
+              "is_canvas": false,
+              "until_condition": "",
+              "until_max_retries": 0,
+              "until_settle_ms": 0,
+              "api_data": {},
+              "output_variables": {},
+              "visual_context": {
+                "x": 431,
+                "y": 338,
+                "confidence": 0,
+                "bbox": {
+                  "x": 205,
+                  "y": 326,
+                  "width": 452,
+                  "height": 24
+                },
+                "bbox_source": "accessibility_tree",
+                "viewport_width": 1470,
+                "viewport_height": 746,
+                "scale_factor": null,
+                "raw_image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/24df11c7-8e4f-4671-b5ab-1438a2c33697.webp",
+                "raw_image_sas_url": "",
+                "annotated_image_url": "",
+                "annotated_image_sas_url": ""
+              },
+              "reasoning": "PRIMARY: purchase order number input; role=textbox; text=\"PO number *\" | HINTS: container=Payment method Purchase Order tab"
+            }
+          ],
+          "status": "success",
+          "start_timestamp": "2026-09-14T12:56:50.117225+00:00",
+          "end_timestamp": "2026-09-14T12:56:50.165Z",
+          "type": "agent_generated",
+          "tags": [],
+          "html_paths": [],
+          "optional_flag": false,
+          "max_retries": 0,
+          "retries_delay": 0,
+          "explicit_wait": 0,
+          "implicit_wait": 0,
+          "content_type": "instruction",
+          "js_snippet": "",
+          "user_variables": "[]",
+          "api_data": {},
+          "params_used": false,
+          "hard_assertion": false,
+          "expected_outcome": "",
+          "module_execution_index": 0,
+          "module_version": null,
+          "network_throttle": {},
+          "isEdited": false,
+          "use_query_assertion_v2": false,
+          "db_query": "",
+          "db_details": {},
+          "network_assertion_content": {},
+          "screenshot_command": "",
+          "smartui_contents": {},
+          "generative_id": "dd3f054b07b4434eac2976ab459e50dd",
+          "plan_id": "",
+          "generative_objective": "On the Payment page, keep the \"Purchase Order\" tab selected, enter {{global.valid_po_number}} in the PO number field, and click \"Continue to Review\", then on the Order Review page assert the banner reads \"This order exceeds the $25,000 spending limit and requires Procurement Manager approval.\", the primary action button reads \"Submit for Approval\", and the displayed Order Total is greater than $25,000.",
+          "error_message": "",
+          "error_code": "",
+          "reason": "",
+          "title": "",
+          "used_variables": [],
+          "reasoning": "PRIMARY: purchase order number input; role=textbox; text=\"PO number *\" | HINTS: container=Payment method Purchase Order tab"
+        },
+        {
+          "instruction_id": "88e8b07b-89b7-463e-8541-626cb50af44f",
+          "instruction_class": "driver_action",
+          "module_id": "",
+          "instruction": "Clicking Continue to Review button",
+          "command": "CLICK",
+          "error": null,
+          "parent_instruction_id": "",
+          "classification_layer_resp": [],
+          "classification_error": {},
+          "operations": [
+            {
+              "operation_id": "d16ced42-536e-4247-9f8b-22a52f236b18",
+              "instruction_id": "88e8b07b-89b7-463e-8541-626cb50af44f",
+              "instruction": "Clicking Continue to Review button",
+              "intent": "Clicking Continue to Review button",
+              "operation_start": "2026-09-14T12:57:00.329853+00:00",
+              "operation_end": "2026-09-14T12:57:00.348Z",
+              "status": "success",
+              "command": "CLICK",
+              "name": "",
+              "target": "",
+              "value": "",
+              "message": "",
+              "operation_dict": "",
+              "frame": "",
+              "error_message": "",
+              "code_snippet": "",
+              "sub_instruction_obj": "{\"operation\":\"Clicking Continue to Review button\",\"agent\":\"Vision Agent\",\"operation_dict\":{\"operation_type\":\"CLICK\"},\"reasoning\":\"PRIMARY: continue to review button; role=button; text=\\\"Continue to Review\\\" | HINTS: container=Payment page below PO number field\",\"variable\":{},\"secrets\":{},\"params\":{}}",
+              "test_id": "",
+              "test_version": "",
+              "action": "",
+              "string_to_float": false,
+              "feedback_msg": "",
+              "time_taken": "",
+              "create_time_stamp": "",
+              "update_time_stamp": "",
+              "locator_variable": "",
+              "locator_variable_name": "",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/d16ced42-536e-4247-9f8b-22a52f236b18.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -2963,30 +3186,30 @@
               "api_data": {},
               "output_variables": {},
               "visual_context": {
-                "x": 656,
-                "y": 472,
+                "x": 431,
+                "y": 471,
                 "confidence": 0,
                 "bbox": {
-                  "x": 417,
-                  "y": 460,
+                  "x": 192,
+                  "y": 459,
                   "width": 478,
                   "height": 24
                 },
                 "bbox_source": "accessibility_tree",
-                "viewport_width": 1920,
-                "viewport_height": 993,
+                "viewport_width": 1470,
+                "viewport_height": 746,
                 "scale_factor": null,
-                "raw_image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/98391d81-fa62-4163-9bf0-e3e07be6f23d.webp",
+                "raw_image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/d16ced42-536e-4247-9f8b-22a52f236b18.webp",
                 "raw_image_sas_url": "",
                 "annotated_image_url": "",
                 "annotated_image_sas_url": ""
               },
-              "reasoning": "PRIMARY: Continue to Review button; role=button; text=\"Continue to Review\" | HINTS: container=Payment form below available credit"
+              "reasoning": "PRIMARY: continue to review button; role=button; text=\"Continue to Review\" | HINTS: container=Payment page below PO number field"
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-09-14T12:43:05.398673+00:00",
-          "end_timestamp": "2026-09-14T12:43:05.410Z",
+          "start_timestamp": "2026-09-14T12:57:00.329853+00:00",
+          "end_timestamp": "2026-09-14T12:57:00.348Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -3012,7 +3235,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "133eaa5267274554b0f8606b6317d3ae",
+          "generative_id": "dd3f054b07b4434eac2976ab459e50dd",
           "plan_id": "",
           "generative_objective": "On the Payment page, keep the \"Purchase Order\" tab selected, enter {{global.valid_po_number}} in the PO number field, and click \"Continue to Review\", then on the Order Review page assert the banner reads \"This order exceeds the $25,000 spending limit and requires Procurement Manager approval.\", the primary action button reads \"Submit for Approval\", and the displayed Order Total is greater than $25,000.",
           "error_message": "",
@@ -3020,10 +3243,10 @@
           "reason": "",
           "title": "",
           "used_variables": [],
-          "reasoning": "PRIMARY: Continue to Review button; role=button; text=\"Continue to Review\" | HINTS: container=Payment form below available credit"
+          "reasoning": "PRIMARY: continue to review button; role=button; text=\"Continue to Review\" | HINTS: container=Payment page below PO number field"
         },
         {
-          "instruction_id": "188a88a9-ed0e-479f-98a2-2dd8306789c7",
+          "instruction_id": "eeee0117-06ef-4722-b3ba-acb914465c9d",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Waiting for the Order Review page to finish loading",
@@ -3034,12 +3257,12 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "406ea284-1581-47d1-99c9-0ec0735c2ba3",
-              "instruction_id": "188a88a9-ed0e-479f-98a2-2dd8306789c7",
+              "operation_id": "757ccbf3-d944-41f5-b81d-d2838975f134",
+              "instruction_id": "eeee0117-06ef-4722-b3ba-acb914465c9d",
               "instruction": "Waiting for the Order Review page to finish loading",
               "intent": "Waiting for the Order Review page to finish loading",
-              "operation_start": "2026-09-14T12:43:18.262460+00:00",
-              "operation_end": "2026-09-14T12:43:19.274Z",
+              "operation_start": "2026-09-14T12:57:06.926502+00:00",
+              "operation_end": "2026-09-14T12:57:07.934Z",
               "status": "success",
               "command": "WAIT",
               "name": "",
@@ -3061,7 +3284,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/406ea284-1581-47d1-99c9-0ec0735c2ba3.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/757ccbf3-d944-41f5-b81d-d2838975f134.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -3159,8 +3382,8 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-09-14T12:43:18.262460+00:00",
-          "end_timestamp": "2026-09-14T12:43:19.274Z",
+          "start_timestamp": "2026-09-14T12:57:06.926502+00:00",
+          "end_timestamp": "2026-09-14T12:57:07.934Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -3186,7 +3409,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "133eaa5267274554b0f8606b6317d3ae",
+          "generative_id": "dd3f054b07b4434eac2976ab459e50dd",
           "plan_id": "",
           "generative_objective": "On the Payment page, keep the \"Purchase Order\" tab selected, enter {{global.valid_po_number}} in the PO number field, and click \"Continue to Review\", then on the Order Review page assert the banner reads \"This order exceeds the $25,000 spending limit and requires Procurement Manager approval.\", the primary action button reads \"Submit for Approval\", and the displayed Order Total is greater than $25,000.",
           "error_message": "",
@@ -3197,10 +3420,10 @@
           "reasoning": "PRIMARY: wait 1000 ms for the Order Review page to finish loading"
         },
         {
-          "instruction_id": "424be7b8-8e33-41c7-b9fa-6fdb6938adf1",
+          "instruction_id": "4953e079-faf9-4f84-a39a-6f5c30accdae",
           "instruction_class": "driver_action",
           "module_id": "",
-          "instruction": "Checking whether the spending-limit approval banner is present",
+          "instruction": "Reading the spending-limit approval banner",
           "command": "TEXTUAL_ANALYZER",
           "error": null,
           "parent_instruction_id": "",
@@ -3208,11 +3431,11 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "8fa9ddee-b6eb-42b4-bfee-f356f6abd2e0",
-              "instruction_id": "424be7b8-8e33-41c7-b9fa-6fdb6938adf1",
-              "instruction": "Checking whether the spending-limit approval banner is present",
-              "intent": "Checking whether the spending-limit approval banner is present",
-              "operation_start": "2026-09-14T12:43:47.369229+00:00",
+              "operation_id": "587d0cfc-5ccb-4fba-94ae-ea0ece50b793",
+              "instruction_id": "4953e079-faf9-4f84-a39a-6f5c30accdae",
+              "instruction": "Reading the spending-limit approval banner",
+              "intent": "Reading the spending-limit approval banner",
+              "operation_start": "2026-09-14T12:57:39.590376+00:00",
               "operation_end": "",
               "status": "success",
               "command": "TEXTUAL_ANALYZER",
@@ -3224,7 +3447,7 @@
               "frame": "",
               "error_message": "",
               "code_snippet": "",
-              "sub_instruction_obj": "{\"operation\":\"Checking whether the spending-limit approval banner is present\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"TEXTUAL_ANALYZER\"},\"reasoning\":\"whether the spending-limit approval banner is present on the Order Review page\",\"variable\":{},\"secrets\":{},\"params\":{},\"code_js\":\"el(31).innerText.trim() === 'This order exceeds the $25,000 spending limit and requires Procurement Manager approval.'\",\"wrapped_js\":\"(els) => {\\n  const __m = {31: 0};\\n  const el = (i) => els[__m[i]];\\n  const __v = (el(31).innerText.trim() === 'This order exceeds the $25,000 spending limit and requires Procurement Manager approval.');\\n  return (typeof __v === 'boolean' ? String(__v) : __v);\\n}\",\"locators\":[\"internal:text=\\\"This order exceeds the $25,\\\"i\"],\"operator\":\"equals\",\"transforms\":[],\"query\":\"whether the spending-limit approval banner is present on the Order Review page\",\"expected_value\":\"true\",\"needs_unit_conversion\":false,\"condition\":\"On the Order Review page, the banner reads \\\"This order exceeds the $25,000 spending limit and requires Procurement Manager approval.\\\"\"}",
+              "sub_instruction_obj": "{\"operation\":\"Reading the spending-limit approval banner\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"TEXTUAL_ANALYZER\"},\"reasoning\":\"the spending-limit approval banner text on the Order Review page\",\"variable\":{},\"secrets\":{},\"params\":{},\"code_js\":\"el(31).textContent.trim()\",\"wrapped_js\":\"(els) => {\\n  const __m = {31: 0};\\n  const el = (i) => els[__m[i]];\\n  const __v = (el(31).textContent.trim());\\n  return (typeof __v === 'boolean' ? String(__v) : __v);\\n}\",\"locators\":[\"internal:text=\\\"This order exceeds the $25,\\\"i\"],\"operator\":\"equals\",\"transforms\":[\"strip\"],\"query\":\"the spending-limit approval banner text on the Order Review page\",\"expected_value\":\"This order exceeds the $25,000 spending limit and requires Procurement Manager approval.\",\"needs_unit_conversion\":false,\"condition\":\"On the Order Review page, the banner reads \\\"This order exceeds the $25,000 spending limit and requires Procurement Manager approval.\\\"\"}",
               "test_id": "",
               "test_version": "",
               "action": "",
@@ -3235,7 +3458,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/8fa9ddee-b6eb-42b4-bfee-f356f6abd2e0.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/587d0cfc-5ccb-4fba-94ae-ea0ece50b793.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -3243,7 +3466,7 @@
               "navigation_direction": "",
               "tagified_image_url": "",
               "query_variable_name": "spending_limit_banner_check",
-              "query_variable_value": "true",
+              "query_variable_value": "This order exceeds the $25,000 spending limit and requires Procurement Manager approval.",
               "query_variable_type": "",
               "expected_value": "",
               "queried_value": "",
@@ -3328,14 +3551,14 @@
               "until_settle_ms": 0,
               "api_data": {},
               "output_variables": {
-                "spending_limit_banner_check": "true"
+                "spending_limit_banner_check": "This order exceeds the $25,000 spending limit and requires Procurement Manager approval."
               },
               "visual_context": null,
-              "reasoning": "whether the spending-limit approval banner is present on the Order Review page"
+              "reasoning": "the spending-limit approval banner text on the Order Review page"
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-09-14T12:43:47.369229+00:00",
+          "start_timestamp": "2026-09-14T12:57:39.590376+00:00",
           "end_timestamp": "",
           "type": "agent_generated",
           "tags": [],
@@ -3362,7 +3585,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "133eaa5267274554b0f8606b6317d3ae",
+          "generative_id": "dd3f054b07b4434eac2976ab459e50dd",
           "plan_id": "",
           "generative_objective": "On the Payment page, keep the \"Purchase Order\" tab selected, enter {{global.valid_po_number}} in the PO number field, and click \"Continue to Review\", then on the Order Review page assert the banner reads \"This order exceeds the $25,000 spending limit and requires Procurement Manager approval.\", the primary action button reads \"Submit for Approval\", and the displayed Order Total is greater than $25,000.",
           "error_message": "",
@@ -3370,10 +3593,10 @@
           "reason": "",
           "title": "",
           "used_variables": [],
-          "reasoning": "whether the spending-limit approval banner is present on the Order Review page"
+          "reasoning": "the spending-limit approval banner text on the Order Review page"
         },
         {
-          "instruction_id": "c8fbdee4-31cd-4dbb-98a3-767a469f612a",
+          "instruction_id": "ff881010-5644-4a4d-970c-3af0d7994dde",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Reading the primary action button label",
@@ -3384,11 +3607,11 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "5eaeff6a-3aed-4d51-bd6d-3e21d5408f63",
-              "instruction_id": "c8fbdee4-31cd-4dbb-98a3-767a469f612a",
+              "operation_id": "bf7877fe-0ec0-4b04-9248-f4048a486a75",
+              "instruction_id": "ff881010-5644-4a4d-970c-3af0d7994dde",
               "instruction": "Reading the primary action button label",
               "intent": "Reading the primary action button label",
-              "operation_start": "2026-09-14T12:43:47.370583+00:00",
+              "operation_start": "2026-09-14T12:57:39.590987+00:00",
               "operation_end": "",
               "status": "success",
               "command": "TEXTUAL_ANALYZER",
@@ -3400,7 +3623,7 @@
               "frame": "",
               "error_message": "",
               "code_snippet": "",
-              "sub_instruction_obj": "{\"operation\":\"Reading the primary action button label\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"TEXTUAL_ANALYZER\"},\"reasoning\":\"the primary action button label on the Order Review page\",\"variable\":{},\"secrets\":{},\"params\":{},\"code_js\":\"el(32).innerText.trim()\",\"wrapped_js\":\"(els) => {\\n  const __m = {32: 0};\\n  const el = (i) => els[__m[i]];\\n  const __v = (el(32).innerText.trim());\\n  return (typeof __v === 'boolean' ? String(__v) : __v);\\n}\",\"locators\":[\"internal:role=button[name=\\\"Submit for Approval\\\"i]\"],\"operator\":\"equals\",\"transforms\":[],\"query\":\"the primary action button label on the Order Review page\",\"expected_value\":\"Submit for Approval\",\"needs_unit_conversion\":false,\"condition\":\"On the Order Review page, the primary action button reads \\\"Submit for Approval\\\".\"}",
+              "sub_instruction_obj": "{\"operation\":\"Reading the primary action button label\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"TEXTUAL_ANALYZER\"},\"reasoning\":\"the primary action button label on the Order Review page\",\"variable\":{},\"secrets\":{},\"params\":{},\"code_js\":\"el(32).textContent.trim()\",\"wrapped_js\":\"(els) => {\\n  const __m = {32: 0};\\n  const el = (i) => els[__m[i]];\\n  const __v = (el(32).textContent.trim());\\n  return (typeof __v === 'boolean' ? String(__v) : __v);\\n}\",\"locators\":[\"internal:role=button[name=\\\"Submit for Approval\\\"i]\"],\"operator\":\"equals\",\"transforms\":[\"strip\"],\"query\":\"the primary action button label on the Order Review page\",\"expected_value\":\"Submit for Approval\",\"needs_unit_conversion\":false,\"condition\":\"On the Order Review page, the primary action button reads \\\"Submit for Approval\\\"\"}",
               "test_id": "",
               "test_version": "",
               "action": "",
@@ -3411,7 +3634,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/5eaeff6a-3aed-4d51-bd6d-3e21d5408f63.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/bf7877fe-0ec0-4b04-9248-f4048a486a75.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -3511,7 +3734,7 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-09-14T12:43:47.370583+00:00",
+          "start_timestamp": "2026-09-14T12:57:39.590987+00:00",
           "end_timestamp": "",
           "type": "agent_generated",
           "tags": [],
@@ -3538,7 +3761,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "133eaa5267274554b0f8606b6317d3ae",
+          "generative_id": "dd3f054b07b4434eac2976ab459e50dd",
           "plan_id": "",
           "generative_objective": "On the Payment page, keep the \"Purchase Order\" tab selected, enter {{global.valid_po_number}} in the PO number field, and click \"Continue to Review\", then on the Order Review page assert the banner reads \"This order exceeds the $25,000 spending limit and requires Procurement Manager approval.\", the primary action button reads \"Submit for Approval\", and the displayed Order Total is greater than $25,000.",
           "error_message": "",
@@ -3549,25 +3772,25 @@
           "reasoning": "the primary action button label on the Order Review page"
         },
         {
-          "instruction_id": "69f08617-467f-4b61-8b4c-3512092b4217",
+          "instruction_id": "f8ce74e9-5d04-4f12-b1fe-fb8295abf4b6",
           "instruction_class": "driver_action",
           "module_id": "",
-          "instruction": "Reading the Order Total from the order summary",
-          "command": "VISION_QUERY",
+          "instruction": "Checking the order total threshold status",
+          "command": "TEXTUAL_ANALYZER",
           "error": null,
           "parent_instruction_id": "",
           "classification_layer_resp": [],
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "47bc2666-6275-4213-b841-d17b2508b509",
-              "instruction_id": "69f08617-467f-4b61-8b4c-3512092b4217",
-              "instruction": "Reading the Order Total from the order summary",
-              "intent": "Reading the Order Total from the order summary",
-              "operation_start": "2026-09-14T12:44:05.558879+00:00",
+              "operation_id": "9d628ce6-b8e3-4c33-a323-965462c853df",
+              "instruction_id": "f8ce74e9-5d04-4f12-b1fe-fb8295abf4b6",
+              "instruction": "Checking the order total threshold status",
+              "intent": "Checking the order total threshold status",
+              "operation_start": "2026-09-14T12:58:09.170262+00:00",
               "operation_end": "",
               "status": "success",
-              "command": "VISION_QUERY",
+              "command": "TEXTUAL_ANALYZER",
               "name": "",
               "target": "",
               "value": "",
@@ -3576,7 +3799,7 @@
               "frame": "",
               "error_message": "",
               "code_snippet": "",
-              "sub_instruction_obj": "{\"operation\":\"Reading the Order Total from the order summary\",\"agent\":\"Vision Agent\",\"operation_dict\":{\"operation_type\":\"VISION_QUERY\"},\"reasoning\":\"On the Order Review page, the displayed Order Total is greater than $25,000.\",\"variable\":{},\"secrets\":{},\"params\":{}}",
+              "sub_instruction_obj": "{\"operation\":\"Checking the order total threshold status\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"TEXTUAL_ANALYZER\"},\"reasoning\":\"whether the order review status reports that the order exceeds the $25,000 spending limit\",\"variable\":{},\"secrets\":{},\"params\":{},\"code_js\":\"el(31).textContent.includes('This order exceeds the $25,000 spending limit')\",\"wrapped_js\":\"(els) => {\\n  const __m = {31: 0};\\n  const el = (i) => els[__m[i]];\\n  const __v = (el(31).textContent.includes('This order exceeds the $25,000 spending limit'));\\n  return (typeof __v === 'boolean' ? String(__v) : __v);\\n}\",\"locators\":[\"internal:text=\\\"This order exceeds the $25,\\\"i\"],\"operator\":\"equals\",\"transforms\":[],\"query\":\"whether the order review status reports that the order exceeds the $25,000 spending limit\",\"expected_value\":\"true\",\"needs_unit_conversion\":false,\"condition\":\"On the Order Review page, the displayed Order Total is greater than $25,000\"}",
               "test_id": "",
               "test_version": "",
               "action": "",
@@ -3587,7 +3810,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/47bc2666-6275-4213-b841-d17b2508b509.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/9d628ce6-b8e3-4c33-a323-965462c853df.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -3595,7 +3818,7 @@
               "navigation_direction": "",
               "tagified_image_url": "",
               "query_variable_name": "order_total_threshold_check",
-              "query_variable_value": "$33,905.52",
+              "query_variable_value": "true",
               "query_variable_type": "",
               "expected_value": "",
               "queried_value": "",
@@ -3680,14 +3903,14 @@
               "until_settle_ms": 0,
               "api_data": {},
               "output_variables": {
-                "order_total_threshold_check": "$33,905.52"
+                "order_total_threshold_check": "true"
               },
               "visual_context": null,
-              "reasoning": "On the Order Review page, the displayed Order Total is greater than $25,000."
+              "reasoning": "whether the order review status reports that the order exceeds the $25,000 spending limit"
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-09-14T12:44:05.558879+00:00",
+          "start_timestamp": "2026-09-14T12:58:09.170262+00:00",
           "end_timestamp": "",
           "type": "agent_generated",
           "tags": [],
@@ -3714,7 +3937,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "133eaa5267274554b0f8606b6317d3ae",
+          "generative_id": "dd3f054b07b4434eac2976ab459e50dd",
           "plan_id": "",
           "generative_objective": "On the Payment page, keep the \"Purchase Order\" tab selected, enter {{global.valid_po_number}} in the PO number field, and click \"Continue to Review\", then on the Order Review page assert the banner reads \"This order exceeds the $25,000 spending limit and requires Procurement Manager approval.\", the primary action button reads \"Submit for Approval\", and the displayed Order Total is greater than $25,000.",
           "error_message": "",
@@ -3722,10 +3945,10 @@
           "reason": "",
           "title": "",
           "used_variables": [],
-          "reasoning": "On the Order Review page, the displayed Order Total is greater than $25,000."
+          "reasoning": "whether the order review status reports that the order exceeds the $25,000 spending limit"
         },
         {
-          "instruction_id": "9022c0ca-b57f-400e-80ef-17d8b6805ae6",
+          "instruction_id": "e6eec893-5168-4eb4-96bc-52af9a98f3b0",
           "instruction_class": "non_driver_action",
           "module_id": "",
           "instruction": "Assertion check",
@@ -3744,20 +3967,24 @@
                       "description": "On the Order Review page, the banner reads \"This order exceeds the $25,000 spending limit and requires Procurement Manager approval.\"",
                       "passed": true,
                       "operator": "equals",
-                      "transforms": [],
+                      "transforms": [
+                        "strip"
+                      ],
                       "json_path": null,
-                      "expected": "true",
+                      "expected": "This order exceeds the $25,000 spending limit and requires Procurement Manager approval.",
                       "extracted_value": "{{spending_limit_banner_check}}",
                       "store_key": "spending_limit_banner_check",
                       "variable_refs": {
-                        "{{spending_limit_banner_check}}": "true"
+                        "{{spending_limit_banner_check}}": "This order exceeds the $25,000 spending limit and requires Procurement Manager approval."
                       }
                     },
                     {
-                      "description": "On the Order Review page, the primary action button reads \"Submit for Approval\".",
+                      "description": "On the Order Review page, the primary action button reads \"Submit for Approval\"",
                       "passed": true,
                       "operator": "equals",
-                      "transforms": [],
+                      "transforms": [
+                        "strip"
+                      ],
                       "json_path": null,
                       "expected": "Submit for Approval",
                       "extracted_value": "{{primary_action_button_check}}",
@@ -3767,18 +3994,16 @@
                       }
                     },
                     {
-                      "description": "On the Order Review page, the displayed Order Total is greater than $25,000.",
+                      "description": "On the Order Review page, the displayed Order Total is greater than $25,000",
                       "passed": true,
-                      "operator": "gt",
-                      "transforms": [
-                        "extract_number"
-                      ],
+                      "operator": "equals",
+                      "transforms": [],
                       "json_path": null,
-                      "expected": "25000",
+                      "expected": "true",
                       "extracted_value": "{{order_total_threshold_check}}",
                       "store_key": "order_total_threshold_check",
                       "variable_refs": {
-                        "{{order_total_threshold_check}}": "$33,905.52"
+                        "{{order_total_threshold_check}}": "true"
                       }
                     }
                   ],
@@ -3786,33 +4011,35 @@
                     {
                       "description": "On the Order Review page, the banner reads \"This order exceeds the $25,000 spending limit and requires Procurement Manager approval.\"",
                       "store_key": "spending_limit_banner_check",
-                      "expected_value": "true",
+                      "expected_value": "This order exceeds the $25,000 spending limit and requires Procurement Manager approval.",
                       "extracted_value": "{{spending_limit_banner_check}}",
                       "operator": "equals",
-                      "transforms": []
+                      "transforms": [
+                        "strip"
+                      ]
                     },
                     {
-                      "description": "On the Order Review page, the primary action button reads \"Submit for Approval\".",
+                      "description": "On the Order Review page, the primary action button reads \"Submit for Approval\"",
                       "store_key": "primary_action_button_check",
                       "expected_value": "Submit for Approval",
                       "extracted_value": "{{primary_action_button_check}}",
                       "operator": "equals",
-                      "transforms": []
+                      "transforms": [
+                        "strip"
+                      ]
                     },
                     {
-                      "description": "On the Order Review page, the displayed Order Total is greater than $25,000.",
+                      "description": "On the Order Review page, the displayed Order Total is greater than $25,000",
                       "store_key": "order_total_threshold_check",
-                      "expected_value": "25000",
+                      "expected_value": "true",
                       "extracted_value": "{{order_total_threshold_check}}",
-                      "operator": "gt",
-                      "transforms": [
-                        "extract_number"
-                      ]
+                      "operator": "equals",
+                      "transforms": []
                     }
                   ],
                   "composite_operator": "and",
                   "verification": "",
-                  "claim": "On the Order Review page, the banner reads \"This order exceeds the $25,000 spending limit and requires Procurement Manager approval.\", the primary action button reads \"Submit for Approval\", and the displayed Order Total is greater than $25,000.",
+                  "claim": "the banner reads \"This order exceeds the $25,000 spending limit and requires Procurement Manager approval.\", the primary action button reads \"Submit for Approval\", and the displayed Order Total is greater than $25,000",
                   "operator": [],
                   "assertion_operands": [],
                   "left_operand": null,
@@ -3828,11 +4055,11 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "32dec949-241d-47cc-8f0f-4a7c1a2d6e3c",
-              "instruction_id": "9022c0ca-b57f-400e-80ef-17d8b6805ae6",
+              "operation_id": "32e45be2-fa98-4ac1-ad65-67e3ca0cc6ce",
+              "instruction_id": "e6eec893-5168-4eb4-96bc-52af9a98f3b0",
               "instruction": "Assertion check",
               "intent": "Assertion check",
-              "operation_start": "2026-09-14T12:44:06.199947+00:00",
+              "operation_start": "2026-09-14T12:58:09.815468+00:00",
               "operation_end": "",
               "status": "success",
               "command": "ASSERTION",
@@ -3855,7 +4082,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/32dec949-241d-47cc-8f0f-4a7c1a2d6e3c.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/32e45be2-fa98-4ac1-ad65-67e3ca0cc6ce.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -3924,20 +4151,24 @@
                     "description": "On the Order Review page, the banner reads \"This order exceeds the $25,000 spending limit and requires Procurement Manager approval.\"",
                     "passed": true,
                     "operator": "equals",
-                    "transforms": [],
+                    "transforms": [
+                      "strip"
+                    ],
                     "json_path": null,
-                    "expected": "true",
+                    "expected": "This order exceeds the $25,000 spending limit and requires Procurement Manager approval.",
                     "extracted_value": "{{spending_limit_banner_check}}",
                     "store_key": "spending_limit_banner_check",
                     "variable_refs": {
-                      "{{spending_limit_banner_check}}": "true"
+                      "{{spending_limit_banner_check}}": "This order exceeds the $25,000 spending limit and requires Procurement Manager approval."
                     }
                   },
                   {
-                    "description": "On the Order Review page, the primary action button reads \"Submit for Approval\".",
+                    "description": "On the Order Review page, the primary action button reads \"Submit for Approval\"",
                     "passed": true,
                     "operator": "equals",
-                    "transforms": [],
+                    "transforms": [
+                      "strip"
+                    ],
                     "json_path": null,
                     "expected": "Submit for Approval",
                     "extracted_value": "{{primary_action_button_check}}",
@@ -3947,18 +4178,16 @@
                     }
                   },
                   {
-                    "description": "On the Order Review page, the displayed Order Total is greater than $25,000.",
+                    "description": "On the Order Review page, the displayed Order Total is greater than $25,000",
                     "passed": true,
-                    "operator": "gt",
-                    "transforms": [
-                      "extract_number"
-                    ],
+                    "operator": "equals",
+                    "transforms": [],
                     "json_path": null,
-                    "expected": "25000",
+                    "expected": "true",
                     "extracted_value": "{{order_total_threshold_check}}",
                     "store_key": "order_total_threshold_check",
                     "variable_refs": {
-                      "{{order_total_threshold_check}}": "$33,905.52"
+                      "{{order_total_threshold_check}}": "true"
                     }
                   }
                 ],
@@ -3966,57 +4195,63 @@
                   {
                     "description": "On the Order Review page, the banner reads \"This order exceeds the $25,000 spending limit and requires Procurement Manager approval.\"",
                     "store_key": "spending_limit_banner_check",
-                    "expected_value": "true",
+                    "expected_value": "This order exceeds the $25,000 spending limit and requires Procurement Manager approval.",
                     "extracted_value": "{{spending_limit_banner_check}}",
                     "operator": "equals",
-                    "transforms": []
+                    "transforms": [
+                      "strip"
+                    ]
                   },
                   {
-                    "description": "On the Order Review page, the primary action button reads \"Submit for Approval\".",
+                    "description": "On the Order Review page, the primary action button reads \"Submit for Approval\"",
                     "store_key": "primary_action_button_check",
                     "expected_value": "Submit for Approval",
                     "extracted_value": "{{primary_action_button_check}}",
                     "operator": "equals",
-                    "transforms": []
+                    "transforms": [
+                      "strip"
+                    ]
                   },
                   {
-                    "description": "On the Order Review page, the displayed Order Total is greater than $25,000.",
+                    "description": "On the Order Review page, the displayed Order Total is greater than $25,000",
                     "store_key": "order_total_threshold_check",
-                    "expected_value": "25000",
+                    "expected_value": "true",
                     "extracted_value": "{{order_total_threshold_check}}",
-                    "operator": "gt",
-                    "transforms": [
-                      "extract_number"
-                    ]
+                    "operator": "equals",
+                    "transforms": []
                   }
                 ],
                 "composite_operator": "and",
-                "verification": "The Order Review page shows the specified spending-limit banner, the primary action button text, and an Order Total greater than $25,000.",
-                "claim": "On the Order Review page, the banner reads \"This order exceeds the $25,000 spending limit and requires Procurement Manager approval.\", the primary action button reads \"Submit for Approval\", and the displayed Order Total is greater than $25,000."
+                "verification": "On the Order Review page, the banner, primary action button, and displayed Order Total have the asserted content and threshold.",
+                "claim": "the banner reads \"This order exceeds the $25,000 spending limit and requires Procurement Manager approval.\", the primary action button reads \"Submit for Approval\", and the displayed Order Total is greater than $25,000"
               },
               "assertion_tree": {
                 "assertion_id": "assert_cp_1",
                 "status": "passed",
-                "description": "On the Order Review page, the banner reads \"This order exceeds the $25,000 spending limit and requires Procurement Manager approval.\", the primary action button reads \"Submit for Approval\", and the displayed Order Total is greater than $25,000.",
+                "description": "the banner reads \"This order exceeds the $25,000 spending limit and requires Procurement Manager approval.\", the primary action button reads \"Submit for Approval\", and the displayed Order Total is greater than $25,000",
                 "sub_results": [
                   {
                     "description": "On the Order Review page, the banner reads \"This order exceeds the $25,000 spending limit and requires Procurement Manager approval.\"",
                     "passed": true,
                     "operator": "equals",
-                    "transforms": [],
+                    "transforms": [
+                      "strip"
+                    ],
                     "json_path": null,
-                    "expected": "true",
+                    "expected": "This order exceeds the $25,000 spending limit and requires Procurement Manager approval.",
                     "extracted_value": "{{spending_limit_banner_check}}",
                     "store_key": "spending_limit_banner_check",
                     "variable_refs": {
-                      "{{spending_limit_banner_check}}": "true"
+                      "{{spending_limit_banner_check}}": "This order exceeds the $25,000 spending limit and requires Procurement Manager approval."
                     }
                   },
                   {
-                    "description": "On the Order Review page, the primary action button reads \"Submit for Approval\".",
+                    "description": "On the Order Review page, the primary action button reads \"Submit for Approval\"",
                     "passed": true,
                     "operator": "equals",
-                    "transforms": [],
+                    "transforms": [
+                      "strip"
+                    ],
                     "json_path": null,
                     "expected": "Submit for Approval",
                     "extracted_value": "{{primary_action_button_check}}",
@@ -4026,26 +4261,24 @@
                     }
                   },
                   {
-                    "description": "On the Order Review page, the displayed Order Total is greater than $25,000.",
+                    "description": "On the Order Review page, the displayed Order Total is greater than $25,000",
                     "passed": true,
-                    "operator": "gt",
-                    "transforms": [
-                      "extract_number"
-                    ],
+                    "operator": "equals",
+                    "transforms": [],
                     "json_path": null,
-                    "expected": "25000",
+                    "expected": "true",
                     "extracted_value": "{{order_total_threshold_check}}",
                     "store_key": "order_total_threshold_check",
                     "variable_refs": {
-                      "{{order_total_threshold_check}}": "$33,905.52"
+                      "{{order_total_threshold_check}}": "true"
                     }
                   }
                 ],
                 "composite_operator": "and",
                 "passed": true,
-                "step": 6,
+                "step": 7,
                 "is_final": true,
-                "verification": "The Order Review page shows the specified spending-limit banner, the primary action button text, and an Order Total greater than $25,000.",
+                "verification": "On the Order Review page, the banner, primary action button, and displayed Order Total have the asserted content and threshold.",
                 "error_message": null,
                 "duration_ms": 0
               },
@@ -4087,7 +4320,7 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-09-14T12:44:06.199947+00:00",
+          "start_timestamp": "2026-09-14T12:58:09.815468+00:00",
           "end_timestamp": "",
           "type": "agent_generated",
           "tags": [],
@@ -4114,7 +4347,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "133eaa5267274554b0f8606b6317d3ae",
+          "generative_id": "dd3f054b07b4434eac2976ab459e50dd",
           "plan_id": "",
           "generative_objective": "On the Payment page, keep the \"Purchase Order\" tab selected, enter {{global.valid_po_number}} in the PO number field, and click \"Continue to Review\", then on the Order Review page assert the banner reads \"This order exceeds the $25,000 spending limit and requires Procurement Manager approval.\", the primary action button reads \"Submit for Approval\", and the displayed Order Total is greater than $25,000.",
           "error_message": "",
@@ -4130,22 +4363,22 @@
       "result_code": null,
       "bifurcation_context": [],
       "approach_reason": [
-        "Entered the provided purchase order number with Purchase Order selected on the Payment page.",
+        "Entered the provided purchase order number while keeping Purchase Order selected on the Payment page.",
         "Continued to the Order Review page.",
-        "The order total was $33,905.52, which exceeds the $25,000 spending limit.",
-        "The review page displayed the required Procurement Manager approval message and a “Submit for Approval” button."
+        "The order review shows that the order exceeds the $25,000 spending limit and requires Procurement Manager approval.",
+        "The available primary action is “Submit for Approval.”"
       ],
       "one_liner": null
     },
     {
       "content_type": "generative_block",
-      "instruction_id": "generative_block_f171b68e116740acbdba4e55e17a7015",
-      "generative_id": "f171b68e116740acbdba4e55e17a7015",
+      "instruction_id": "generative_block_40fb21d8487c4502b450033925880dbf",
+      "generative_id": "40fb21d8487c4502b450033925880dbf",
       "objective": "Click \"Submit for Approval\" and wait for the confirmation page, then assert it shows the heading \"Submitted for Approval\", a Request ID matching REQ-##### , status \"Pending Approval\", and the order total.",
       "status": "success",
       "children": [
         {
-          "instruction_id": "99165fc2-f9e7-440b-abaf-a5ed5e845e8a",
+          "instruction_id": "b8eea830-4927-46b4-9f59-5bad1c8547cf",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Scrolling to bring the target into view",
@@ -4156,12 +4389,12 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "2207cf3c-faf0-4502-9ced-f4bf4e90945e",
-              "instruction_id": "99165fc2-f9e7-440b-abaf-a5ed5e845e8a",
+              "operation_id": "6e6edc91-e187-4c17-9b55-7e096dfecdb1",
+              "instruction_id": "b8eea830-4927-46b4-9f59-5bad1c8547cf",
               "instruction": "Scrolling to bring the target into view",
               "intent": "Scrolling to bring the target into view",
-              "operation_start": "2026-09-14T12:44:26.544462+00:00",
-              "operation_end": "2026-09-14T12:44:26.555Z",
+              "operation_start": "2026-09-14T12:58:25.225697+00:00",
+              "operation_end": "2026-09-14T12:58:25.258Z",
               "status": "success",
               "command": "SCROLL_UNTIL_ELEMENT",
               "name": "",
@@ -4183,7 +4416,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/2207cf3c-faf0-4502-9ced-f4bf4e90945e.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/6e6edc91-e187-4c17-9b55-7e096dfecdb1.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -4288,8 +4521,8 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-09-14T12:44:26.544462+00:00",
-          "end_timestamp": "2026-09-14T12:44:26.555Z",
+          "start_timestamp": "2026-09-14T12:58:25.225697+00:00",
+          "end_timestamp": "2026-09-14T12:58:25.258Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -4315,7 +4548,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "f171b68e116740acbdba4e55e17a7015",
+          "generative_id": "40fb21d8487c4502b450033925880dbf",
           "plan_id": "",
           "generative_objective": "Click \"Submit for Approval\" and wait for the confirmation page, then assert it shows the heading \"Submitted for Approval\", a Request ID matching REQ-##### , status \"Pending Approval\", and the order total.",
           "error_message": "",
@@ -4326,10 +4559,10 @@
           "reasoning": "Scroll target into view"
         },
         {
-          "instruction_id": "3036d81d-e269-4f86-9d98-120058b99b59",
+          "instruction_id": "cc9c59b9-4009-4390-9815-ab904b944f70",
           "instruction_class": "driver_action",
           "module_id": "",
-          "instruction": "Clicking Submit for Approval button",
+          "instruction": "Clicking Submit for Approval",
           "command": "CLICK",
           "error": null,
           "parent_instruction_id": "",
@@ -4337,12 +4570,12 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "73ef2784-227c-4cb4-b93b-8736666a7093",
-              "instruction_id": "3036d81d-e269-4f86-9d98-120058b99b59",
-              "instruction": "Clicking Submit for Approval button",
-              "intent": "Clicking Submit for Approval button",
-              "operation_start": "2026-09-14T12:44:28.360095+00:00",
-              "operation_end": "2026-09-14T12:44:28.401Z",
+              "operation_id": "6a8d4a08-34db-4316-8fbf-dd610d15cdac",
+              "instruction_id": "cc9c59b9-4009-4390-9815-ab904b944f70",
+              "instruction": "Clicking Submit for Approval",
+              "intent": "Clicking Submit for Approval",
+              "operation_start": "2026-09-14T12:58:27.204800+00:00",
+              "operation_end": "2026-09-14T12:58:27.220Z",
               "status": "success",
               "command": "CLICK",
               "name": "",
@@ -4353,7 +4586,7 @@
               "frame": "",
               "error_message": "",
               "code_snippet": "",
-              "sub_instruction_obj": "{\"operation\":\"Clicking Submit for Approval button\",\"agent\":\"Vision Agent\",\"operation_dict\":{\"operation_type\":\"CLICK\"},\"reasoning\":\"PRIMARY: Submit for Approval control; role=button; text=\\\"Submit for Approval\\\" | HINTS: container=bottom of Order Review page beneath spending-limit approval notice\",\"variable\":{},\"secrets\":{},\"params\":{}}",
+              "sub_instruction_obj": "{\"operation\":\"Clicking Submit for Approval\",\"agent\":\"Vision Agent\",\"operation_dict\":{\"operation_type\":\"CLICK\"},\"reasoning\":\"PRIMARY: Submit for Approval action; role=button; text=\\\"Submit for Approval\\\" | HINTS: container=Order Review page\",\"variable\":{},\"secrets\":{},\"params\":{}}",
               "test_id": "",
               "test_version": "",
               "action": "",
@@ -4364,7 +4597,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/73ef2784-227c-4cb4-b93b-8736666a7093.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/6a8d4a08-34db-4316-8fbf-dd610d15cdac.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -4465,30 +4698,30 @@
               "api_data": {},
               "output_variables": {},
               "visual_context": {
-                "x": 736,
-                "y": 953,
+                "x": 511,
+                "y": 706,
                 "confidence": 0,
                 "bbox": {
-                  "x": 400,
-                  "y": 941,
+                  "x": 175,
+                  "y": 694,
                   "width": 672,
                   "height": 24
                 },
                 "bbox_source": "accessibility_tree",
-                "viewport_width": 1920,
-                "viewport_height": 993,
+                "viewport_width": 1470,
+                "viewport_height": 746,
                 "scale_factor": null,
-                "raw_image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/73ef2784-227c-4cb4-b93b-8736666a7093.webp",
+                "raw_image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/6a8d4a08-34db-4316-8fbf-dd610d15cdac.webp",
                 "raw_image_sas_url": "",
                 "annotated_image_url": "",
                 "annotated_image_sas_url": ""
               },
-              "reasoning": "PRIMARY: Submit for Approval control; role=button; text=\"Submit for Approval\" | HINTS: container=bottom of Order Review page beneath spending-limit approval notice"
+              "reasoning": "PRIMARY: Submit for Approval action; role=button; text=\"Submit for Approval\" | HINTS: container=Order Review page"
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-09-14T12:44:28.360095+00:00",
-          "end_timestamp": "2026-09-14T12:44:28.401Z",
+          "start_timestamp": "2026-09-14T12:58:27.204800+00:00",
+          "end_timestamp": "2026-09-14T12:58:27.220Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -4514,7 +4747,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "f171b68e116740acbdba4e55e17a7015",
+          "generative_id": "40fb21d8487c4502b450033925880dbf",
           "plan_id": "",
           "generative_objective": "Click \"Submit for Approval\" and wait for the confirmation page, then assert it shows the heading \"Submitted for Approval\", a Request ID matching REQ-##### , status \"Pending Approval\", and the order total.",
           "error_message": "",
@@ -4522,13 +4755,13 @@
           "reason": "",
           "title": "",
           "used_variables": [],
-          "reasoning": "PRIMARY: Submit for Approval control; role=button; text=\"Submit for Approval\" | HINTS: container=bottom of Order Review page beneath spending-limit approval notice"
+          "reasoning": "PRIMARY: Submit for Approval action; role=button; text=\"Submit for Approval\" | HINTS: container=Order Review page"
         },
         {
-          "instruction_id": "84c148e9-06f1-4440-a5b9-b9d2ca709452",
+          "instruction_id": "591afbd2-610c-445d-8064-bef4be591802",
           "instruction_class": "driver_action",
           "module_id": "",
-          "instruction": "Waiting for the approval confirmation page to finish loading",
+          "instruction": "Waiting 1 second for the confirmation page to settle",
           "command": "WAIT",
           "error": null,
           "parent_instruction_id": "",
@@ -4536,12 +4769,12 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "4d4b89da-13bb-4fee-a877-6a349ee20150",
-              "instruction_id": "84c148e9-06f1-4440-a5b9-b9d2ca709452",
-              "instruction": "Waiting for the approval confirmation page to finish loading",
-              "intent": "Waiting for the approval confirmation page to finish loading",
-              "operation_start": "2026-09-14T12:44:35.911884+00:00",
-              "operation_end": "2026-09-14T12:44:36.924Z",
+              "operation_id": "c2396904-e45f-4f90-b803-86875ce71d17",
+              "instruction_id": "591afbd2-610c-445d-8064-bef4be591802",
+              "instruction": "Waiting 1 second for the confirmation page to settle",
+              "intent": "Waiting 1 second for the confirmation page to settle",
+              "operation_start": "2026-09-14T12:58:34.730671+00:00",
+              "operation_end": "2026-09-14T12:58:35.739Z",
               "status": "success",
               "command": "WAIT",
               "name": "",
@@ -4552,7 +4785,7 @@
               "frame": "",
               "error_message": "",
               "code_snippet": "",
-              "sub_instruction_obj": "{\"operation\":\"Waiting for the approval confirmation page to finish loading\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"WAIT\"},\"reasoning\":\"PRIMARY: wait 1000 ms for the approval confirmation page to finish loading\",\"variable\":{},\"secrets\":{},\"params\":{}}",
+              "sub_instruction_obj": "{\"operation\":\"Waiting 1 second for the confirmation page to settle\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"WAIT\"},\"reasoning\":\"PRIMARY: wait 1000 ms for the confirmation page to settle\",\"variable\":{},\"secrets\":{},\"params\":{}}",
               "test_id": "",
               "test_version": "",
               "action": "",
@@ -4563,7 +4796,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/4d4b89da-13bb-4fee-a877-6a349ee20150.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/c2396904-e45f-4f90-b803-86875ce71d17.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -4657,12 +4890,12 @@
               "api_data": {},
               "output_variables": {},
               "visual_context": null,
-              "reasoning": "PRIMARY: wait 1000 ms for the approval confirmation page to finish loading"
+              "reasoning": "PRIMARY: wait 1000 ms for the confirmation page to settle"
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-09-14T12:44:35.911884+00:00",
-          "end_timestamp": "2026-09-14T12:44:36.924Z",
+          "start_timestamp": "2026-09-14T12:58:34.730671+00:00",
+          "end_timestamp": "2026-09-14T12:58:35.739Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -4688,7 +4921,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "f171b68e116740acbdba4e55e17a7015",
+          "generative_id": "40fb21d8487c4502b450033925880dbf",
           "plan_id": "",
           "generative_objective": "Click \"Submit for Approval\" and wait for the confirmation page, then assert it shows the heading \"Submitted for Approval\", a Request ID matching REQ-##### , status \"Pending Approval\", and the order total.",
           "error_message": "",
@@ -4696,10 +4929,10 @@
           "reason": "",
           "title": "",
           "used_variables": [],
-          "reasoning": "PRIMARY: wait 1000 ms for the approval confirmation page to finish loading"
+          "reasoning": "PRIMARY: wait 1000 ms for the confirmation page to settle"
         },
         {
-          "instruction_id": "20a6da34-71ae-4425-a046-3103c07238ed",
+          "instruction_id": "cc402e0b-4d02-476e-8e03-3a16a7830e0a",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Reading the confirmation page heading",
@@ -4710,11 +4943,11 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "05cc3b38-49ab-43bf-ae10-baed5e849fca",
-              "instruction_id": "20a6da34-71ae-4425-a046-3103c07238ed",
+              "operation_id": "b2025987-08c8-49e4-a601-867f597e0380",
+              "instruction_id": "cc402e0b-4d02-476e-8e03-3a16a7830e0a",
               "instruction": "Reading the confirmation page heading",
               "intent": "Reading the confirmation page heading",
-              "operation_start": "2026-09-14T12:45:16.468261+00:00",
+              "operation_start": "2026-09-14T12:59:16.708472+00:00",
               "operation_end": "",
               "status": "success",
               "command": "TEXTUAL_ANALYZER",
@@ -4726,7 +4959,7 @@
               "frame": "",
               "error_message": "",
               "code_snippet": "",
-              "sub_instruction_obj": "{\"operation\":\"Reading the confirmation page heading\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"TEXTUAL_ANALYZER\"},\"reasoning\":\"the confirmation page submission heading\",\"variable\":{},\"secrets\":{},\"params\":{},\"code_js\":\"el(14).textContent\",\"wrapped_js\":\"(els) => {\\n  const __m = {14: 0};\\n  const el = (i) => els[__m[i]];\\n  const __v = (el(14).textContent);\\n  return (typeof __v === 'boolean' ? String(__v) : __v);\\n}\",\"locators\":[\"internal:role=heading[name=\\\"Submitted for Approval\\\"i]\"],\"operator\":\"equals\",\"transforms\":[\"strip\"],\"query\":\"the confirmation page submission heading\",\"expected_value\":\"Submitted for Approval\",\"needs_unit_conversion\":false,\"condition\":\"The confirmation page shows the heading \\\"Submitted for Approval\\\".\"}",
+              "sub_instruction_obj": "{\"operation\":\"Reading the confirmation page heading\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"TEXTUAL_ANALYZER\"},\"reasoning\":\"the confirmation heading indicating the approval submission state\",\"variable\":{},\"secrets\":{},\"params\":{},\"code_js\":\"el(14).textContent.trim()\",\"wrapped_js\":\"(els) => {\\n  const __m = {14: 0};\\n  const el = (i) => els[__m[i]];\\n  const __v = (el(14).textContent.trim());\\n  return (typeof __v === 'boolean' ? String(__v) : __v);\\n}\",\"locators\":[\"internal:role=heading[name=\\\"Submitted for Approval\\\"i]\"],\"operator\":\"equals\",\"transforms\":[\"strip\"],\"query\":\"the confirmation heading indicating the approval submission state\",\"expected_value\":\"Submitted for Approval\",\"needs_unit_conversion\":false,\"condition\":\"The confirmation page shows the heading \\\"Submitted for Approval\\\".\"}",
               "test_id": "",
               "test_version": "",
               "action": "",
@@ -4737,7 +4970,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/05cc3b38-49ab-43bf-ae10-baed5e849fca.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/b2025987-08c8-49e4-a601-867f597e0380.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -4833,11 +5066,11 @@
                 "submitted_for_approval_heading_check": "Submitted for Approval"
               },
               "visual_context": null,
-              "reasoning": "the confirmation page submission heading"
+              "reasoning": "the confirmation heading indicating the approval submission state"
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-09-14T12:45:16.468261+00:00",
+          "start_timestamp": "2026-09-14T12:59:16.708472+00:00",
           "end_timestamp": "",
           "type": "agent_generated",
           "tags": [],
@@ -4864,7 +5097,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "f171b68e116740acbdba4e55e17a7015",
+          "generative_id": "40fb21d8487c4502b450033925880dbf",
           "plan_id": "",
           "generative_objective": "Click \"Submit for Approval\" and wait for the confirmation page, then assert it shows the heading \"Submitted for Approval\", a Request ID matching REQ-##### , status \"Pending Approval\", and the order total.",
           "error_message": "",
@@ -4872,13 +5105,13 @@
           "reason": "",
           "title": "",
           "used_variables": [],
-          "reasoning": "the confirmation page submission heading"
+          "reasoning": "the confirmation heading indicating the approval submission state"
         },
         {
-          "instruction_id": "a986e5d4-e11c-4116-867e-881ab6dba12d",
+          "instruction_id": "8b03bdab-2fb6-482a-9735-d997a5a1e323",
           "instruction_class": "driver_action",
           "module_id": "",
-          "instruction": "Checking the confirmation request ID format",
+          "instruction": "Checking the confirmation page request ID format",
           "command": "VISION_QUERY",
           "error": null,
           "parent_instruction_id": "",
@@ -4886,11 +5119,11 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "d770fb49-0a84-4d53-977f-7bfdb4534a16",
-              "instruction_id": "a986e5d4-e11c-4116-867e-881ab6dba12d",
-              "instruction": "Checking the confirmation request ID format",
-              "intent": "Checking the confirmation request ID format",
-              "operation_start": "2026-09-14T12:45:16.469040+00:00",
+              "operation_id": "9ba039bf-8296-415c-aa4d-c87ae8f3fd0c",
+              "instruction_id": "8b03bdab-2fb6-482a-9735-d997a5a1e323",
+              "instruction": "Checking the confirmation page request ID format",
+              "intent": "Checking the confirmation page request ID format",
+              "operation_start": "2026-09-14T12:59:16.709212+00:00",
               "operation_end": "",
               "status": "success",
               "command": "VISION_QUERY",
@@ -4902,7 +5135,7 @@
               "frame": "",
               "error_message": "",
               "code_snippet": "",
-              "sub_instruction_obj": "{\"operation\":\"Checking the confirmation request ID format\",\"agent\":\"Vision Agent\",\"operation_dict\":{\"operation_type\":\"VISION_QUERY\"},\"reasoning\":\"The confirmation page shows a Request ID matching REQ-##### .\",\"variable\":{},\"secrets\":{},\"params\":{}}",
+              "sub_instruction_obj": "{\"operation\":\"Checking the confirmation page request ID format\",\"agent\":\"Vision Agent\",\"operation_dict\":{\"operation_type\":\"VISION_QUERY\"},\"reasoning\":\"The confirmation page shows a Request ID matching REQ-##### .\",\"variable\":{},\"secrets\":{},\"params\":{}}",
               "test_id": "",
               "test_version": "",
               "action": "",
@@ -4913,7 +5146,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/d770fb49-0a84-4d53-977f-7bfdb4534a16.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/9ba039bf-8296-415c-aa4d-c87ae8f3fd0c.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -5013,7 +5246,7 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-09-14T12:45:16.469040+00:00",
+          "start_timestamp": "2026-09-14T12:59:16.709212+00:00",
           "end_timestamp": "",
           "type": "agent_generated",
           "tags": [],
@@ -5040,7 +5273,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "f171b68e116740acbdba4e55e17a7015",
+          "generative_id": "40fb21d8487c4502b450033925880dbf",
           "plan_id": "",
           "generative_objective": "Click \"Submit for Approval\" and wait for the confirmation page, then assert it shows the heading \"Submitted for Approval\", a Request ID matching REQ-##### , status \"Pending Approval\", and the order total.",
           "error_message": "",
@@ -5051,10 +5284,10 @@
           "reasoning": "The confirmation page shows a Request ID matching REQ-##### ."
         },
         {
-          "instruction_id": "76b1e35c-bf64-4871-b255-5cfd59ecd469",
+          "instruction_id": "1436b3ca-f113-4e73-8e62-34920f04dc02",
           "instruction_class": "driver_action",
           "module_id": "",
-          "instruction": "Reading the confirmation approval status",
+          "instruction": "Reading the confirmation page approval status",
           "command": "VISION_QUERY",
           "error": null,
           "parent_instruction_id": "",
@@ -5062,11 +5295,11 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "0d29866d-6d47-41e1-a305-abd4aebd7eb9",
-              "instruction_id": "76b1e35c-bf64-4871-b255-5cfd59ecd469",
-              "instruction": "Reading the confirmation approval status",
-              "intent": "Reading the confirmation approval status",
-              "operation_start": "2026-09-14T12:45:16.469253+00:00",
+              "operation_id": "f3b63240-7fd1-44dd-88cf-a4b1532c55e5",
+              "instruction_id": "1436b3ca-f113-4e73-8e62-34920f04dc02",
+              "instruction": "Reading the confirmation page approval status",
+              "intent": "Reading the confirmation page approval status",
+              "operation_start": "2026-09-14T12:59:16.709449+00:00",
               "operation_end": "",
               "status": "success",
               "command": "VISION_QUERY",
@@ -5078,7 +5311,7 @@
               "frame": "",
               "error_message": "",
               "code_snippet": "",
-              "sub_instruction_obj": "{\"operation\":\"Reading the confirmation approval status\",\"agent\":\"Vision Agent\",\"operation_dict\":{\"operation_type\":\"VISION_QUERY\"},\"reasoning\":\"The confirmation page shows status \\\"Pending Approval\\\".\",\"variable\":{},\"secrets\":{},\"params\":{}}",
+              "sub_instruction_obj": "{\"operation\":\"Reading the confirmation page approval status\",\"agent\":\"Vision Agent\",\"operation_dict\":{\"operation_type\":\"VISION_QUERY\"},\"reasoning\":\"The confirmation page shows status \\\"Pending Approval\\\".\",\"variable\":{},\"secrets\":{},\"params\":{}}",
               "test_id": "",
               "test_version": "",
               "action": "",
@@ -5089,7 +5322,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/0d29866d-6d47-41e1-a305-abd4aebd7eb9.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/f3b63240-7fd1-44dd-88cf-a4b1532c55e5.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -5189,7 +5422,7 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-09-14T12:45:16.469253+00:00",
+          "start_timestamp": "2026-09-14T12:59:16.709449+00:00",
           "end_timestamp": "",
           "type": "agent_generated",
           "tags": [],
@@ -5216,7 +5449,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "f171b68e116740acbdba4e55e17a7015",
+          "generative_id": "40fb21d8487c4502b450033925880dbf",
           "plan_id": "",
           "generative_objective": "Click \"Submit for Approval\" and wait for the confirmation page, then assert it shows the heading \"Submitted for Approval\", a Request ID matching REQ-##### , status \"Pending Approval\", and the order total.",
           "error_message": "",
@@ -5227,7 +5460,7 @@
           "reasoning": "The confirmation page shows status \"Pending Approval\"."
         },
         {
-          "instruction_id": "a7b7248b-8eaa-4d34-a03f-978b41d8c854",
+          "instruction_id": "f13f177d-9059-4502-bd99-4d0e03cad90b",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Checking whether the confirmation page displays an order total",
@@ -5238,11 +5471,11 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "b1dc0a01-b3fe-45a8-ad48-f08fede8c90e",
-              "instruction_id": "a7b7248b-8eaa-4d34-a03f-978b41d8c854",
+              "operation_id": "2f327763-aa69-4038-9893-f3d72bb99f79",
+              "instruction_id": "f13f177d-9059-4502-bd99-4d0e03cad90b",
               "instruction": "Checking whether the confirmation page displays an order total",
               "intent": "Checking whether the confirmation page displays an order total",
-              "operation_start": "2026-09-14T12:45:16.469443+00:00",
+              "operation_start": "2026-09-14T12:59:16.709650+00:00",
               "operation_end": "",
               "status": "success",
               "command": "VISION_QUERY",
@@ -5265,7 +5498,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/b1dc0a01-b3fe-45a8-ad48-f08fede8c90e.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/2f327763-aa69-4038-9893-f3d72bb99f79.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -5365,7 +5598,7 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-09-14T12:45:16.469443+00:00",
+          "start_timestamp": "2026-09-14T12:59:16.709650+00:00",
           "end_timestamp": "",
           "type": "agent_generated",
           "tags": [],
@@ -5392,7 +5625,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "f171b68e116740acbdba4e55e17a7015",
+          "generative_id": "40fb21d8487c4502b450033925880dbf",
           "plan_id": "",
           "generative_objective": "Click \"Submit for Approval\" and wait for the confirmation page, then assert it shows the heading \"Submitted for Approval\", a Request ID matching REQ-##### , status \"Pending Approval\", and the order total.",
           "error_message": "",
@@ -5403,7 +5636,7 @@
           "reasoning": "The confirmation page shows the order total."
         },
         {
-          "instruction_id": "fa5dfecd-4e8d-407b-b23b-7a942cc3bd51",
+          "instruction_id": "1b081b7f-3e71-4a79-a7ae-821df4eb7d50",
           "instruction_class": "non_driver_action",
           "module_id": "",
           "instruction": "Assertion check",
@@ -5531,11 +5764,11 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "241074f2-2152-4500-a35e-e95ff932a2d5",
-              "instruction_id": "fa5dfecd-4e8d-407b-b23b-7a942cc3bd51",
+              "operation_id": "91e8ca6f-9326-452a-8b34-2078e41a48bf",
+              "instruction_id": "1b081b7f-3e71-4a79-a7ae-821df4eb7d50",
               "instruction": "Assertion check",
               "intent": "Assertion check",
-              "operation_start": "2026-09-14T12:45:17.093184+00:00",
+              "operation_start": "2026-09-14T12:59:17.385322+00:00",
               "operation_end": "",
               "status": "success",
               "command": "ASSERTION",
@@ -5558,7 +5791,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/241074f2-2152-4500-a35e-e95ff932a2d5.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/91e8ca6f-9326-452a-8b34-2078e41a48bf.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -5719,7 +5952,7 @@
                   }
                 ],
                 "composite_operator": "and",
-                "verification": "The confirmation page displays all of the stated heading, Request ID pattern, status, and order total.",
+                "verification": "The confirmation page displays all stated submission details.",
                 "claim": "the confirmation page shows the heading \"Submitted for Approval\", a Request ID matching REQ-##### , status \"Pending Approval\", and the order total"
               },
               "assertion_tree": {
@@ -5788,7 +6021,7 @@
                 "passed": true,
                 "step": 5,
                 "is_final": true,
-                "verification": "The confirmation page displays all of the stated heading, Request ID pattern, status, and order total.",
+                "verification": "The confirmation page displays all stated submission details.",
                 "error_message": null,
                 "duration_ms": 0
               },
@@ -5830,7 +6063,7 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-09-14T12:45:17.093184+00:00",
+          "start_timestamp": "2026-09-14T12:59:17.385322+00:00",
           "end_timestamp": "",
           "type": "agent_generated",
           "tags": [],
@@ -5857,7 +6090,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "f171b68e116740acbdba4e55e17a7015",
+          "generative_id": "40fb21d8487c4502b450033925880dbf",
           "plan_id": "",
           "generative_objective": "Click \"Submit for Approval\" and wait for the confirmation page, then assert it shows the heading \"Submitted for Approval\", a Request ID matching REQ-##### , status \"Pending Approval\", and the order total.",
           "error_message": "",
@@ -5874,23 +6107,23 @@
       "bifurcation_context": [],
       "approach_reason": [
         "Submitted the order for approval as requested.",
-        "Reached the confirmation page showing “Submitted for Approval,” a request ID in the REQ-##### format, and a “Pending Approval” status.",
-        "Confirmed that the order total is displayed on the confirmation page."
+        "The confirmation page opened and showed “Submitted for Approval.”",
+        "The page displayed a request ID in the REQ-##### format, a “Pending Approval” status, and the order total."
       ],
       "one_liner": null
     },
     {
       "content_type": "generative_block",
-      "instruction_id": "generative_block_07b0ce4050ce4c0498cb1d257a89a1a0",
-      "generative_id": "07b0ce4050ce4c0498cb1d257a89a1a0",
+      "instruction_id": "generative_block_a1cbe1edba484e759aa9b6ab40bc9c1c",
+      "generative_id": "a1cbe1edba484e759aa9b6ab40bc9c1c",
       "objective": "Click \"View Approvals\" to open the Approvals page, then assert the request card shows the same Request ID, the status \"Pending Approval\", the requester name \"Priya Shah\", a submitted date and time, and the order total.",
       "status": "success",
       "children": [
         {
-          "instruction_id": "4f29bdec-59fb-47e6-b5dd-7230462d96e2",
+          "instruction_id": "f1f0feaf-7b6d-4853-a91a-2370140a733b",
           "instruction_class": "driver_action",
           "module_id": "",
-          "instruction": "Clicking View Approvals navigation link",
+          "instruction": "Clicking View Approvals link",
           "command": "CLICK",
           "error": null,
           "parent_instruction_id": "",
@@ -5898,12 +6131,12 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "18c588d8-6b77-4b23-9023-3bfd9198cd25",
-              "instruction_id": "4f29bdec-59fb-47e6-b5dd-7230462d96e2",
-              "instruction": "Clicking View Approvals navigation link",
-              "intent": "Clicking View Approvals navigation link",
-              "operation_start": "2026-09-14T12:45:35.917477+00:00",
-              "operation_end": "2026-09-14T12:45:35.956Z",
+              "operation_id": "89c50be3-5a7e-4648-a8f0-181d64f6f35b",
+              "instruction_id": "f1f0feaf-7b6d-4853-a91a-2370140a733b",
+              "instruction": "Clicking View Approvals link",
+              "intent": "Clicking View Approvals link",
+              "operation_start": "2026-09-14T12:59:32.357300+00:00",
+              "operation_end": "2026-09-14T12:59:32.387Z",
               "status": "success",
               "command": "CLICK",
               "name": "",
@@ -5914,7 +6147,7 @@
               "frame": "",
               "error_message": "",
               "code_snippet": "",
-              "sub_instruction_obj": "{\"operation\":\"Clicking View Approvals navigation link\",\"agent\":\"Vision Agent\",\"operation_dict\":{\"operation_type\":\"CLICK\"},\"reasoning\":\"PRIMARY: View Approvals navigation link; role=link; text=\\\"View Approvals\\\" | HINTS: container=confirmation page below submitted request summary\",\"variable\":{},\"secrets\":{},\"params\":{}}",
+              "sub_instruction_obj": "{\"operation\":\"Clicking View Approvals link\",\"agent\":\"Vision Agent\",\"operation_dict\":{\"operation_type\":\"CLICK\"},\"reasoning\":\"PRIMARY: View Approvals navigation link; role=link; text=\\\"View Approvals\\\" | HINTS: container=order submission confirmation page\",\"variable\":{},\"secrets\":{},\"params\":{}}",
               "test_id": "",
               "test_version": "",
               "action": "",
@@ -5925,7 +6158,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/18c588d8-6b77-4b23-9023-3bfd9198cd25.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/89c50be3-5a7e-4648-a8f0-181d64f6f35b.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -6026,30 +6259,30 @@
               "api_data": {},
               "output_variables": {},
               "visual_context": {
-                "x": 886,
-                "y": 618,
+                "x": 661,
+                "y": 617,
                 "confidence": 0,
                 "bbox": {
-                  "x": 837,
-                  "y": 605,
+                  "x": 612,
+                  "y": 604,
                   "width": 99,
                   "height": 26
                 },
                 "bbox_source": "accessibility_tree",
-                "viewport_width": 1920,
-                "viewport_height": 993,
+                "viewport_width": 1470,
+                "viewport_height": 746,
                 "scale_factor": null,
-                "raw_image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/18c588d8-6b77-4b23-9023-3bfd9198cd25.webp",
+                "raw_image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/89c50be3-5a7e-4648-a8f0-181d64f6f35b.webp",
                 "raw_image_sas_url": "",
                 "annotated_image_url": "",
                 "annotated_image_sas_url": ""
               },
-              "reasoning": "PRIMARY: View Approvals navigation link; role=link; text=\"View Approvals\" | HINTS: container=confirmation page below submitted request summary"
+              "reasoning": "PRIMARY: View Approvals navigation link; role=link; text=\"View Approvals\" | HINTS: container=order submission confirmation page"
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-09-14T12:45:35.917477+00:00",
-          "end_timestamp": "2026-09-14T12:45:35.956Z",
+          "start_timestamp": "2026-09-14T12:59:32.357300+00:00",
+          "end_timestamp": "2026-09-14T12:59:32.387Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -6075,7 +6308,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "07b0ce4050ce4c0498cb1d257a89a1a0",
+          "generative_id": "a1cbe1edba484e759aa9b6ab40bc9c1c",
           "plan_id": "",
           "generative_objective": "Click \"View Approvals\" to open the Approvals page, then assert the request card shows the same Request ID, the status \"Pending Approval\", the requester name \"Priya Shah\", a submitted date and time, and the order total.",
           "error_message": "",
@@ -6083,10 +6316,10 @@
           "reason": "",
           "title": "",
           "used_variables": [],
-          "reasoning": "PRIMARY: View Approvals navigation link; role=link; text=\"View Approvals\" | HINTS: container=confirmation page below submitted request summary"
+          "reasoning": "PRIMARY: View Approvals navigation link; role=link; text=\"View Approvals\" | HINTS: container=order submission confirmation page"
         },
         {
-          "instruction_id": "4d48bcac-8419-43d8-b2c9-25f984ec2382",
+          "instruction_id": "821f0fe7-2c2d-4bb0-9ef9-48b16206462b",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Waiting for the Approvals page to finish loading",
@@ -6097,12 +6330,12 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "639ff536-af68-4659-a592-94c00bdd2b14",
-              "instruction_id": "4d48bcac-8419-43d8-b2c9-25f984ec2382",
+              "operation_id": "1cb5fd0b-0529-4e2d-b5f5-96077ff67d80",
+              "instruction_id": "821f0fe7-2c2d-4bb0-9ef9-48b16206462b",
               "instruction": "Waiting for the Approvals page to finish loading",
               "intent": "Waiting for the Approvals page to finish loading",
-              "operation_start": "2026-09-14T12:45:42.411252+00:00",
-              "operation_end": "2026-09-14T12:45:43.421Z",
+              "operation_start": "2026-09-14T12:59:40.100045+00:00",
+              "operation_end": "2026-09-14T12:59:41.107Z",
               "status": "success",
               "command": "WAIT",
               "name": "",
@@ -6124,7 +6357,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/639ff536-af68-4659-a592-94c00bdd2b14.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/1cb5fd0b-0529-4e2d-b5f5-96077ff67d80.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -6222,8 +6455,8 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-09-14T12:45:42.411252+00:00",
-          "end_timestamp": "2026-09-14T12:45:43.421Z",
+          "start_timestamp": "2026-09-14T12:59:40.100045+00:00",
+          "end_timestamp": "2026-09-14T12:59:41.107Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -6249,7 +6482,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "07b0ce4050ce4c0498cb1d257a89a1a0",
+          "generative_id": "a1cbe1edba484e759aa9b6ab40bc9c1c",
           "plan_id": "",
           "generative_objective": "Click \"View Approvals\" to open the Approvals page, then assert the request card shows the same Request ID, the status \"Pending Approval\", the requester name \"Priya Shah\", a submitted date and time, and the order total.",
           "error_message": "",
@@ -6260,7 +6493,7 @@
           "reasoning": "PRIMARY: wait 1000 ms for the Approvals page to finish loading"
         },
         {
-          "instruction_id": "ca97adf4-a681-4d67-bfb3-869c4e6279ef",
+          "instruction_id": "5843a8fd-e8b7-4639-b1cc-83b4a3b60204",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Reading the Request ID from the request card",
@@ -6271,11 +6504,11 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "4ca8bbdd-fe61-4f96-bf4d-f0acb5550fba",
-              "instruction_id": "ca97adf4-a681-4d67-bfb3-869c4e6279ef",
+              "operation_id": "7db26bf8-042e-46eb-96c3-62a716187ed7",
+              "instruction_id": "5843a8fd-e8b7-4639-b1cc-83b4a3b60204",
               "instruction": "Reading the Request ID from the request card",
               "intent": "Reading the Request ID from the request card",
-              "operation_start": "2026-09-14T12:46:21.963427+00:00",
+              "operation_start": "2026-09-14T13:00:11.706067+00:00",
               "operation_end": "",
               "status": "success",
               "command": "TEXTUAL_ANALYZER",
@@ -6287,7 +6520,7 @@
               "frame": "",
               "error_message": "",
               "code_snippet": "",
-              "sub_instruction_obj": "{\"operation\":\"Reading the Request ID from the request card\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"TEXTUAL_ANALYZER\"},\"reasoning\":\"the Request ID displayed on the request card\",\"variable\":{},\"secrets\":{},\"params\":{},\"code_js\":\"el(15).textContent.trim()\",\"wrapped_js\":\"(els) => {\\n  const __m = {15: 0};\\n  const el = (i) => els[__m[i]];\\n  const __v = (el(15).textContent.trim());\\n  return (typeof __v === 'boolean' ? String(__v) : __v);\\n}\",\"locators\":[\"internal:text=\\\"REQ-\\\"i\"],\"operator\":\"equals\",\"transforms\":[\"strip\"],\"query\":\"the Request ID displayed on the request card\",\"expected_value\":\"REQ-45221\",\"needs_unit_conversion\":false,\"condition\":\"The request card shows the same Request ID.\"}",
+              "sub_instruction_obj": "{\"operation\":\"Reading the Request ID from the request card\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"TEXTUAL_ANALYZER\"},\"reasoning\":\"the Request ID displayed on the request card\",\"variable\":{},\"secrets\":{},\"params\":{},\"code_js\":\"el(15).textContent.trim()\",\"wrapped_js\":\"(els) => {\\n  const __m = {15: 0};\\n  const el = (i) => els[__m[i]];\\n  const __v = (el(15).textContent.trim());\\n  return (typeof __v === 'boolean' ? String(__v) : __v);\\n}\",\"locators\":[\"internal:text=\\\"REQ-\\\"i\"],\"operator\":\"equals\",\"transforms\":[\"strip\"],\"query\":\"the Request ID displayed on the request card\",\"expected_value\":\"REQ-88852\",\"needs_unit_conversion\":false,\"condition\":\"The request card shows the same Request ID.\"}",
               "test_id": "",
               "test_version": "",
               "action": "",
@@ -6298,15 +6531,15 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/4ca8bbdd-fe61-4f96-bf4d-f0acb5550fba.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/7db26bf8-042e-46eb-96c3-62a716187ed7.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
               "url": "",
               "navigation_direction": "",
               "tagified_image_url": "",
-              "query_variable_name": "request_id_matches",
-              "query_variable_value": "REQ-45221",
+              "query_variable_name": "request_id_check",
+              "query_variable_value": "REQ-88852",
               "query_variable_type": "",
               "expected_value": "",
               "queried_value": "",
@@ -6391,14 +6624,14 @@
               "until_settle_ms": 0,
               "api_data": {},
               "output_variables": {
-                "request_id_matches": "REQ-45221"
+                "request_id_check": "REQ-88852"
               },
               "visual_context": null,
               "reasoning": "the Request ID displayed on the request card"
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-09-14T12:46:21.963427+00:00",
+          "start_timestamp": "2026-09-14T13:00:11.706067+00:00",
           "end_timestamp": "",
           "type": "agent_generated",
           "tags": [],
@@ -6425,7 +6658,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "07b0ce4050ce4c0498cb1d257a89a1a0",
+          "generative_id": "a1cbe1edba484e759aa9b6ab40bc9c1c",
           "plan_id": "",
           "generative_objective": "Click \"View Approvals\" to open the Approvals page, then assert the request card shows the same Request ID, the status \"Pending Approval\", the requester name \"Priya Shah\", a submitted date and time, and the order total.",
           "error_message": "",
@@ -6436,7 +6669,7 @@
           "reasoning": "the Request ID displayed on the request card"
         },
         {
-          "instruction_id": "08b9d1a0-c265-4805-8d76-88ddb307fe24",
+          "instruction_id": "33d16f65-caa0-4751-99df-527ce04d25a7",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Reading the approval status from the request card",
@@ -6447,11 +6680,11 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "10d8af52-8e57-46f5-ac87-9a92779b8e63",
-              "instruction_id": "08b9d1a0-c265-4805-8d76-88ddb307fe24",
+              "operation_id": "7d430bd5-5082-45f0-af25-720ea2f98981",
+              "instruction_id": "33d16f65-caa0-4751-99df-527ce04d25a7",
               "instruction": "Reading the approval status from the request card",
               "intent": "Reading the approval status from the request card",
-              "operation_start": "2026-09-14T12:46:21.963655+00:00",
+              "operation_start": "2026-09-14T13:00:11.706212+00:00",
               "operation_end": "",
               "status": "success",
               "command": "TEXTUAL_ANALYZER",
@@ -6463,7 +6696,7 @@
               "frame": "",
               "error_message": "",
               "code_snippet": "",
-              "sub_instruction_obj": "{\"operation\":\"Reading the approval status from the request card\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"TEXTUAL_ANALYZER\"},\"reasoning\":\"the approval status displayed on the request card\",\"variable\":{},\"secrets\":{},\"params\":{},\"code_js\":\"(Array.from(el(12).querySelectorAll('*')).find(e => e.textContent.trim() === 'Pending Approval') || null)?.textContent.trim() ?? null\",\"wrapped_js\":\"(els) => {\\n  const __m = {12: 0};\\n  const el = (i) => els[__m[i]];\\n  const __v = ((Array.from(el(12).querySelectorAll('*')).find(e => e.textContent.trim() === 'Pending Approval') || null)?.textContent.trim() ?? null);\\n  return (typeof __v === 'boolean' ? String(__v) : __v);\\n}\",\"locators\":[\"internal:role=main\"],\"operator\":\"equals\",\"transforms\":[\"strip\"],\"query\":\"the approval status displayed on the request card\",\"expected_value\":\"Pending Approval\",\"needs_unit_conversion\":false,\"condition\":\"The request card shows the status \\\"Pending Approval\\\".\"}",
+              "sub_instruction_obj": "{\"operation\":\"Reading the approval status from the request card\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"TEXTUAL_ANALYZER\"},\"reasoning\":\"the approval status displayed on the request card\",\"variable\":{},\"secrets\":{},\"params\":{},\"code_js\":\"Array.from(el(12).querySelectorAll('span')).find(e => e.textContent.trim() === 'Pending Approval')?.textContent.trim() ?? null\",\"wrapped_js\":\"(els) => {\\n  const __m = {12: 0};\\n  const el = (i) => els[__m[i]];\\n  const __v = (Array.from(el(12).querySelectorAll('span')).find(e => e.textContent.trim() === 'Pending Approval')?.textContent.trim() ?? null);\\n  return (typeof __v === 'boolean' ? String(__v) : __v);\\n}\",\"locators\":[\"internal:role=main\"],\"operator\":\"equals\",\"transforms\":[\"strip\"],\"query\":\"the approval status displayed on the request card\",\"expected_value\":\"Pending Approval\",\"needs_unit_conversion\":false,\"condition\":\"The request card shows the status \\\"Pending Approval\\\".\"}",
               "test_id": "",
               "test_version": "",
               "action": "",
@@ -6474,7 +6707,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/10d8af52-8e57-46f5-ac87-9a92779b8e63.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/7d430bd5-5082-45f0-af25-720ea2f98981.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -6574,7 +6807,7 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-09-14T12:46:21.963655+00:00",
+          "start_timestamp": "2026-09-14T13:00:11.706212+00:00",
           "end_timestamp": "",
           "type": "agent_generated",
           "tags": [],
@@ -6601,7 +6834,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "07b0ce4050ce4c0498cb1d257a89a1a0",
+          "generative_id": "a1cbe1edba484e759aa9b6ab40bc9c1c",
           "plan_id": "",
           "generative_objective": "Click \"View Approvals\" to open the Approvals page, then assert the request card shows the same Request ID, the status \"Pending Approval\", the requester name \"Priya Shah\", a submitted date and time, and the order total.",
           "error_message": "",
@@ -6612,7 +6845,7 @@
           "reasoning": "the approval status displayed on the request card"
         },
         {
-          "instruction_id": "12aa64de-2385-4026-bdd1-4e9c88dd7261",
+          "instruction_id": "58a4901a-a072-4783-95f0-83134c35335c",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Reading the requester name from the request card",
@@ -6623,11 +6856,11 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "51b77999-cf87-438c-bf6b-c9cc4e65ad3e",
-              "instruction_id": "12aa64de-2385-4026-bdd1-4e9c88dd7261",
+              "operation_id": "aa8eaeec-fe44-417a-80c6-034ffec1d262",
+              "instruction_id": "58a4901a-a072-4783-95f0-83134c35335c",
               "instruction": "Reading the requester name from the request card",
               "intent": "Reading the requester name from the request card",
-              "operation_start": "2026-09-14T12:46:21.963742+00:00",
+              "operation_start": "2026-09-14T13:00:11.706289+00:00",
               "operation_end": "",
               "status": "success",
               "command": "TEXTUAL_ANALYZER",
@@ -6639,7 +6872,7 @@
               "frame": "",
               "error_message": "",
               "code_snippet": "",
-              "sub_instruction_obj": "{\"operation\":\"Reading the requester name from the request card\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"TEXTUAL_ANALYZER\"},\"reasoning\":\"the requester name displayed on the request card\",\"variable\":{},\"secrets\":{},\"params\":{},\"code_js\":\"(el(16).textContent.match(/Requested by\\\\s*([^·]+?)(?=\\\\s*·)/) || [])[1]?.trim() ?? null\",\"wrapped_js\":\"(els) => {\\n  const __m = {16: 0};\\n  const el = (i) => els[__m[i]];\\n  const __v = ((el(16).textContent.match(/Requested by\\\\s*([^·]+?)(?=\\\\s*·)/) || [])[1]?.trim() ?? null);\\n  return (typeof __v === 'boolean' ? String(__v) : __v);\\n}\",\"locators\":[\"internal:text=\\\"Requested by Priya Shah · 9/\\\"i\"],\"operator\":\"equals\",\"transforms\":[\"strip\"],\"query\":\"the requester name displayed on the request card\",\"expected_value\":\"Priya Shah\",\"needs_unit_conversion\":false,\"condition\":\"The request card shows the requester name \\\"Priya Shah\\\".\"}",
+              "sub_instruction_obj": "{\"operation\":\"Reading the requester name from the request card\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"TEXTUAL_ANALYZER\"},\"reasoning\":\"the requester name displayed on the request card\",\"variable\":{},\"secrets\":{},\"params\":{},\"code_js\":\"el(16).textContent.replace(/^\\\\s*Requested by\\\\s*/, '').split('·')[0].trim()\",\"wrapped_js\":\"(els) => {\\n  const __m = {16: 0};\\n  const el = (i) => els[__m[i]];\\n  const __v = (el(16).textContent.replace(/^\\\\s*Requested by\\\\s*/, '').split('·')[0].trim());\\n  return (typeof __v === 'boolean' ? String(__v) : __v);\\n}\",\"locators\":[\"internal:text=\\\"Requested by Priya Shah · 9/\\\"i\"],\"operator\":\"equals\",\"transforms\":[\"strip\"],\"query\":\"the requester name displayed on the request card\",\"expected_value\":\"Priya Shah\",\"needs_unit_conversion\":false,\"condition\":\"The request card shows the requester name \\\"Priya Shah\\\".\"}",
               "test_id": "",
               "test_version": "",
               "action": "",
@@ -6650,7 +6883,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/51b77999-cf87-438c-bf6b-c9cc4e65ad3e.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/aa8eaeec-fe44-417a-80c6-034ffec1d262.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -6750,7 +6983,7 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-09-14T12:46:21.963742+00:00",
+          "start_timestamp": "2026-09-14T13:00:11.706289+00:00",
           "end_timestamp": "",
           "type": "agent_generated",
           "tags": [],
@@ -6777,7 +7010,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "07b0ce4050ce4c0498cb1d257a89a1a0",
+          "generative_id": "a1cbe1edba484e759aa9b6ab40bc9c1c",
           "plan_id": "",
           "generative_objective": "Click \"View Approvals\" to open the Approvals page, then assert the request card shows the same Request ID, the status \"Pending Approval\", the requester name \"Priya Shah\", a submitted date and time, and the order total.",
           "error_message": "",
@@ -6788,10 +7021,10 @@
           "reasoning": "the requester name displayed on the request card"
         },
         {
-          "instruction_id": "c19e84a5-75a9-433f-b642-eb2a914c121d",
+          "instruction_id": "b41a44bb-6437-4202-b2e8-65d3a76c64f0",
           "instruction_class": "driver_action",
           "module_id": "",
-          "instruction": "Checking for the submitted date and time on the request card",
+          "instruction": "Checking the submitted date and time on the request card",
           "command": "TEXTUAL_ANALYZER",
           "error": null,
           "parent_instruction_id": "",
@@ -6799,11 +7032,11 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "dd3186e0-0d04-4d36-ad90-105cab3938b1",
-              "instruction_id": "c19e84a5-75a9-433f-b642-eb2a914c121d",
-              "instruction": "Checking for the submitted date and time on the request card",
-              "intent": "Checking for the submitted date and time on the request card",
-              "operation_start": "2026-09-14T12:46:21.963828+00:00",
+              "operation_id": "31c642cf-1f64-4462-915b-186f6c197182",
+              "instruction_id": "b41a44bb-6437-4202-b2e8-65d3a76c64f0",
+              "instruction": "Checking the submitted date and time on the request card",
+              "intent": "Checking the submitted date and time on the request card",
+              "operation_start": "2026-09-14T13:00:11.706364+00:00",
               "operation_end": "",
               "status": "success",
               "command": "TEXTUAL_ANALYZER",
@@ -6815,7 +7048,7 @@
               "frame": "",
               "error_message": "",
               "code_snippet": "",
-              "sub_instruction_obj": "{\"operation\":\"Checking for the submitted date and time on the request card\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"TEXTUAL_ANALYZER\"},\"reasoning\":\"whether a submitted date and time is displayed on the request card\",\"variable\":{},\"secrets\":{},\"params\":{},\"code_js\":\"/\\\\b\\\\d{1,2}\\\\/\\\\d{1,2}\\\\/\\\\d{4},\\\\s*\\\\d{1,2}:\\\\d{2}:\\\\d{2}\\\\s*(AM|PM)\\\\b/.test(el(16).textContent)\",\"wrapped_js\":\"(els) => {\\n  const __m = {16: 0};\\n  const el = (i) => els[__m[i]];\\n  const __v = (/\\\\b\\\\d{1,2}\\\\/\\\\d{1,2}\\\\/\\\\d{4},\\\\s*\\\\d{1,2}:\\\\d{2}:\\\\d{2}\\\\s*(AM|PM)\\\\b/.test(el(16).textContent));\\n  return (typeof __v === 'boolean' ? String(__v) : __v);\\n}\",\"locators\":[\"internal:text=\\\"Requested by Priya Shah · 9/\\\"i\"],\"operator\":\"equals\",\"transforms\":[],\"query\":\"whether a submitted date and time is displayed on the request card\",\"expected_value\":\"true\",\"needs_unit_conversion\":false,\"condition\":\"The request card shows a submitted date and time.\"}",
+              "sub_instruction_obj": "{\"operation\":\"Checking the submitted date and time on the request card\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"TEXTUAL_ANALYZER\"},\"reasoning\":\"whether a submitted date and time is displayed on the request card\",\"variable\":{},\"secrets\":{},\"params\":{},\"code_js\":\"/\\\\b\\\\d{1,2}\\\\/\\\\d{1,2}\\\\/\\\\d{4},\\\\s*\\\\d{1,2}:\\\\d{2}:\\\\d{2}\\\\s*(?:AM|PM)\\\\b/.test(el(16).textContent)\",\"wrapped_js\":\"(els) => {\\n  const __m = {16: 0};\\n  const el = (i) => els[__m[i]];\\n  const __v = (/\\\\b\\\\d{1,2}\\\\/\\\\d{1,2}\\\\/\\\\d{4},\\\\s*\\\\d{1,2}:\\\\d{2}:\\\\d{2}\\\\s*(?:AM|PM)\\\\b/.test(el(16).textContent));\\n  return (typeof __v === 'boolean' ? String(__v) : __v);\\n}\",\"locators\":[\"internal:text=\\\"Requested by Priya Shah · 9/\\\"i\"],\"operator\":\"equals\",\"transforms\":[],\"query\":\"whether a submitted date and time is displayed on the request card\",\"expected_value\":\"true\",\"needs_unit_conversion\":false,\"condition\":\"The request card shows a submitted date and time.\"}",
               "test_id": "",
               "test_version": "",
               "action": "",
@@ -6826,7 +7059,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/dd3186e0-0d04-4d36-ad90-105cab3938b1.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/31c642cf-1f64-4462-915b-186f6c197182.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -6926,7 +7159,7 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-09-14T12:46:21.963828+00:00",
+          "start_timestamp": "2026-09-14T13:00:11.706364+00:00",
           "end_timestamp": "",
           "type": "agent_generated",
           "tags": [],
@@ -6953,7 +7186,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "07b0ce4050ce4c0498cb1d257a89a1a0",
+          "generative_id": "a1cbe1edba484e759aa9b6ab40bc9c1c",
           "plan_id": "",
           "generative_objective": "Click \"View Approvals\" to open the Approvals page, then assert the request card shows the same Request ID, the status \"Pending Approval\", the requester name \"Priya Shah\", a submitted date and time, and the order total.",
           "error_message": "",
@@ -6964,10 +7197,10 @@
           "reasoning": "whether a submitted date and time is displayed on the request card"
         },
         {
-          "instruction_id": "0710fcbb-8cbe-446e-8b15-b1e93e3dba49",
+          "instruction_id": "af8f700c-2c2a-4aa3-841b-2e00cd112089",
           "instruction_class": "driver_action",
           "module_id": "",
-          "instruction": "Reading the order total from the request card",
+          "instruction": "Checking the order total on the request card",
           "command": "TEXTUAL_ANALYZER",
           "error": null,
           "parent_instruction_id": "",
@@ -6975,11 +7208,11 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "8b52e5f9-b880-432a-8ccd-4c012aa4907e",
-              "instruction_id": "0710fcbb-8cbe-446e-8b15-b1e93e3dba49",
-              "instruction": "Reading the order total from the request card",
-              "intent": "Reading the order total from the request card",
-              "operation_start": "2026-09-14T12:46:21.963909+00:00",
+              "operation_id": "fdf35049-5dc8-4f73-99d9-dcfb1e413e64",
+              "instruction_id": "af8f700c-2c2a-4aa3-841b-2e00cd112089",
+              "instruction": "Checking the order total on the request card",
+              "intent": "Checking the order total on the request card",
+              "operation_start": "2026-09-14T13:00:11.706450+00:00",
               "operation_end": "",
               "status": "success",
               "command": "TEXTUAL_ANALYZER",
@@ -6991,7 +7224,7 @@
               "frame": "",
               "error_message": "",
               "code_snippet": "",
-              "sub_instruction_obj": "{\"operation\":\"Reading the order total from the request card\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"TEXTUAL_ANALYZER\"},\"reasoning\":\"the order total displayed on the request card\",\"variable\":{},\"secrets\":{},\"params\":{},\"code_js\":\"el(17).textContent.trim()\",\"wrapped_js\":\"(els) => {\\n  const __m = {17: 0};\\n  const el = (i) => els[__m[i]];\\n  const __v = (el(17).textContent.trim());\\n  return (typeof __v === 'boolean' ? String(__v) : __v);\\n}\",\"locators\":[\"internal:testid=[data-testid=\\\"request-REQ-45221\\\"s] >> internal:text=\\\"$\\\"i\"],\"operator\":\"equals\",\"transforms\":[\"strip\"],\"query\":\"the order total displayed on the request card\",\"expected_value\":\"$33,905.52\",\"needs_unit_conversion\":false,\"condition\":\"The request card shows the order total.\"}",
+              "sub_instruction_obj": "{\"operation\":\"Checking the order total on the request card\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"TEXTUAL_ANALYZER\"},\"reasoning\":\"whether the order total amount is displayed on the request card\",\"variable\":{},\"secrets\":{},\"params\":{},\"code_js\":\"/^\\\\$[\\\\d,]+\\\\.\\\\d{2}$/.test(el(17).textContent.trim())\",\"wrapped_js\":\"(els) => {\\n  const __m = {17: 0};\\n  const el = (i) => els[__m[i]];\\n  const __v = (/^\\\\$[\\\\d,]+\\\\.\\\\d{2}$/.test(el(17).textContent.trim()));\\n  return (typeof __v === 'boolean' ? String(__v) : __v);\\n}\",\"locators\":[\"internal:testid=[data-testid=\\\"request-REQ-88852\\\"s] >> internal:text=\\\"$\\\"i\"],\"operator\":\"equals\",\"transforms\":[],\"query\":\"whether the order total amount is displayed on the request card\",\"expected_value\":\"true\",\"needs_unit_conversion\":false,\"condition\":\"The request card shows the order total.\"}",
               "test_id": "",
               "test_version": "",
               "action": "",
@@ -7002,7 +7235,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/8b52e5f9-b880-432a-8ccd-4c012aa4907e.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/fdf35049-5dc8-4f73-99d9-dcfb1e413e64.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -7010,7 +7243,7 @@
               "navigation_direction": "",
               "tagified_image_url": "",
               "query_variable_name": "order_total_check",
-              "query_variable_value": "$33,905.52",
+              "query_variable_value": "true",
               "query_variable_type": "",
               "expected_value": "",
               "queried_value": "",
@@ -7095,14 +7328,14 @@
               "until_settle_ms": 0,
               "api_data": {},
               "output_variables": {
-                "order_total_check": "$33,905.52"
+                "order_total_check": "true"
               },
               "visual_context": null,
-              "reasoning": "the order total displayed on the request card"
+              "reasoning": "whether the order total amount is displayed on the request card"
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-09-14T12:46:21.963909+00:00",
+          "start_timestamp": "2026-09-14T13:00:11.706450+00:00",
           "end_timestamp": "",
           "type": "agent_generated",
           "tags": [],
@@ -7129,7 +7362,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "07b0ce4050ce4c0498cb1d257a89a1a0",
+          "generative_id": "a1cbe1edba484e759aa9b6ab40bc9c1c",
           "plan_id": "",
           "generative_objective": "Click \"View Approvals\" to open the Approvals page, then assert the request card shows the same Request ID, the status \"Pending Approval\", the requester name \"Priya Shah\", a submitted date and time, and the order total.",
           "error_message": "",
@@ -7137,10 +7370,10 @@
           "reason": "",
           "title": "",
           "used_variables": [],
-          "reasoning": "the order total displayed on the request card"
+          "reasoning": "whether the order total amount is displayed on the request card"
         },
         {
-          "instruction_id": "9cae1959-0c0e-404e-8a44-7a8e80f7a434",
+          "instruction_id": "8d9f7d70-387a-428e-8dd7-7bccebc603e2",
           "instruction_class": "non_driver_action",
           "module_id": "",
           "instruction": "Assertion check",
@@ -7163,11 +7396,11 @@
                         "strip"
                       ],
                       "json_path": null,
-                      "expected": "REQ-45221",
-                      "extracted_value": "{{request_id_matches}}",
-                      "store_key": "request_id_matches",
+                      "expected": "REQ-88852",
+                      "extracted_value": "{{request_id_check}}",
+                      "store_key": "request_id_check",
                       "variable_refs": {
-                        "{{request_id_matches}}": "REQ-45221"
+                        "{{request_id_check}}": "REQ-88852"
                       }
                     },
                     {
@@ -7217,24 +7450,22 @@
                       "description": "The request card shows the order total.",
                       "passed": true,
                       "operator": "equals",
-                      "transforms": [
-                        "strip"
-                      ],
+                      "transforms": [],
                       "json_path": null,
-                      "expected": "$33,905.52",
+                      "expected": "true",
                       "extracted_value": "{{order_total_check}}",
                       "store_key": "order_total_check",
                       "variable_refs": {
-                        "{{order_total_check}}": "$33,905.52"
+                        "{{order_total_check}}": "true"
                       }
                     }
                   ],
                   "sub_checks": [
                     {
                       "description": "The request card shows the same Request ID.",
-                      "store_key": "request_id_matches",
-                      "expected_value": "REQ-45221",
-                      "extracted_value": "{{request_id_matches}}",
+                      "store_key": "request_id_check",
+                      "expected_value": "REQ-88852",
+                      "extracted_value": "{{request_id_check}}",
                       "operator": "equals",
                       "transforms": [
                         "strip"
@@ -7271,12 +7502,10 @@
                     {
                       "description": "The request card shows the order total.",
                       "store_key": "order_total_check",
-                      "expected_value": "$33,905.52",
+                      "expected_value": "true",
                       "extracted_value": "{{order_total_check}}",
                       "operator": "equals",
-                      "transforms": [
-                        "strip"
-                      ]
+                      "transforms": []
                     }
                   ],
                   "composite_operator": "and",
@@ -7297,11 +7526,11 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "44dba21c-02e1-4c83-b770-0572942e1c5c",
-              "instruction_id": "9cae1959-0c0e-404e-8a44-7a8e80f7a434",
+              "operation_id": "5ade1f8b-30db-42f4-9e27-9a4d54b9ede4",
+              "instruction_id": "8d9f7d70-387a-428e-8dd7-7bccebc603e2",
               "instruction": "Assertion check",
               "intent": "Assertion check",
-              "operation_start": "2026-09-14T12:46:22.584936+00:00",
+              "operation_start": "2026-09-14T13:00:12.314250+00:00",
               "operation_end": "",
               "status": "success",
               "command": "ASSERTION",
@@ -7324,7 +7553,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/44dba21c-02e1-4c83-b770-0572942e1c5c.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/5ade1f8b-30db-42f4-9e27-9a4d54b9ede4.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -7397,11 +7626,11 @@
                       "strip"
                     ],
                     "json_path": null,
-                    "expected": "REQ-45221",
-                    "extracted_value": "{{request_id_matches}}",
-                    "store_key": "request_id_matches",
+                    "expected": "REQ-88852",
+                    "extracted_value": "{{request_id_check}}",
+                    "store_key": "request_id_check",
                     "variable_refs": {
-                      "{{request_id_matches}}": "REQ-45221"
+                      "{{request_id_check}}": "REQ-88852"
                     }
                   },
                   {
@@ -7451,24 +7680,22 @@
                     "description": "The request card shows the order total.",
                     "passed": true,
                     "operator": "equals",
-                    "transforms": [
-                      "strip"
-                    ],
+                    "transforms": [],
                     "json_path": null,
-                    "expected": "$33,905.52",
+                    "expected": "true",
                     "extracted_value": "{{order_total_check}}",
                     "store_key": "order_total_check",
                     "variable_refs": {
-                      "{{order_total_check}}": "$33,905.52"
+                      "{{order_total_check}}": "true"
                     }
                   }
                 ],
                 "sub_checks": [
                   {
                     "description": "The request card shows the same Request ID.",
-                    "store_key": "request_id_matches",
-                    "expected_value": "REQ-45221",
-                    "extracted_value": "{{request_id_matches}}",
+                    "store_key": "request_id_check",
+                    "expected_value": "REQ-88852",
+                    "extracted_value": "{{request_id_check}}",
                     "operator": "equals",
                     "transforms": [
                       "strip"
@@ -7505,16 +7732,14 @@
                   {
                     "description": "The request card shows the order total.",
                     "store_key": "order_total_check",
-                    "expected_value": "$33,905.52",
+                    "expected_value": "true",
                     "extracted_value": "{{order_total_check}}",
                     "operator": "equals",
-                    "transforms": [
-                      "strip"
-                    ]
+                    "transforms": []
                   }
                 ],
                 "composite_operator": "and",
-                "verification": "The request card on the Approvals page shows the same Request ID, the status \"Pending Approval\", the requester name \"Priya Shah\", a submitted date and time, and the order total.",
+                "verification": "The request card displays the same Request ID, status \"Pending Approval\", requester name \"Priya Shah\", a submitted date and time, and the order total.",
                 "claim": "the request card shows the same Request ID, the status \"Pending Approval\", the requester name \"Priya Shah\", a submitted date and time, and the order total"
               },
               "assertion_tree": {
@@ -7530,11 +7755,11 @@
                       "strip"
                     ],
                     "json_path": null,
-                    "expected": "REQ-45221",
-                    "extracted_value": "{{request_id_matches}}",
-                    "store_key": "request_id_matches",
+                    "expected": "REQ-88852",
+                    "extracted_value": "{{request_id_check}}",
+                    "store_key": "request_id_check",
                     "variable_refs": {
-                      "{{request_id_matches}}": "REQ-45221"
+                      "{{request_id_check}}": "REQ-88852"
                     }
                   },
                   {
@@ -7584,15 +7809,13 @@
                     "description": "The request card shows the order total.",
                     "passed": true,
                     "operator": "equals",
-                    "transforms": [
-                      "strip"
-                    ],
+                    "transforms": [],
                     "json_path": null,
-                    "expected": "$33,905.52",
+                    "expected": "true",
                     "extracted_value": "{{order_total_check}}",
                     "store_key": "order_total_check",
                     "variable_refs": {
-                      "{{order_total_check}}": "$33,905.52"
+                      "{{order_total_check}}": "true"
                     }
                   }
                 ],
@@ -7600,7 +7823,7 @@
                 "passed": true,
                 "step": 4,
                 "is_final": true,
-                "verification": "The request card on the Approvals page shows the same Request ID, the status \"Pending Approval\", the requester name \"Priya Shah\", a submitted date and time, and the order total.",
+                "verification": "The request card displays the same Request ID, status \"Pending Approval\", requester name \"Priya Shah\", a submitted date and time, and the order total.",
                 "error_message": null,
                 "duration_ms": 0
               },
@@ -7642,7 +7865,7 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-09-14T12:46:22.584936+00:00",
+          "start_timestamp": "2026-09-14T13:00:12.314250+00:00",
           "end_timestamp": "",
           "type": "agent_generated",
           "tags": [],
@@ -7669,7 +7892,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "07b0ce4050ce4c0498cb1d257a89a1a0",
+          "generative_id": "a1cbe1edba484e759aa9b6ab40bc9c1c",
           "plan_id": "",
           "generative_objective": "Click \"View Approvals\" to open the Approvals page, then assert the request card shows the same Request ID, the status \"Pending Approval\", the requester name \"Priya Shah\", a submitted date and time, and the order total.",
           "error_message": "",
@@ -7685,10 +7908,9 @@
       "result_code": null,
       "bifurcation_context": [],
       "approach_reason": [
-        "Opened the Approvals page by selecting “View Approvals.”",
-        "Confirmed that the request card displayed Request ID REQ-45221 with a Pending Approval status.",
-        "Confirmed that the request was submitted by Priya Shah, includes a submitted date and time, and has an order total of $33,905.52.",
-        "The requested Approvals page was opened successfully and the request details matched the expected information."
+        "Opened the Approvals page as requested.",
+        "Confirmed that the request card displays Request ID REQ-88852 with a Pending Approval status.",
+        "Confirmed the request was submitted by Priya Shah and includes a submitted date and time and an order total."
       ],
       "one_liner": null
     }
@@ -7696,7 +7918,7 @@
   "modules": [],
   "uploaded_files": [],
   "test_params": [],
-  "test_level_variables": "[{\"name\":\"quote_builder_product_line_check\",\"value\":\"true\",\"value_type\":\"test_level\",\"variable_description\":\"ANALYZE result\"},{\"name\":\"quote_builder_product_quantity_check\",\"value\":\"30\",\"value_type\":\"test_level\",\"variable_description\":\"ANALYZE result\"},{\"name\":\"spending_limit_banner_check\",\"value\":\"true\",\"value_type\":\"test_level\",\"variable_description\":\"ANALYZE result\"},{\"name\":\"primary_action_button_check\",\"value\":\"Submit for Approval\",\"value_type\":\"test_level\",\"variable_description\":\"ANALYZE result\"},{\"name\":\"order_total_threshold_check\",\"value\":\"$33,905.52\",\"value_type\":\"test_level\",\"variable_description\":\"ANALYZE result\"},{\"name\":\"submitted_for_approval_heading_check\",\"value\":\"Submitted for Approval\",\"value_type\":\"test_level\",\"variable_description\":\"ANALYZE result\"},{\"name\":\"request_id_pattern_check\",\"value\":\"true\",\"value_type\":\"test_level\",\"variable_description\":\"ANALYZE result\"},{\"name\":\"pending_approval_status_check\",\"value\":\"Pending Approval\",\"value_type\":\"test_level\",\"variable_description\":\"ANALYZE result\"},{\"name\":\"order_total_check\",\"value\":\"$33,905.52\",\"value_type\":\"test_level\",\"variable_description\":\"ANALYZE result\"},{\"name\":\"request_id_matches\",\"value\":\"REQ-45221\",\"value_type\":\"test_level\",\"variable_description\":\"ANALYZE result\"},{\"name\":\"request_status_check\",\"value\":\"Pending Approval\",\"value_type\":\"test_level\",\"variable_description\":\"ANALYZE result\"},{\"name\":\"requester_name_check\",\"value\":\"Priya Shah\",\"value_type\":\"test_level\",\"variable_description\":\"ANALYZE result\"},{\"name\":\"submitted_date_time_check\",\"value\":\"true\",\"value_type\":\"test_level\",\"variable_description\":\"ANALYZE result\"}]",
+  "test_level_variables": "[{\"name\":\"quote_builder_product_line_check\",\"value\":\"true\",\"value_type\":\"test_level\",\"variable_description\":\"ANALYZE result\"},{\"name\":\"quote_builder_product_quantity_check\",\"value\":\"30\",\"value_type\":\"test_level\",\"variable_description\":\"ANALYZE result\"},{\"name\":\"spending_limit_banner_check\",\"value\":\"This order exceeds the $25,000 spending limit and requires Procurement Manager approval.\",\"value_type\":\"test_level\",\"variable_description\":\"ANALYZE result\"},{\"name\":\"primary_action_button_check\",\"value\":\"Submit for Approval\",\"value_type\":\"test_level\",\"variable_description\":\"ANALYZE result\"},{\"name\":\"order_total_threshold_check\",\"value\":\"true\",\"value_type\":\"test_level\",\"variable_description\":\"ANALYZE result\"},{\"name\":\"submitted_for_approval_heading_check\",\"value\":\"Submitted for Approval\",\"value_type\":\"test_level\",\"variable_description\":\"ANALYZE result\"},{\"name\":\"request_id_pattern_check\",\"value\":\"true\",\"value_type\":\"test_level\",\"variable_description\":\"ANALYZE result\"},{\"name\":\"pending_approval_status_check\",\"value\":\"Pending Approval\",\"value_type\":\"test_level\",\"variable_description\":\"ANALYZE result\"},{\"name\":\"order_total_check\",\"value\":\"true\",\"value_type\":\"test_level\",\"variable_description\":\"ANALYZE result\"},{\"name\":\"request_id_check\",\"value\":\"REQ-88852\",\"value_type\":\"test_level\",\"variable_description\":\"ANALYZE result\"},{\"name\":\"request_status_check\",\"value\":\"Pending Approval\",\"value_type\":\"test_level\",\"variable_description\":\"ANALYZE result\"},{\"name\":\"requester_name_check\",\"value\":\"Priya Shah\",\"value_type\":\"test_level\",\"variable_description\":\"ANALYZE result\"},{\"name\":\"submitted_date_time_check\",\"value\":\"true\",\"value_type\":\"test_level\",\"variable_description\":\"ANALYZE result\"}]",
   "test_global_variables": [
     {
       "id": 114658,
@@ -7719,8 +7941,8 @@
     {
       "id": 114660,
       "name": "exact_limit_quote_locator",
-      "value": "http://localhost:3000/quote?reset=1&seed=d7:40",
-      "session_value": "http://localhost:3000/quote?reset=1&seed=d7:40",
+      "value": "",
+      "session_value": "",
       "is_persist": false,
       "environment_id": 0,
       "environment_name": "No Env"
@@ -7757,15 +7979,6 @@
       "name": "workstation_product",
       "value": "NovaStation X Workstation",
       "session_value": "NovaStation X Workstation",
-      "is_persist": false,
-      "environment_id": 0,
-      "environment_name": "No Env"
-    },
-    {
-      "id": 114666,
-      "name": "monitor_product",
-      "value": "NovaView 27\" 4K Monitor",
-      "session_value": "NovaView 27\" 4K Monitor",
       "is_persist": false,
       "environment_id": 0,
       "environment_name": "No Env"

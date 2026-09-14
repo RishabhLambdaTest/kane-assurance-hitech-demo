@@ -14,7 +14,8 @@ A PRD goes in. kane-cli extracts use-cases, designs tests from them, runs those 
 | `.context/` | The assurance graph kane-cli built from the PRD |
 | `.testmuai/tests/` | The designed tests (`*_test.md`) |
 | `.testmuai/variables/novatech.json` | Test data for the `{{placeholders}}` in those tests |
-| `.github/workflows/assurance-pipeline.yml` | The same flow as a CI pipeline |
+| `.testmuai/tests/output-*/` | Each test's recording and `Result.md` — what makes re-runs replay instead of re-author |
+| `.github/workflows/` | `run-tests.yml` (run the committed tests) and `assurance-pipeline.yml` (the full flow) |
 | `RUN-GUIDE.md` | **Line-by-line runbook — start here** |
 
 ## The app under test
