@@ -84,7 +84,15 @@ Both workflows build and serve the app on the runner, so nothing needs deploying
 
 Both are manual: **Actions → pick the workflow → Run workflow**. Nothing runs automatically on push.
 
-`Run Tests` takes an optional `test_file` input to run a single test instead of all of them. Results land in the job summary with a Test Manager link per test, and the evidence packs are uploaded as an artifact.
+`Run Tests` inputs, all optional: `test_file` runs one test instead of all; `project_id` / `folder_id` override where results land in Test Manager (they default to the project this repo already uses). Results appear in the job summary with a Test Manager link per test, and the evidence packs upload as a `test-results` artifact.
+
+To open evidence from a CI run:
+
+```bash
+gh run download <run-id> -D ci-evidence
+kane-cli evidence validate ci-evidence/test-results/evidence-packs/*.evidence --profile L1
+kane-cli evidence serve ci-evidence/test-results/evidence-packs/<pack>.evidence
+```
 
 ## Notes
 

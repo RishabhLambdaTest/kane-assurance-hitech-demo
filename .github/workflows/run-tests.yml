@@ -14,11 +14,24 @@ on:
         description: "Run one test file (optional - blank = run every *_test.md)"
         required: false
         type: string
+      project_id:
+        description: "Test Manager project ID (optional - blank = the default below)"
+        required: false
+        type: string
+      folder_id:
+        description: "Test Manager folder ID (optional - blank = the default below)"
+        required: false
+        type: string
 
 env:
   KANE_CLI_USER_AGENT: github-actions
   KANE_CLI_USERNAME: ${{ secrets.LT_USERNAME }}
   KANE_CLI_ACCESS_KEY: ${{ secrets.LT_ACCESS_KEY }}
+  # Where CI runs land in Test Manager. Without these, runs produce evidence
+  # packs but no hosted report, so the job summary has no link to open.
+  # Project: SCH_4PWSZFCS97SXTYRF9DZDV / folder: RishabhKaneCli
+  PROJECT_ID: ${{ inputs.project_id || '01M2FWZEX280XWYQE8CHKRXX2X' }}
+  FOLDER_ID: ${{ inputs.folder_id || '01M2FX0V2P5X8M33CYXA572N76' }}
 
 jobs:
   run-tests:
