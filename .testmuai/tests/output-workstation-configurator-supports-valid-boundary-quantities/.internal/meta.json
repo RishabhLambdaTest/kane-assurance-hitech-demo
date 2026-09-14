@@ -1,0 +1,25 @@
+{
+  "commit_id": "1a24451f-aaa7-4677-bf74-ca5dee3f3aad",
+  "test_id": "e9b25e12-d8f4-4568-8b1f-e6388c4fb680",
+  "testcase_id": "01M2FXTDZD57RHRZ7253FH2W14",
+  "project_id": "01M2FWZEX280XWYQE8CHKRXX2X",
+  "folder_id": "01M2FX0V2P5X8M33CYXA572N76",
+  "org_id": "588659",
+  "session_name": "workstation-configurator-supports-valid-boundary-quantities",
+  "executions": [
+    {
+      "execution_id": "7e1974fc-e448-4d5c-9fd3-aa9e0c2fbf85",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-09-14T12:32:37.524Z"
+    },
+    {
+      "execution_id": "ca4b6ba4-7fe3-4774-956b-17b20083f3ad",
+      "run_kind": "replay",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-09-14T12:33:41.687Z"
+    }
+  ]
+}

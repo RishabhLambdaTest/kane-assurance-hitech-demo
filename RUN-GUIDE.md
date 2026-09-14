@@ -151,7 +151,6 @@ kane-cli design tests --use-case uc-1 --mode ci --max 2
   kane-cli context sessions
   kane-cli design tests --resume <session-id> --mode ci
   ```
-
 - Designing against a use-case that isn't approved yet: add `--allow-unreviewed`.
 - Redesigning a use-case that already has a design: add `--force`.
 
@@ -190,15 +189,15 @@ Add any missing key to `.testmuai/variables/novatech.json`:
 
 Values that match the app's built-in test hooks:
 
-| Need | Value |
-|---|---|
-| Approval path (over $25K) | `http://localhost:3000/quote?seed=d1:30` |
-| Over credit limit ($150K) | `http://localhost:3000/quote?seed=d3:60` |
-| Over card cap ($10K) | `http://localhost:3000/quote?seed=d6:50` |
-| Approver persona | `http://localhost:3000/approvals?role=approver` |
-| Valid PO number | `PO-123456` |
-| Card that succeeds | `4111111111111111` · `12/30` · `123` |
-| Card that is declined | `4000000000000000` |
+| Need                      | Value                                             |
+| ------------------------- | ------------------------------------------------- |
+| Approval path (over $25K) | `http://localhost:3000/quote?seed=d1:30`        |
+| Over credit limit ($150K) | `http://localhost:3000/quote?seed=d3:60`        |
+| Over card cap ($10K)      | `http://localhost:3000/quote?seed=d6:50`        |
+| Approver persona          | `http://localhost:3000/approvals?role=approver` |
+| Valid PO number           | `PO-123456`                                     |
+| Card that succeeds        | `4111111111111111` · `12/30` · `123`      |
+| Card that is declined     | `4000000000000000`                              |
 
 A test that runs with an unresolved `{{var}}` fails on the step that needs it.
 
@@ -222,6 +221,23 @@ kane-cli testmd run .testmuai/tests/<file>_test.md \
 - The final `test_md_done` NDJSON line carries `overall_status` and a Test Manager `share_url`.
 - The evidence pack path is printed on **stderr**: `evidence: view locally with kane-cli evidence serve <path>`.
 - Override the start URL for one run with `--url http://localhost:3000/?reset=1`.
+
+#### When a step fails for a test-design reason
+
+A designed test is prose, so fixing it means editing English — not code, and not the app. Re-running replays the untouched steps and re-authors from the changed one. Two failures seen on this repo, both reported by kane-cli as `automation_bug` rather than a product bug:
+
+| Failure reason in `Result.md` | Cause | Fix |
+|---|---|---|
+| `DAG cycle detector forced stuck — repeated cycles without resolution` | One step asked for a sweep of 12 configuration combinations, which looks like a loop | Split it, or cut it to a few representative combinations |
+| `AP determined agent is stuck — no viable actions remain` | The step asserted "the price finishes updating **within 200 ms**". The agent can't measure a millisecond budget, so it retries the check until it stalls | Assert the observable outcome instead — e.g. "the running unit price reads $4,599.00" |
+
+**Rule of thumb:** keep timing and other performance NFRs out of browser assertions. Assert values, text and states the agent can actually read. Check where a run stopped with:
+
+```bash
+grep -E "^## Step|Reason" .testmuai/tests/output-<test-name>/Result.md
+```
+
+Skipped steps leave their ACs `blocked` in `cover gaps` — meaning never exercised, which is different from failing.
 
 Run every designed test:
 
@@ -303,24 +319,24 @@ The app implements v1 only, so v2 requirements surface as gaps or failing tests.
 
 ## Command / flag reference (verified on 0.8.10)
 
-| Command | Flags that exist | Notes |
-|---|---|---|
-| `context ingest <src...>` | `--as <id>` · `--mode interactive\|agent\|ci\|override` · `--plan` · `--force` · `--trust auto\|hold` | `--force` only with a mode that extracts (`agent`/`override`), never with `ci` |
-| `context extract` | `--mode` · `--force` · `--plan` · `--source <id>` · `--resume <sid>` · `--message` · `--trust` | `--mode` is required headless |
-| `context review` | `--verdicts <file>` · `--approve <refs...>` · `--skip` · `--defer` · `--mode agent\|ci` · `--queue` · `--json` | There is **no** `--approve-all` |
-| `context list` | `--type source\|usecase` · `--inferred` · `--stale` · `--all` · `--json` | Type is `usecase`, **not** `use-case`. There is **no** `--trust` filter |
-| `context view` | `--out <path>` · `--open` · `--no-open` · `--json` | Flag is `--out`, **not** `--output` |
-| `context explain <ref>` | `--json` | Replays recorded reasoning, no model call |
-| `context sessions` | `[show\|clean] [sid]` · `--all` · `--json` | For resuming paused sessions |
-| `design tests` | `--use-case <ref>` · `--max <n>` · `--mode` · `--force` · `--resume` · `--message` · `--plan` · `--allow-unreviewed` · `--phase` · `--strength` | Exit 3 = paused and resumable |
-| `cover` | `--from <pack>` · `--json` · `--mode` | Depth from an evidence pack |
-| `cover gaps [uc]` | `--stage design\|cover\|all` · `--top <n>` · `--rollup lenient\|strict` · `--json` · `--mode` | |
-| `testmd run <path>` | `--url` · `--headless` · `--agent` · `--variables-file` · `--variables` · `--timeout` · `--max-steps` · `--name` · `--mode` · `--assertion-mode` | No `--retry` flag on 0.8.10 |
-| `testrun run` | `--match <regex>` · `--tags` · `--from-context` · `--parallel` · `--headless` · `--dry-run` · `--on-failure` · `--remote` | Batch runner. Takes **no** `--url` |
-| `maintain reconcile` | `--from <file>` · `--source-id <id>` · `--mode` · `--plan` · `--apply [path]` | |
-| `evidence validate <target>` | `--profile L0\|L1` · `--json` | |
-| `evidence merge <targets...>` | `--run-id` (required) · `-o/--out` · `--title` · `--on-collision` · `--rules` · `--json` · `--no-finalize` | |
-| `evidence serve <paths...>` | | Opens a local viewer |
+| Command                         | Flags that exist                                                                                                                                                              | Notes                                                                                    |
+| ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `context ingest <src...>`     | `--as <id>` · `--mode interactive\|agent\|ci\|override` · `--plan` · `--force` · `--trust auto\|hold`                                                               | `--force` only with a mode that extracts (`agent`/`override`), never with `ci`   |
+| `context extract`             | `--mode` · `--force` · `--plan` · `--source <id>` · `--resume <sid>` · `--message` · `--trust`                                                            | `--mode` is required headless                                                          |
+| `context review`              | `--verdicts <file>` · `--approve <refs...>` · `--skip` · `--defer` · `--mode agent\|ci` · `--queue` · `--json`                                             | There is**no** `--approve-all`                                                   |
+| `context list`                | `--type source\|usecase` · `--inferred` · `--stale` · `--all` · `--json`                                                                                         | Type is`usecase`, **not** `use-case`. There is **no** `--trust` filter |
+| `context view`                | `--out <path>` · `--open` · `--no-open` · `--json`                                                                                                                 | Flag is`--out`, **not** `--output`                                             |
+| `context explain <ref>`       | `--json`                                                                                                                                                                    | Replays recorded reasoning, no model call                                                |
+| `context sessions`            | `[show\|clean] [sid]` · `--all` · `--json`                                                                                                                             | For resuming paused sessions                                                             |
+| `design tests`                | `--use-case <ref>` · `--max <n>` · `--mode` · `--force` · `--resume` · `--message` · `--plan` · `--allow-unreviewed` · `--phase` · `--strength`  | Exit 3 = paused and resumable                                                            |
+| `cover`                       | `--from <pack>` · `--json` · `--mode`                                                                                                                                 | Depth from an evidence pack                                                              |
+| `cover gaps [uc]`             | `--stage design\|cover\|all` · `--top <n>` · `--rollup lenient\|strict` · `--json` · `--mode`                                                                      |                                                                                          |
+| `testmd run <path>`           | `--url` · `--headless` · `--agent` · `--variables-file` · `--variables` · `--timeout` · `--max-steps` · `--name` · `--mode` · `--assertion-mode` | No`--retry` flag on 0.8.10                                                             |
+| `testrun run`                 | `--match <regex>` · `--tags` · `--from-context` · `--parallel` · `--headless` · `--dry-run` · `--on-failure` · `--remote`                              | Batch runner. Takes**no** `--url`                                                |
+| `maintain reconcile`          | `--from <file>` · `--source-id <id>` · `--mode` · `--plan` · `--apply [path]`                                                                                   |                                                                                          |
+| `evidence validate <target>`  | `--profile L0\|L1` · `--json`                                                                                                                                             |                                                                                          |
+| `evidence merge <targets...>` | `--run-id` (required) · `-o/--out` · `--title` · `--on-collision` · `--rules` · `--json` · `--no-finalize`                                                |                                                                                          |
+| `evidence serve <paths...>`   |                                                                                                                                                                               | Opens a local viewer                                                                     |
 
 ---
 
@@ -344,17 +360,17 @@ kane-cli context ingest docs/prd-enterprise-procurement.md --mode ci   # then St
 
 ## Troubleshooting
 
-| Symptom | Cause / fix |
-|---|---|
-| `(no matching nodes)` | Wrong directory — `cd` to the repo root, not `app/` |
+| Symptom                                                                            | Cause / fix                                                                                                   |
+| ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `(no matching nodes)`                                                            | Wrong directory —`cd` to the repo root, not `app/`                                                       |
 | `--plan/--force/--trust steer the extraction — not available when only landing` | `--force` with `--mode ci` on ingest. Use `context extract --force`, or `ingest --mode agent --force` |
-| ingest prints `unchanged` | Same file content already landed. Not an error — go to Step 2 |
-| extract does nothing | Snapshot already extracted. Add `--force` |
-| `design tests` exits 3 | Session paused. `kane-cli context sessions`, then `design tests --resume <sid> --mode ci` |
-| `design tests` refuses: use-case not reviewed | Approve it (Step 3), or pass `--allow-unreviewed` |
-| Test step can't find a page or product | App not running on :3000, or a `{{variable}}` has no value |
-| Stale quote/approval state between tests | Start URL must include `?reset=1` |
-| `evidence merge` refuses outright | One input pack failed L1. Validate each, merge only the good ones |
+| ingest prints`unchanged`                                                         | Same file content already landed. Not an error — go to Step 2                                                |
+| extract does nothing                                                               | Snapshot already extracted. Add`--force`                                                                    |
+| `design tests` exits 3                                                           | Session paused.`kane-cli context sessions`, then `design tests --resume <sid> --mode ci`                  |
+| `design tests` refuses: use-case not reviewed                                    | Approve it (Step 3), or pass`--allow-unreviewed`                                                            |
+| Test step can't find a page or product                                             | App not running on :3000, or a`{{variable}}` has no value                                                   |
+| Stale quote/approval state between tests                                           | Start URL must include`?reset=1`                                                                            |
+| `evidence merge` refuses outright                                                | One input pack failed L1. Validate each, merge only the good ones                                             |
 
 ## Running it in CI instead
 
