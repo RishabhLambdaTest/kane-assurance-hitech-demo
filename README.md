@@ -1,201 +1,237 @@
-# Kane CLI Assurance — Hi-Tech Enterprise Procurement STLC Demo
+# NovaTech Hi-Tech Assurance Flow
 
-A ready-to-fork demo repository that maps Kane CLI Assurance to every phase of the Software Testing Lifecycle, using a **Hi-Tech B2B quote-to-order flow**. Enterprise customers configure laptops and workstations, build quotes with volume pricing and services, and pay on account. Orders above the spending limit go through an approval workflow.
+A requirements-to-evidence assurance pipeline built with [`kane-cli`](https://www.npmjs.com/package/@testmuai/kane-cli), using a **Hi-Tech enterprise procurement (quote-to-order)** flow as the product under test. A PRD goes in one end. A sealed, auditable evidence pack comes out the other, with every acceptance criterion traced through a designed test to a proven (or failed) run.
 
-Each STLC phase is a separate GitHub Actions workflow. Run them one at a time to demonstrate a single phase, or use the orchestrator to run everything end-to-end.
+- **Product under test:** NovaTech Business Store (`app/`), a B2B portal where corporate buyers configure laptops and workstations, build quotes with volume pricing and services, pay on account, and route high-value orders through approval.
+- **Requirements:** [`docs/prd-enterprise-procurement.md`](docs/prd-enterprise-procurement.md) (v1) and [`docs/prd-enterprise-procurement-v2.md`](docs/prd-enterprise-procurement-v2.md) (the change used in the maintenance demo).
+- **Step-by-step local runbook:** [`RUN-GUIDE.md`](RUN-GUIDE.md)
 
-**App under test:** NovaTech Business Store (`app/`). Run it locally with `cd app && npm install && npm run dev`, or deploy it with workflow 0.
+## What's in the repo
 
-## Why this flow for Hi-Tech enterprise prospects
-
-It covers the requirement types that enterprise hi-tech QA teams struggle to keep traced:
-
-| Requirement type | Where it lives in the PRD |
+| Path | What it is |
 |---|---|
-| Product compatibility rules | FR-2 configurator (64 GB needs Core Ultra 9, 4 TB is Workstation only) |
-| Tiered / contract pricing | FR-3 volume discounts (5% / 10% / 15%) |
-| Per-device services with conditions | FR-4 (Autopilot is Windows only, imaging needs 10+ devices) |
-| Supply constraints | FR-3/FR-5 backorders and lead-time-driven delivery dates; EOL products |
-| Financial controls | FR-6 PO format, $150K credit limit, $10K card cap, 3-strike card lockout |
-| Governance / SoD | FR-7 $25K approval threshold, rejection reasons, no self-approval |
-| Localization / compliance | FR-5 country postal formats, tax-exemption certificates |
+| `docs/prd-enterprise-procurement.md` | Source requirements (v1): 8 functional requirements |
+| `docs/prd-enterprise-procurement-v2.md` | Changed PRD: Device-as-a-Service, two-level approval, Net 45 |
+| `app/` | NovaTech Business Store (Next.js 14). Implements **v1 only** |
+| `.context/` | The assurance graph: sources, use-cases, ACs, scenarios, tests, and the review/commit history that produced them |
+| `.testmuai/tests/*_test.md` | Designed, runnable tests (1:1 with committed test nodes in the graph) |
+| `.testmuai/variables/novatech.json` | Test data for the `{{placeholders}}` in the tests (`{{start_url}}`, `{{laptop_product}}`, …) |
+| `.testmuai/evidence/*.evidence` | Sealed evidence pack from a verified local run |
+| `.github/workflows/assurance-pipeline.yml` | The 7-stage CI pipeline |
+| `.github/actions/kane-setup/` | Composite action: installs kane-cli and Chrome, then authenticates |
+| `.github/actions/start-app/` | Composite action: builds the app and serves it on `localhost:3000` inside the runner |
+| `.github/scripts/` | Helper scripts the workflow calls (auto-approve, design loop, test runner, evidence merge, HTML report) |
+| `RUN-GUIDE.md` | Manual, command-by-command runbook |
 
-## The STLC → GitHub Actions mapping
+## Why this flow for Hi-Tech enterprise
 
-| # | STLC Phase | Workflow | Kane CLI Commands | What the prospect sees |
-|---|-----------|----------|-------------------|----------------------|
-| 1 | Requirements Analysis | `1-requirements-analysis.yml` | `context ingest` + `context extract` | AI reads the PRD, extracts cited use-cases |
-| 2 | Test Planning | `2-test-planning.yml` | `context review` + `cover gaps` | Human review gate + risk-ranked gap analysis |
-| 3 | Test Design | `3-test-design.yml` | `design tests` | AI designs ACs, scenarios, and traced tests |
-| 4 | Test Development | `4-test-development.yml` | `testmd run` | Agent authors tests in a real browser |
-| 5 | Test Execution | `5-test-execution.yml` | `testrun run` + HyperExecute | Batch replay with sealed evidence packs |
-| 6 | Coverage & Reporting | `6-coverage-reporting.yml` | `cover` + `cover gaps` | Two-axis coverage: proven vs owed |
-| 7 | Maintenance | `7-maintenance.yml` | `maintain reconcile` + `maintain evolve` | PRD changed → suite adapts automatically |
-| All | Full pipeline | `run-all-stlc-demo.yml` | All of the above | End-to-end in one click (self-hosted runner) |
+It covers the requirement types enterprise hi-tech QA teams find hardest to keep traced:
 
-## Quick start
+| Requirement type | PRD section |
+|---|---|
+| Product compatibility rules | FR-2: 64 GB needs Core Ultra 9; 4 TB is Workstation only; disabled options show a reason |
+| Tiered / contract pricing | FR-3: volume discounts of 5% / 10% / 15% at 10 / 50 / 100 units |
+| Conditional per-device services | FR-4: Autopilot is Windows only; imaging needs 10+ devices |
+| Supply constraints | FR-1/3/5: backorders, lead-time-driven delivery dates, End-of-Life products |
+| Financial controls | FR-6: PO format, $150K credit limit, $10K card cap, 3-strike card lockout |
+| Governance / segregation of duties | FR-7: $25K approval threshold, rejection reasons, no self-approval |
+| Localization / compliance | FR-5: country postal formats, tax-exemption certificates |
 
-### 1. Fork this repo
+## The flow
 
-### 2. Add secrets
+```mermaid
+flowchart LR
+    PRD["📄 prd-enterprise-procurement.md"]
 
-**Settings → Secrets → Actions:**
+    subgraph S1["1 · Ingest PRD"]
+        direction TB
+        A1["context ingest"] --> A2["context extract"] --> A3["approve use-cases"]
+    end
 
-| Secret | Required | Where to find it |
-|--------|----------|-----------------|
-| `LT_USERNAME` | Yes | TestMu AI dashboard → Settings → Keys |
-| `LT_ACCESS_KEY` | Yes | Same page |
-| `VERCEL_TOKEN` | Optional | For auto-deploying the NovaTech app |
-| `VERCEL_ORG_ID` | Optional | Vercel dashboard → Settings |
-| `VERCEL_PROJECT_ID` | Optional | Vercel project settings |
+    subgraph S2["2 · Design test cases"]
+        direction TB
+        B1["design tests\n(per use-case)"] --> B2["ACs + scenarios\n+ 1:1 tests"] --> B3["approve derived nodes"]
+    end
 
-### 3. Choose your demo path
+    subgraph S3["3 · Run\n(author & replay)"]
+        direction TB
+        C0["start NovaTech app\nlocalhost:3000"] --> C1["testmd run\nper _test.md"] --> C2{"seen\nbefore?"}
+        C2 -->|no| C3["author the flow"]
+        C2 -->|yes| C4["replay from\nrecording"]
+        C3 --> C5["evidence pack\n+ share URL"]
+        C4 --> C5
+    end
 
-**Path A — Run everything at once:** Actions → "Kane CLI Assurance - STLC Demo" → Run workflow. This runs on a self-hosted runner; see the setup notes at the top of `run-all-stlc-demo.yml`.
+    subgraph S4["4 · Coverage"]
+        direction TB
+        D1["cover gaps"] --> D2["designed × proven\nribbon"] --> D3{"≥ 70%\ncomplete?"}
+    end
 
-**Path B — Phase by phase (recommended for live demos):** Run workflows 1 → 7 one at a time. Between phases you can explain what happened, open the artifacts, and take questions.
+    subgraph S5["5 · Maintain\n(rerun-regression)"]
+        direction TB
+        E1["maintain reconcile\n(v2 PRD)"] --> E2["review card\n(human approves)"]
+        E3["nightly cron /\nmanual dispatch"] --> E4["full regression\nrerun"]
+    end
 
-### 4. The maintenance demo (the closer)
+    subgraph S6["6 · Evidence"]
+        direction TB
+        F1["validate every pack\n(L1)"] --> F3["evidence merge"] --> F5["sealed .evidence\nbundle (90d artifact)"]
+    end
 
-After phases 1–6 complete with `prd-enterprise-procurement.md` (v1):
+    subgraph S7["7 · Publish\n(GitHub Pages)"]
+        direction TB
+        G1["static HTML report"] --> G2["deploy-pages"]
+    end
 
-1. Go to Actions → "7 · Maintenance"
-2. Set action to `reconcile`
-3. Set new_prd to `docs/prd-enterprise-procurement-v2.md`
-4. Run it
+    PRD --> S1 --> S2 --> S3 --> S4 --> S6
+    S4 -.gate: pct < 70%.-> X["❌ fail pipeline"]
+    S3 --> S5 --> S6 --> S7
 
-The v2 PRD changes the approval and payment rules and adds a new subscription offering. The changeset should show:
-- `[MODIFY]` spend approval use-case — single approver becomes a two-level chain (Finance Director above $100K)
-- `[MODIFY]` purchase-order payment use-case — Net 45 terms for orders above $50K
-- `[ADD]` Device-as-a-Service subscription use-case(s) — 36-month term, 10-device minimum, PO-only, monthly pricing formula
-
-Then run workflow 6 again. The coverage report now shows gaps for the new and changed requirements. This is the "test rot is structurally impossible" moment.
-
-## Repository structure
-
-```
-.
-├── .github/workflows/
-│   ├── 0-setup-deploy.yml              ← deploy NovaTech app
-│   ├── 1-requirements-analysis.yml     ← ingest + extract
-│   ├── 2-test-planning.yml             ← review + gaps
-│   ├── 3-test-design.yml               ← design tests
-│   ├── 4-test-development.yml          ← testmd run (author)
-│   ├── 5-test-execution.yml            ← testrun run (batch)
-│   ├── 6-coverage-reporting.yml        ← cover + gaps
-│   ├── 7-maintenance.yml               ← reconcile + evolve
-│   └── run-all-stlc-demo.yml           ← orchestrator (self-hosted)
-├── app/                                ← NovaTech Business Store (Next.js 14)
-├── docs/
-│   ├── prd-enterprise-procurement.md       ← v1 PRD
-│   └── prd-enterprise-procurement-v2.md    ← v2 PRD (DaaS + 2-level approval + Net 45)
-├── scripts/
-│   └── run-demo.sh                     ← run everything locally
-└── README.md
+    style X fill:#f66,color:#fff
 ```
 
-## The NovaTech Business app
+Stage 3 is where the "author once, replay forever" model pays off. The first run of a new test authors it live: an AI agent drives a real browser through the steps. Every later run replays the recorded steps deterministically, with no LLM cost and no flakiness from re-reasoning. That lasts until the test's wording or an earlier step changes, which invalidates the recording and re-authors from that point on.
 
-| Route | What it covers |
+## Verified local run
+
+A real run on kane-cli 0.8.10 against `http://localhost:3000`:
+
+| Stage | Command | Result | Time |
+|---|---|---|---|
+| Ingest | `context ingest docs/prd-enterprise-procurement.md --mode ci` | Source `prd-enterprise-procurement` landed | ~5 s |
+| Extract | `context extract --mode ci` | **8 use-cases** extracted, each cited to the PRD | ~3 min |
+| Approve | `.github/scripts/approve-derived.sh` | 8 use-cases → trusted | ~5 s |
+| Design | `design tests --use-case uc-8 --mode ci --max 2` | 3 ACs, 2 scenarios, 2 tests | ~7 min |
+| Run | `testmd run <laptop-configurator…_test.md> --agent --headless` | 🟢 **Passed**, 4/4 steps | ~4 min |
+| Coverage | `cover gaps` | uc-8 designed 100% · proven 63% | instant |
+
+Use-cases extracted from the PRD:
+
+| ID | Use-case |
 |---|---|
-| `/` | Catalog: in stock, backorder, and End of Life badges (FR-1) |
-| `/configure/[id]` | Configurator with compatibility rules and live price (FR-2) |
-| `/quote` | Quote builder: volume pricing, services, backorders, Save Quote (FR-3, FR-4) |
-| `/checkout/shipping` | Saved sites, postal validation, tax exemption, delivery methods (FR-5) |
-| `/checkout/payment` | Purchase order or corporate card (FR-6) |
-| `/checkout/review` | Review, Place Order or Submit for Approval (FR-7, FR-8) |
-| `/checkout/confirmation` | Order number, or approval request ID |
-| `/approvals` | Approve / reject with reason, segregation of duties (FR-7) |
+| uc-1 | Pay for an enterprise order |
+| uc-2 | Approve or reject a high-value enterprise order |
+| uc-3 | Submit an over-limit enterprise order for approval |
+| uc-4 | Place an enterprise device order |
+| uc-5 | Arrange shipping and delivery for an enterprise order |
+| uc-6 | Build and save an enterprise procurement quote |
+| uc-7 | Select per-device services and support |
+| uc-8 | Configure a device for a quote |
 
-The app implements the **v1** PRD only. v2 features (DaaS, two-level approval, Net 45) are deliberately absent, so after reconcile the new tests fail against the app and show up as coverage gaps.
+The committed graph has tests designed for **uc-8** only. The first CI run designs the remaining use-cases automatically, because stage 2 walks every use-case the coverage ribbon flags as incomplete.
 
-### Test fixtures and hooks
+## Stage-by-stage
+
+1. **Ingest PRD.** `kane-cli context ingest <prd> --mode ci` lands the source, and `context extract --mode ci` proposes use-cases from it. `approve-derived.sh` then auto-approves them, since nobody watches an interactive review chat in CI.
+2. **Design test cases.** `design-pending-use-cases.sh` follows the `ready_command` hints from `kane-cli cover gaps`. It runs `kane-cli design tests --use-case <id> --mode ci` for every incomplete use-case (proposing ACs, scenarios and a 1:1 test per scenario), then approves the new nodes.
+3. **Run (author and replay).** The `start-app` action builds and serves NovaTech on `localhost:3000` inside the runner. Then `kane-cli testmd run` executes every `*_test.md` with `.testmuai/variables/novatech.json`. Pass/fail, duration and a Test Manager share URL go to the job summary, and every evidence pack is staged for stage 6.
+4. **Coverage.** `kane-cli cover gaps --mode ci --json` reports the dual-axis ribbon: the share of ACs with a live, passing test, and the share of use-cases fully designed. The job fails the pipeline if design completeness drops below 70%.
+5. **Maintain (rerun-regression).** Runs on the nightly cron or a manual dispatch. It can reconcile the graph against an updated PRD with `maintain reconcile --plan`, which only *stages* a plan: nothing commits without human review. It then reruns the same test set from stage 3 as a regression pass.
+6. **Evidence.** Every pack from stages 3 and 5 is validated at L1 (`kane-cli evidence validate`). Packs that fail are excluded and reported instead of aborting the merge. The valid packs are merged into one sealed bundle (`kane-cli evidence merge`), re-validated, and uploaded as a 90-day artifact, and a static HTML report is built.
+7. **Publish (GitHub Pages).** The HTML report and merged `.evidence` pack are deployed to GitHub Pages.
+
+## Running it in GitHub Actions
+
+### 1. Secrets
+
+**Settings → Secrets and variables → Actions:**
+
+- `LT_USERNAME`
+- `LT_ACCESS_KEY`
+
+A manual run can override either one for that run only, via the `lt_username` / `lt_access_key` inputs. Both values are masked in the logs.
+
+### 2. One-time setup: GitHub Pages
+
+**Settings → Pages → Build and deployment → Source → GitHub Actions**
+
+Each run that reaches stage 7 then publishes to `https://<owner>.github.io/<repo>/`.
+
+### 3. Trigger
+
+**Actions → KaneAI Assurance Pipeline → Run workflow**
+
+| Input | Default when blank | Purpose |
+|---|---|---|
+| `prd_path` | `docs/prd-enterprise-procurement.md` | PRD to ingest |
+| `max_tests` | no ceiling (kane-cli estimates) | Caps scenario+test pairs designed per use-case (`--max`) |
+| `test_limit` | run every designed test | Caps how many tests stage 3 runs (first N, sorted). Stage 5 reruns **that exact set** |
+| `project_id` | account default | Test Manager project ID (`kane-cli config project`) |
+| `folder_id` | account default | Test Manager folder ID (`kane-cli config folder`) |
+| `reconcile_prd` | skipped | Stage 5: reconcile against an updated PRD, e.g. `docs/prd-enterprise-procurement-v2.md` |
+| `lt_username` / `lt_access_key` | repo secrets | Override credentials for this run only |
+
+**Recommended first run:** `max_tests = 2`, `test_limit = 3`. Designing all 8 use-cases takes roughly 45–60 minutes, and each new test takes about 4 minutes to author on first run.
+
+Triggers:
+- **Push to `main`** touching `docs/**`, `app/**`, `.testmuai/tests/**`, or the workflow → stages 1–4, 6–7
+- **Pull request** → stages 1–4, 6–7
+- **Nightly cron** (`0 3 * * *`) → stage 5 (regression) → 6–7
+- **Manual dispatch** → all stages, with the inputs above
+
+### Re-running a single stage
+
+Artifacts from a previous attempt aren't visible to a new attempt unless the job that created them is also re-run. If you re-run only stage 2, it can't find stage 1's upload. The workflow catches this and falls back to the `.context/` and `.testmuai/tests/` committed in the repo, with a `::warning::`. To pick up genuinely new output, re-run stage 1 too, or use **Re-run all jobs**.
+
+## The maintenance demo (the closer)
+
+The v2 PRD changes the approval and payment rules and adds a new offering:
+
+| Change | Type |
+|---|---|
+| Approval chain: Procurement Manager, **then Finance Director above $100K** | MODIFY (FR-7) |
+| PO terms: **Net 45** available for orders above $50K | MODIFY (FR-6) |
+| **Device-as-a-Service**: 36-month subscription, 10-device minimum, PO only | ADD (FR-9) |
+
+Locally:
+```bash
+kane-cli maintain reconcile --from docs/prd-enterprise-procurement-v2.md \
+  --source-id prd-enterprise-procurement --mode ci --plan
+kane-cli context list --stale
+kane-cli cover gaps
+```
+In CI: run the pipeline with `reconcile_prd = docs/prd-enterprise-procurement-v2.md`.
+
+The app implements v1 only, so the new and changed requirements show up as gaps or failing tests. That's the moment to show that the suite follows the requirements rather than someone's memory.
+
+## Local usage
+
+```bash
+# 1. Start the app (terminal 1)
+cd app && npm install && npm run build && npm start      # http://localhost:3000
+
+# 2. Run the flow (terminal 2, repo root)
+export KANE_CLI_USER_AGENT=my-laptop
+kane-cli login --username <user> --access-key <key>
+
+kane-cli context ingest docs/prd-enterprise-procurement.md --mode ci
+kane-cli context extract --mode ci
+bash .github/scripts/approve-derived.sh
+kane-cli design tests --use-case uc-8 --mode ci --max 2
+bash .github/scripts/approve-derived.sh
+kane-cli testmd run .testmuai/tests/<file>_test.md --agent --variables-file .testmuai/variables/novatech.json
+kane-cli cover gaps
+```
+
+The full runbook, with evidence merge, maintenance and troubleshooting, is in [`RUN-GUIDE.md`](RUN-GUIDE.md).
+
+## App test hooks
 
 | Hook | Effect |
 |---|---|
-| `?seed=d1:30` | Sets the quote to exactly these lines (`productId:qty`, comma-separated, default config) |
-| `?role=approver` / `?role=buyer` | Switches persona (Marcus Lee, Procurement Manager / Priya Shah, IT Buyer) |
-| `?reset=1` | Clears the quote, persona, and approval requests |
+| `?reset=1` | Clears the quote, persona and approval requests (tests start here) |
+| `?seed=d1:30` | Sets the quote to exactly these lines (`productId:qty`, comma-separated) |
+| `?role=approver` / `?role=buyer` | Marcus Lee (Procurement Manager) / Priya Shah (IT Buyer) |
 | Card ending `0000` | Declined by the mock gateway (3 declines lock card payments for 15 minutes) |
 | Product `d8` (Smart Card Reader) | Always fails stock allocation at placement |
-| Product `d4` (NovaBook 13 Classic) | End of Life; seeding it blocks checkout |
-| Products `d2`, `d3`, `d5`, `d7` | Limited or zero stock, so they trigger backorder lead times |
+| Product `d4` (NovaBook 13 Classic) | End of Life |
+| Products `d2`, `d3`, `d5`, `d7` | Limited or zero stock, so they trigger backorders |
 
-Handy scenarios:
-- **Approval path:** `/quote?seed=d1:30` → 30 × $1,044.05 = $31,321.50 + tax → over $25K
-- **Credit limit:** `/quote?seed=d3:60` → over the $150K available credit on PO
-- **Card cap:** `/quote?seed=d6:50` → over $10K, so card payment is blocked
-- **White-glove eligibility:** US site with 25 or more devices
+Handy scenarios: `/quote?seed=d1:30` goes over the $25K approval limit · `/quote?seed=d3:60` goes over the $150K credit limit · `/quote?seed=d6:50` goes over the $10K card cap.
 
-## Demo script (10-minute version)
+## Customizing for a prospect
 
-### Opening (2 min)
-> "Let me show you how Kane CLI Assurance maps to your testing lifecycle. Here's a PRD for an enterprise device-ordering portal. It has compatibility rules, volume pricing, credit limits and an approval workflow: the kind of document your product team already writes, and the kind that's painful to keep traced to tests."
-
-Show `docs/prd-enterprise-procurement.md` in GitHub.
-
-### Phase 1 — Requirements Analysis (2 min)
-> "First, we feed the PRD to Kane CLI. An AI agent reads it and extracts use-cases. It doesn't guess: every use-case cites exact lines in your document."
-
-Trigger workflow 1. Point out the citations, and the clarifying questions it raises for the Open Questions section.
-
-### Phase 2 — Test Planning (1 min)
-> "Nothing moves forward without human approval."
-
-Trigger workflow 2. Show the gap analysis, where financial controls and approval rules should rank as high-risk.
-
-### Phase 3 — Test Design (2 min)
-> "For each approved use-case, the AI designs acceptance criteria, scenarios (happy, negative, boundary) and one runnable test per scenario."
-
-Trigger workflow 3. Show a boundary test around the $25,000 threshold or the 10-device imaging rule, and point out the `@verifies` tags.
-
-### Phase 6 — Coverage Report (1 min)
-> "This replaces your RTM spreadsheet. Two questions answered: what's designed, and what's proven."
-
-Trigger workflow 6. **This is the money slide.**
-
-### Phase 7 — Maintenance (2 min)
-> "Finance now wants a second approver above $100K, and Sales launches Device-as-a-Service. Watch what happens."
-
-Trigger workflow 7 with `prd-enterprise-procurement-v2.md`. Show the changeset (MODIFY, ADD), the stale markers, and the new gaps.
-
-> "When audit asks 'how do we know orders over $100K get Finance sign-off?', the answer is in the graph, not in someone's head."
-
-## Running locally
-
-```bash
-# Prerequisites
-npm install -g @testmuai/kane-cli
-export LT_USERNAME="your-username"
-export LT_ACCESS_KEY="your-access-key"
-kane-cli login --username "$LT_USERNAME" --access-key "$LT_ACCESS_KEY"
-
-# Start the app
-(cd app && npm install && npm run dev)
-
-# Full demo
-./scripts/run-demo.sh docs/prd-enterprise-procurement.md prd-enterprise-procurement http://localhost:3000
-
-# Maintenance demo (after full demo)
-./scripts/run-demo.sh docs/prd-enterprise-procurement-v2.md prd-enterprise-procurement http://localhost:3000
-```
-
-## Customizing for a specific prospect
-
-1. **Rebrand the catalog.** Edit `app/src/data/products.json` (use servers, networking gear, or semiconductors instead of laptops).
-2. **Match their policy numbers.** Approval limit, credit limit, and card cap live in `app/src/lib/pricing.js`; update the PRD to match.
-3. **Replace the PRD.** Drop the prospect's own requirement doc into `docs/` and update the `source_file` / `source_id` defaults in each workflow.
-4. **Adjust the test budget.** Change the `max_tests` default. More tests means a longer demo and more coverage.
-5. **Add their integration.** If they use Jira or Confluence, point ingest at their URL instead of a file.
-
-## Troubleshooting
-
-| Problem | Fix |
-|---------|-----|
-| Workflow fails at authentication | Verify `LT_USERNAME` and `LT_ACCESS_KEY` secrets |
-| Extract produces no use-cases | Check that the PRD file path is correct |
-| Test authoring fails | Ensure the app URL is reachable from the runner (localhost only works on self-hosted) |
-| Tests see stale quote/approval state | Start tests from a `?reset=1` URL |
-| Cache issues between workflows | Delete caches from Actions → Caches, re-run from phase 1 |
-| Coverage report shows no evidence | Run phases 4 and 5 with a live app first |
-| Reconcile shows "nothing to reconcile" | The PRD hasn't changed — use `prd-enterprise-procurement-v2.md` |
+1. **Catalog:** edit `app/src/data/products.json` (servers, networking gear, semiconductors…).
+2. **Policy numbers:** approval limit, credit limit and card cap live in `app/src/lib/pricing.js`. Update the PRD to match.
+3. **PRD:** drop the prospect's requirement doc into `docs/` and run with `prd_path`.
+4. **Test data:** add values to `.testmuai/variables/novatech.json` for any new `{{placeholders}}`.

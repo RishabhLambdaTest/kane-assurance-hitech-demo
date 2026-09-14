@@ -152,11 +152,12 @@ kane-cli cover gaps                    # new gaps: Device-as-a-Service, 2-level 
 
 ## 3. Trigger from GitHub Actions
 
-1. Push the repo to GitHub. Add secrets `LT_USERNAME`, `LT_ACCESS_KEY`.
-2. The app must be reachable from the runner — deploy `app/` (Vercel: workflow **0 · Setup**) and use that URL as `start_url`.
-3. Actions → pick a workflow → **Run workflow** → fill inputs.
+1. Push the repo to GitHub and add secrets `LT_USERNAME` and `LT_ACCESS_KEY` (Settings → Secrets and variables → Actions).
+2. Settings → Pages → Source → **GitHub Actions** (for the published evidence report).
+3. Actions → **KaneAI Assurance Pipeline** → **Run workflow**. First run: `max_tests = 2`, `test_limit = 3`.
+4. Maintenance demo: run again with `reconcile_prd = docs/prd-enterprise-procurement-v2.md`.
 
----
+You don't need to deploy the app: the pipeline builds it and serves it on `localhost:3000` inside the runner. See the README for all inputs.
 
 ## Reset / start over
 

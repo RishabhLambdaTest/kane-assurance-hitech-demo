@@ -1,0 +1,5 @@
+{
+  "start_url": { "value": "http://localhost:3000/?reset=1", "secret": false },
+  "laptop_product": { "value": "NovaBook 14 Business", "secret": false },
+  "workstation_product": { "value": "NovaStation X Workstation", "secret": false }
+}

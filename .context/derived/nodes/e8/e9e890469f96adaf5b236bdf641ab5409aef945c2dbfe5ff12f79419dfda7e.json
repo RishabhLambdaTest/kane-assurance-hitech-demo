@@ -1,0 +1,1 @@
+{"label":"ac","content":{"text":"If the processor is downgraded while 64 GB memory is selected, the memory selection changes from 64 GB to 32 GB.","kind":"state-transition","risk":"med","derived":true,"expected_answer":{"operator":"equals","baseline":"processor=Core Ultra 9 and memory=64 GB","operand":"processor changed away from Core Ultra 9 and memory=32 GB"}}}

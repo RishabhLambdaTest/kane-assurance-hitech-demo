@@ -1,0 +1,9 @@
+anchor: ac-1
+combinatorial:
+  reason: because money risk applies and no override was present, grouping the constrained processor-memory choices as cpu_memory_profile to respect the 64 GB compatibility rule while covering 3-way interactions across cpu_memory_profile × storage × os × quantity in 12 valid combinations.
+  strength: 3
+deferred_bindings: 0
+expected_how: 'expected_mode: authored'
+profile_family: unspecified
+surface_state: absent
+technique: Used equivalence partitioning for processor/memory profile, storage, and operating system choices; used boundary value analysis on quantity via expand_bva over 1..500, which produced [0,1,2,499,500,501] and retained the valid in-range boundaries 1 and 500 for this outcome-identical path; used covering_array with strength=3 because money risk applies and no override was present, grouping the constrained processor-memory choices as cpu_memory_profile to respect the 64 GB compatibility rule while covering 3-way interactions across cpu_memory_profile × storage × os × quantity in 12 valid combinations.

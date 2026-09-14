@@ -1,0 +1,1 @@
+{"label":"ac","content":{"text":"After a valid configuration is added to the quote, the quote line quantity equals the quantity entered in the configurator.","kind":"propagation","risk":"med","derived":true,"expected_answer":{"operator":"equals","operand":"quote line quantity matches the quantity entered in the configurator"}}}

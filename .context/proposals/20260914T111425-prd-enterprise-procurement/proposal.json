@@ -1,0 +1,683 @@
+{
+  "version": 1,
+  "read_basis": "sha256:ed0ea02d6e227e6a198684bb30f52927cf6f3996bbb12cd88e2419044003188d",
+  "source": {
+    "source_id": "prd-enterprise-procurement",
+    "source_cid": "sha256:b5d715e13168f1bcca358fd3057f8694dc4bf66521104050fd3c312a0aa6da0d"
+  },
+  "use_cases": [
+    {
+      "temp_ref": "n1",
+      "title": "Pay for an enterprise order",
+      "description": "A Buyer or Procurement Manager settles an order by either submitting a purchase order against the account credit line or paying by corporate card, with PO and card-field validation, credit and per-order card limits, consecutive-failure lockout behavior, and plain-text card-storage prohibition enforced before payment can proceed.",
+      "summary": "Complete payment by PO or corporate card.",
+      "actors": [
+        "Buyer (Requester)",
+        "Procurement Manager (Approver)"
+      ],
+      "value": "Collects payment using enterprise controls that prevent uncollectible or insecure orders.",
+      "risk": "high",
+      "cite": {
+        "anchor": "L0021-L0021",
+        "quote": "- **Procurement Manager (Approver)** — reviews and approves or rejects orders that exceed a Buyer's spending limit. Can also build quotes and place orders, but cannot approve their own requests."
+      },
+      "cites": [
+        {
+          "anchor": "L0021-L0021",
+          "quote": "- **Procurement Manager (Approver)** — reviews and approves or rejects orders that exceed a Buyer's spending limit. Can also build quotes and place orders, but cannot approve their own requests."
+        },
+        {
+          "anchor": "L0121-L0123",
+          "quote": "The payment step offers two methods:"
+        },
+        {
+          "anchor": "L0126-L0126",
+          "quote": "- The account's available credit is $150,000. If the order total exceeds available credit, the buyer sees \"Order total exceeds available credit of $150,000.00. Pay by corporate card or contact your account manager.\" and cannot continue with PO"
+        },
+        {
+          "anchor": "L0131-L0131",
+          "quote": "- If authorization fails, the buyer sees \"Payment could not be processed. Please check your details or try another method.\" After 3 consecutive failures the card form is locked for 15 minutes and a support contact is shown"
+        },
+        {
+          "anchor": "L0166-L0166",
+          "quote": "- **Security & Audit:** Every approval decision records approver, timestamp, and reason. Card data is never stored in plain text."
+        }
+      ],
+      "criteria": [
+        {
+          "text": "Payment offers exactly two methods: Purchase Order (on account) and Corporate Card.",
+          "cite": {
+            "anchor": "L0121-L0123",
+            "quote": "The payment step offers two methods:"
+          }
+        },
+        {
+          "text": "Purchase Order payment requires a PO number matching `PO-` followed by 6 digits and uses Net 30 terms.",
+          "cite": {
+            "anchor": "L0124-L0125",
+            "quote": "- PO number is required and must match the format `PO-` followed by 6 digits"
+          }
+        },
+        {
+          "text": "Purchase Order payment is blocked when the order total exceeds the account's available credit of $150,000, and the buyer is directed to use a corporate card or contact the account manager.",
+          "cite": {
+            "anchor": "L0126-L0126",
+            "quote": "- The account's available credit is $150,000. If the order total exceeds available credit, the buyer sees \"Order total exceeds available credit of $150,000.00. Pay by corporate card or contact your account manager.\" and cannot continue with PO"
+          }
+        },
+        {
+          "text": "Corporate Card accepts Visa, Mastercard, and Amex; validates the card number with a Luhn check; requires a future expiry; and requires CVV of 3 digits, or 4 for Amex.",
+          "cite": {
+            "anchor": "L0129-L0129",
+            "quote": "- Visa, Mastercard, and Amex; card number validated with a Luhn check; expiry must be in the future; CVV 3 digits (4 for Amex)"
+          }
+        },
+        {
+          "text": "Corporate Card payment is limited to $10,000 per order, with an above-limit message directing the buyer to use a purchase order.",
+          "cite": {
+            "anchor": "L0130-L0130",
+            "quote": "- Corporate cards are limited to $10,000 per order. Above that, the buyer sees \"Corporate card payments are limited to $10,000 per order. Use a purchase order.\""
+          }
+        },
+        {
+          "text": "After 3 consecutive card-authorization failures, the card form is locked for 15 minutes and a support contact is shown.",
+          "cite": {
+            "anchor": "L0131-L0131",
+            "quote": "- If authorization fails, the buyer sees \"Payment could not be processed. Please check your details or try another method.\" After 3 consecutive failures the card form is locked for 15 minutes and a support contact is shown"
+          }
+        },
+        {
+          "text": "Card data is never stored in plain text.",
+          "cite": {
+            "anchor": "L0166-L0166",
+            "quote": "- **Security & Audit:** Every approval decision records approver, timestamp, and reason. Card data is never stored in plain text."
+          }
+        }
+      ],
+      "depends_on_hint": []
+    },
+    {
+      "temp_ref": "n2",
+      "title": "Approve or reject a high-value enterprise order",
+      "description": "A Procurement Manager reviews pending approval requests for orders above the spending threshold, sees the requester and total context, approves to place the order or rejects with a sufficiently detailed reason, is prevented from acting on their own request, and leaves an auditable decision record.",
+      "summary": "Review and decide high-value order requests.",
+      "actors": [
+        "Procurement Manager (Approver)"
+      ],
+      "value": "Enforces spending policy, segregation of duties, and auditability on high-value purchases.",
+      "risk": "high",
+      "cite": {
+        "anchor": "L0021-L0021",
+        "quote": "- **Procurement Manager (Approver)** — reviews and approves or rejects orders that exceed a Buyer's spending limit. Can also build quotes and place orders, but cannot approve their own requests."
+      },
+      "cites": [
+        {
+          "anchor": "L0021-L0021",
+          "quote": "- **Procurement Manager (Approver)** — reviews and approves or rejects orders that exceed a Buyer's spending limit. Can also build quotes and place orders, but cannot approve their own requests."
+        },
+        {
+          "anchor": "L0135-L0135",
+          "quote": "Orders whose total (including tax and delivery) exceeds $25,000 require approval by a Procurement Manager."
+        },
+        {
+          "anchor": "L0139-L0142",
+          "quote": "- The Approvals page lists all requests with their status. Approvers see \"Approve\" and \"Reject\" actions on pending requests."
+        },
+        {
+          "anchor": "L0140-L0140",
+          "quote": "- Rejecting requires a reason of at least 10 characters. The request status becomes \"Rejected\" and the reason is shown to the requester."
+        },
+        {
+          "anchor": "L0166-L0166",
+          "quote": "- **Security & Audit:** Every approval decision records approver, timestamp, and reason. Card data is never stored in plain text."
+        }
+      ],
+      "criteria": [
+        {
+          "text": "Orders whose total, including tax and delivery, exceeds $25,000 require Procurement Manager approval.",
+          "cite": {
+            "anchor": "L0135-L0135",
+            "quote": "Orders whose total (including tax and delivery) exceeds $25,000 require approval by a Procurement Manager."
+          }
+        },
+        {
+          "text": "Submitting for approval creates a request ID in the format `REQ-` followed by 5 digits and stores status `Pending Approval`, requester name, total, and submitted time.",
+          "cite": {
+            "anchor": "L0138-L0138",
+            "quote": "- Submitting creates an approval request with an ID in the format `REQ-` followed by 5 digits, status \"Pending Approval\", the requester's name, the total, and the submitted time."
+          }
+        },
+        {
+          "text": "The Approvals page lists all requests with their status, and pending requests expose `Approve` and `Reject` actions to approvers.",
+          "cite": {
+            "anchor": "L0139-L0139",
+            "quote": "- The Approvals page lists all requests with their status. Approvers see \"Approve\" and \"Reject\" actions on pending requests."
+          }
+        },
+        {
+          "text": "Rejecting a request requires a reason of at least 10 characters, changes the request status to `Rejected`, and shows the reason to the requester.",
+          "cite": {
+            "anchor": "L0140-L0140",
+            "quote": "- Rejecting requires a reason of at least 10 characters. The request status becomes \"Rejected\" and the reason is shown to the requester."
+          }
+        },
+        {
+          "text": "Approving a request changes its status to `Approved` and places the order, generating an order number.",
+          "cite": {
+            "anchor": "L0141-L0141",
+            "quote": "- Approving changes the status to \"Approved\" and places the order, generating an order number (FR-8)."
+          }
+        },
+        {
+          "text": "An approver cannot approve or reject their own request; those actions are hidden and the message `You cannot approve your own request` is shown.",
+          "cite": {
+            "anchor": "L0142-L0142",
+            "quote": "- **Segregation of duties:** an approver cannot approve or reject their own request. The actions are hidden and the message \"You cannot approve your own request\" is shown."
+          }
+        },
+        {
+          "text": "Every approval decision records approver, timestamp, and reason.",
+          "cite": {
+            "anchor": "L0166-L0166",
+            "quote": "- **Security & Audit:** Every approval decision records approver, timestamp, and reason. Card data is never stored in plain text."
+          }
+        }
+      ],
+      "depends_on_hint": []
+    },
+    {
+      "temp_ref": "n3",
+      "title": "Submit an over-limit enterprise order for approval",
+      "description": "A Buyer submits an order whose total including tax and delivery exceeds the per-order spending limit into the approval workflow, sees the over-limit warning on order review, uses Submit for Approval instead of direct placement, and receives a tracked pending request rather than an immediate order.",
+      "summary": "Route an over-limit order into approval.",
+      "actors": [
+        "Buyer (Requester)"
+      ],
+      "value": "Prevents direct purchase above the spending threshold while preserving the order as an approval request.",
+      "risk": "high",
+      "cite": {
+        "anchor": "L0020-L0020",
+        "quote": "- **Buyer (Requester)** — employee in IT or Procurement who configures devices, builds quotes, and places orders. Has a per-order spending limit of $25,000."
+      },
+      "cites": [
+        {
+          "anchor": "L0020-L0020",
+          "quote": "- **Buyer (Requester)** — employee in IT or Procurement who configures devices, builds quotes, and places orders. Has a per-order spending limit of $25,000."
+        },
+        {
+          "anchor": "L0135-L0135",
+          "quote": "Orders whose total (including tax and delivery) exceeds $25,000 require approval by a Procurement Manager."
+        },
+        {
+          "anchor": "L0137-L0138",
+          "quote": "- On order review, the buyer sees the banner \"This order exceeds the $25,000 spending limit and requires Procurement Manager approval.\" The primary button reads \"Submit for Approval\" instead of \"Place Order\"."
+        }
+      ],
+      "criteria": [
+        {
+          "text": "A Buyer's per-order spending limit is $25,000, and orders whose total including tax and delivery exceeds that amount require approval.",
+          "cite": {
+            "anchor": "L0020-L0020",
+            "quote": "- **Buyer (Requester)** — employee in IT or Procurement who configures devices, builds quotes, and places orders. Has a per-order spending limit of $25,000."
+          }
+        },
+        {
+          "text": "On order review for an over-limit order, the buyer sees the banner `This order exceeds the $25,000 spending limit and requires Procurement Manager approval.` and the primary action becomes `Submit for Approval` instead of `Place Order`.",
+          "cite": {
+            "anchor": "L0137-L0137",
+            "quote": "- On order review, the buyer sees the banner \"This order exceeds the $25,000 spending limit and requires Procurement Manager approval.\" The primary button reads \"Submit for Approval\" instead of \"Place Order\"."
+          }
+        },
+        {
+          "text": "Submitting for approval creates a request ID in the format `REQ-` followed by 5 digits with status `Pending Approval`, requester name, total, and submitted time.",
+          "cite": {
+            "anchor": "L0138-L0138",
+            "quote": "- Submitting creates an approval request with an ID in the format `REQ-` followed by 5 digits, status \"Pending Approval\", the requester's name, the total, and the submitted time."
+          }
+        }
+      ],
+      "depends_on_hint": []
+    },
+    {
+      "temp_ref": "n4",
+      "title": "Place an enterprise device order",
+      "description": "A Buyer or Procurement Manager reviews the full order before submission, can return from review to edit shipping, delivery, or payment details, places the order directly when approval is not required, gets duplicate-submission protection on the action itself, sees confirmation details and acknowledgement email timing on success, and gets product-specific recovery choices when stock allocation fails at placement.",
+      "summary": "Submit a quote as a committed order.",
+      "actors": [
+        "Buyer (Requester)",
+        "Procurement Manager (Approver)"
+      ],
+      "value": "Turns a reviewed quote into a confirmed revenue-bearing order with clear success and failure handling.",
+      "risk": "high",
+      "cite": {
+        "anchor": "L0021-L0021",
+        "quote": "- **Procurement Manager (Approver)** — reviews and approves or rejects orders that exceed a Buyer's spending limit. Can also build quotes and place orders, but cannot approve their own requests."
+      },
+      "cites": [
+        {
+          "anchor": "L0021-L0021",
+          "quote": "- **Procurement Manager (Approver)** — reviews and approves or rejects orders that exceed a Buyer's spending limit. Can also build quotes and place orders, but cannot approve their own requests."
+        },
+        {
+          "anchor": "L0143-L0143",
+          "quote": "- Orders at or below $25,000 are placed directly without approval."
+        },
+        {
+          "anchor": "L0147-L0152",
+          "quote": "Before final submission, the buyer sees:"
+        },
+        {
+          "anchor": "L0154-L0154",
+          "quote": "\"Place Order\" is disabled after the first click to prevent double submission."
+        },
+        {
+          "anchor": "L0156-L0158",
+          "quote": "On success: the confirmation page shows the order number (`NT-` followed by 8 characters), PO number (if paid by PO), estimated delivery date, order total, and a \"Print Order\" option. An order acknowledgement email is sent to the requester within 5 minutes."
+        }
+      ],
+      "criteria": [
+        {
+          "text": "Orders at or below $25,000 are placed directly without approval.",
+          "cite": {
+            "anchor": "L0143-L0143",
+            "quote": "- Orders at or below $25,000 are placed directly without approval."
+          }
+        },
+        {
+          "text": "Before final submission, order review shows all lines with configuration, quantity, discounted unit price, and services; ship-to site; delivery method and estimated delivery date; payment method as PO number or card brand plus last 4 digits; and hardware subtotal, volume discount, services, tax, delivery, and order total.",
+          "cite": {
+            "anchor": "L0148-L0152",
+            "quote": "- All lines with configuration, quantity, discounted unit price, and services"
+          }
+        },
+        {
+          "text": "The review screen allows editing ship-to site, delivery method and estimated delivery date, and payment method by returning to FR-5 or FR-6.",
+          "cite": {
+            "anchor": "L0149-L0151",
+            "quote": "- Ship-to site (editable — \"Edit\" returns to FR-5)"
+          }
+        },
+        {
+          "text": "`Place Order` is disabled after the first click to prevent double submission.",
+          "cite": {
+            "anchor": "L0154-L0154",
+            "quote": "\"Place Order\" is disabled after the first click to prevent double submission."
+          }
+        },
+        {
+          "text": "Successful placement shows an order number in the format `NT-` followed by 8 characters, shows the PO number when paid by PO, shows estimated delivery date and order total, offers `Print Order`, and sends an acknowledgement email within 5 minutes.",
+          "cite": {
+            "anchor": "L0156-L0156",
+            "quote": "On success: the confirmation page shows the order number (`NT-` followed by 8 characters), PO number (if paid by PO), estimated delivery date, order total, and a \"Print Order\" option. An order acknowledgement email is sent to the requester within 5 minutes."
+          }
+        },
+        {
+          "text": "If stock allocation fails for a constrained item at placement, the buyer sees an error naming the affected product with options `Remove item and retry` or `Return to quote`.",
+          "cite": {
+            "anchor": "L0158-L0158",
+            "quote": "On failure (stock allocation fails at placement for a constrained item): the buyer sees an error naming the affected product with options \"Remove item and retry\" or \"Return to quote\"."
+          }
+        }
+      ],
+      "depends_on_hint": []
+    },
+    {
+      "temp_ref": "n5",
+      "title": "Arrange shipping and delivery for an enterprise order",
+      "description": "A Buyer or Procurement Manager chooses a saved site or enters a new ship-to location, completes the required address and optional tax fields for a supported country, is blocked on invalid country-specific postal or exemption formats, selects an eligible delivery method, and receives tax, delivery cost, and estimated delivery date calculations that account for discounts, services, backorder lead time, geography, and order size.",
+      "summary": "Capture ship-to details and delivery method.",
+      "actors": [
+        "Buyer (Requester)",
+        "Procurement Manager (Approver)"
+      ],
+      "value": "Ensures the order can be delivered with correct tax and fulfillment charges.",
+      "risk": "high",
+      "cite": {
+        "anchor": "L0100-L0100",
+        "quote": "**Ship-to address.** The account's saved sites are listed for selection (e.g., \"HQ — San Jose\", \"EU Hub — Frankfurt\"); the buyer can also enter a new site."
+      },
+      "cites": [
+        {
+          "anchor": "L0100-L0100",
+          "quote": "**Ship-to address.** The account's saved sites are listed for selection (e.g., \"HQ — San Jose\", \"EU Hub — Frankfurt\"); the buyer can also enter a new site."
+        },
+        {
+          "anchor": "L0105-L0105",
+          "quote": "Supported countries: United States, Canada, United Kingdom, Germany, France, Japan, India. Invalid postal code format for the selected country is a hard block — the form does not submit."
+        },
+        {
+          "anchor": "L0107-L0107",
+          "quote": "**Tax.** Tax is 8.25% of (discounted hardware + services). If a tax exemption certificate number is entered in the format `EXM-` followed by 6 digits, tax is $0.00. A certificate number in any other format shows \"Invalid exemption certificate format (EXM-123456)\" and blocks submission."
+        },
+        {
+          "anchor": "L0113-L0115",
+          "quote": "| Standard Ground | 5–7 business days | Free if hardware subtotal ≥ $5,000, otherwise $49 | All countries |"
+        },
+        {
+          "anchor": "L0117-L0117",
+          "quote": "The estimated delivery date = today + the longest backorder lead time on the quote (if any) + the delivery window, counted in business days."
+        }
+      ],
+      "criteria": [
+        {
+          "text": "Ship-to selection offers the account's saved sites, such as `HQ — San Jose` and `EU Hub — Frankfurt`, and also allows entry of a new site.",
+          "cite": {
+            "anchor": "L0100-L0100",
+            "quote": "**Ship-to address.** The account's saved sites are listed for selection (e.g., \"HQ — San Jose\", \"EU Hub — Frankfurt\"); the buyer can also enter a new site."
+          }
+        },
+        {
+          "text": "Required ship-to fields are company name, attention (recipient name), street address line 1, city, state/province, postal code, country, and phone number.",
+          "cite": {
+            "anchor": "L0102-L0102",
+            "quote": "Required fields: company name, attention (recipient name), street address line 1, city, state/province, postal code, country, phone number."
+          }
+        },
+        {
+          "text": "Optional ship-to fields are street address line 2 and tax exemption certificate number.",
+          "cite": {
+            "anchor": "L0103-L0103",
+            "quote": "Optional fields: street address line 2, tax exemption certificate number."
+          }
+        },
+        {
+          "text": "Supported countries are United States, Canada, United Kingdom, Germany, France, Japan, and India; an invalid postal code format for the selected country hard-blocks submission.",
+          "cite": {
+            "anchor": "L0105-L0105",
+            "quote": "Supported countries: United States, Canada, United Kingdom, Germany, France, Japan, India. Invalid postal code format for the selected country is a hard block — the form does not submit."
+          }
+        },
+        {
+          "text": "Tax is 8.25% of discounted hardware plus services; a tax exemption certificate matching `EXM-` followed by 6 digits sets tax to $0.00; any other format shows `Invalid exemption certificate format (EXM-123456)` and blocks submission.",
+          "cite": {
+            "anchor": "L0107-L0107",
+            "quote": "**Tax.** Tax is 8.25% of (discounted hardware + services). If a tax exemption certificate number is entered in the format `EXM-` followed by 6 digits, tax is $0.00. A certificate number in any other format shows \"Invalid exemption certificate format (EXM-123456)\" and blocks submission."
+          }
+        },
+        {
+          "text": "Delivery methods are Standard Ground (5–7 business days, free if hardware subtotal ≥ $5,000 otherwise $49, all countries), Expedited (2–3 business days, $199 per order, United States and Canada), and White-Glove Deployment (10 business days, $75 per device, United States only and 25 or more devices on the order).",
+          "cite": {
+            "anchor": "L0113-L0115",
+            "quote": "| Standard Ground | 5–7 business days | Free if hardware subtotal ≥ $5,000, otherwise $49 | All countries |"
+          }
+        },
+        {
+          "text": "Estimated delivery date is calculated as today plus the quote's longest backorder lead time, if any, plus the selected delivery window, counted in business days.",
+          "cite": {
+            "anchor": "L0117-L0117",
+            "quote": "The estimated delivery date = today + the longest backorder lead time on the quote (if any) + the delivery window, counted in business days."
+          }
+        }
+      ],
+      "depends_on_hint": []
+    },
+    {
+      "temp_ref": "n6",
+      "title": "Build and save an enterprise procurement quote",
+      "description": "A Buyer or Procurement Manager assembles a quote from account-available catalog products, sees product-card status and quote-line pricing details including discounts and stock lead time, can save the quote as a dated quote record, and can proceed to checkout only when the quote contains orderable, non-EOL lines.",
+      "summary": "Assemble and save a priced quote.",
+      "actors": [
+        "Buyer (Requester)",
+        "Procurement Manager (Approver)"
+      ],
+      "value": "Creates a reusable, accurately priced quote that can move into checkout.",
+      "risk": "med",
+      "cite": {
+        "anchor": "L0020-L0021",
+        "quote": "- **Buyer (Requester)** — employee in IT or Procurement who configures devices, builds quotes, and places orders. Has a per-order spending limit of $25,000."
+      },
+      "cites": [
+        {
+          "anchor": "L0020-L0021",
+          "quote": "- **Buyer (Requester)** — employee in IT or Procurement who configures devices, builds quotes, and places orders. Has a per-order spending limit of $25,000."
+        },
+        {
+          "anchor": "L0029-L0036",
+          "quote": "The catalog lists all products available to the account. Each product card shows:"
+        },
+        {
+          "anchor": "L0058-L0077",
+          "quote": "The quote page lists every configured line. Per line the buyer sees:"
+        },
+        {
+          "anchor": "L0079-L0081",
+          "quote": "If the quote is empty, the page shows \"Your quote is empty\" with a \"Browse Catalog\" link. No checkout button is shown."
+        }
+      ],
+      "criteria": [
+        {
+          "text": "Catalog product cards show product name, category in Laptop/Workstation/Tablet/Accessory, image, starting price, and availability as `In Stock`, `Backorder — ships in N days`, or `End of Life`.",
+          "cite": {
+            "anchor": "L0029-L0032",
+            "quote": "The catalog lists all products available to the account. Each product card shows:"
+          }
+        },
+        {
+          "text": "Configurable products (laptops and workstations) expose `Configure`, while non-configurable products (accessories and tablets) expose `Add to Quote`.",
+          "cite": {
+            "anchor": "L0034-L0034",
+            "quote": "Configurable products (laptops, workstations) show a \"Configure\" button that opens the configurator (FR-2). Non-configurable products (accessories, tablets) show an \"Add to Quote\" button."
+          }
+        },
+        {
+          "text": "End-of-life products show an `End of Life` badge, cannot be added to a quote, and show the recommended replacement product by name.",
+          "cite": {
+            "anchor": "L0036-L0036",
+            "quote": "End-of-life (EOL) products display a grey \"End of Life\" badge, cannot be added to a quote, and show the recommended replacement product by name."
+          }
+        },
+        {
+          "text": "Each quote line shows product name, configuration summary (processor, memory, storage, OS), editable quantity with minimum 1 and maximum 500, list unit price, volume-discounted unit price, selected services, and line total.",
+          "cite": {
+            "anchor": "L0058-L0062",
+            "quote": "The quote page lists every configured line. Per line the buyer sees:"
+          }
+        },
+        {
+          "text": "Volume pricing applies only to hardware unit price, with discounts of 0% for quantities 1–9, 5% for 10–49, 10% for 50–99, and 15% for 100+.",
+          "cite": {
+            "anchor": "L0064-L0071",
+            "quote": "**Volume pricing** applies per line to the hardware unit price only (never to services):"
+          }
+        },
+        {
+          "text": "Quote summary shows hardware subtotal (list), volume discount, services total, subtotal, tax as `TBD` until a shipping address is entered, delivery as `TBD` until a delivery method is chosen, and quote total.",
+          "cite": {
+            "anchor": "L0073-L0073",
+            "quote": "The quote summary shows: hardware subtotal (list), volume discount, services total, subtotal, tax (\"TBD\" until a shipping address is entered), delivery (\"TBD\" until a delivery method is chosen), and quote total."
+          }
+        },
+        {
+          "text": "If line quantity exceeds available stock, the line shows `Backorder: N units ship in X days`; backorders do not block checkout but do push out the estimated delivery date.",
+          "cite": {
+            "anchor": "L0075-L0075",
+            "quote": "**Stock and lead time:** If the line quantity exceeds available stock, the line shows \"Backorder: N units ship in X days\". Backorders do not block checkout, but they push out the estimated delivery date (FR-5)."
+          }
+        },
+        {
+          "text": "`Save Quote` generates a quote number in the format `Q-` followed by 6 digits and shows `Valid until` a date 30 calendar days from today.",
+          "cite": {
+            "anchor": "L0077-L0077",
+            "quote": "**Save quote:** \"Save Quote\" generates a quote number in the format `Q-` followed by 6 digits and shows \"Valid until\" a date 30 calendar days from today."
+          }
+        },
+        {
+          "text": "An empty quote shows `Your quote is empty` with a `Browse Catalog` link and no checkout button.",
+          "cite": {
+            "anchor": "L0079-L0079",
+            "quote": "If the quote is empty, the page shows \"Your quote is empty\" with a \"Browse Catalog\" link. No checkout button is shown."
+          }
+        },
+        {
+          "text": "`Proceed to Checkout` is disabled while the quote contains any end-of-life product, and those lines must be removed.",
+          "cite": {
+            "anchor": "L0081-L0081",
+            "quote": "\"Proceed to Checkout\" is disabled while the quote contains any end-of-life product; such lines show the \"End of Life\" badge and must be removed."
+          }
+        }
+      ],
+      "depends_on_hint": []
+    },
+    {
+      "temp_ref": "n7",
+      "title": "Select per-device services and support",
+      "description": "A Buyer or Procurement Manager augments each hardware line with warranty, support, deployment, and tagging services priced per device, subject to single-tier warranty selection and OS- and quantity-based eligibility rules that disable or remove incompatible services with an explanatory message.",
+      "summary": "Add support and deployment services per device.",
+      "actors": [
+        "Buyer (Requester)",
+        "Procurement Manager (Approver)"
+      ],
+      "value": "Captures service attach revenue while ensuring service selections remain valid for the device and quantity ordered.",
+      "risk": "med",
+      "cite": {
+        "anchor": "L0085-L0085",
+        "quote": "Each hardware line can add services, priced per device:"
+      },
+      "cites": [
+        {
+          "anchor": "L0085-L0085",
+          "quote": "Each hardware line can add services, priced per device:"
+        },
+        {
+          "anchor": "L0089-L0094",
+          "quote": "| Standard Warranty (1 year) | Included | Default |"
+        },
+        {
+          "anchor": "L0096-L0096",
+          "quote": "Only one warranty tier may be selected per line. If a line's quantity drops below 10 while Custom OS Imaging is selected, the service is removed and the buyer sees \"Custom OS Imaging requires 10 or more devices\"."
+        }
+      ],
+      "criteria": [
+        {
+          "text": "Per-device service options are Standard Warranty (1 year, Included, Default), ProSupport (3 years, next business day onsite, $149), ProSupport Plus (3 years, includes accidental damage, $249), Windows Autopilot Enrollment ($12), Custom OS Imaging ($15), and Asset Tagging ($5).",
+          "cite": {
+            "anchor": "L0089-L0094",
+            "quote": "| Standard Warranty (1 year) | Included | Default |"
+          }
+        },
+        {
+          "text": "Only one warranty tier may be selected per line.",
+          "cite": {
+            "anchor": "L0096-L0096",
+            "quote": "Only one warranty tier may be selected per line. If a line's quantity drops below 10 while Custom OS Imaging is selected, the service is removed and the buyer sees \"Custom OS Imaging requires 10 or more devices\"."
+          }
+        },
+        {
+          "text": "Windows Autopilot Enrollment is available for Windows 11 Pro only and is disabled for Ubuntu.",
+          "cite": {
+            "anchor": "L0092-L0092",
+            "quote": "| Windows Autopilot Enrollment | $12 | Windows 11 Pro only — disabled for Ubuntu |"
+          }
+        },
+        {
+          "text": "Custom OS Imaging requires line quantity of 10 or more, and if quantity drops below 10 while it is selected the service is removed with the message `Custom OS Imaging requires 10 or more devices`.",
+          "cite": {
+            "anchor": "L0093-L0096",
+            "quote": "| Custom OS Imaging | $15 | Requires line quantity of 10 or more |"
+          }
+        }
+      ],
+      "depends_on_hint": []
+    },
+    {
+      "temp_ref": "n8",
+      "title": "Configure a device for a quote",
+      "description": "A Buyer or Procurement Manager configures a laptop or workstation by selecting processor, memory, storage, and operating system options, sees the running unit price update as choices change, encounters disabled or auto-corrected states when compatibility rules are violated, and adds a configuration to the quote with a quantity constrained between 1 and 500.",
+      "summary": "Choose a valid device configuration.",
+      "actors": [
+        "Buyer (Requester)",
+        "Procurement Manager (Approver)"
+      ],
+      "value": "Produces orderable device configurations with immediate pricing and visible compatibility enforcement.",
+      "risk": "med",
+      "cite": {
+        "anchor": "L0034-L0034",
+        "quote": "Configurable products (laptops, workstations) show a \"Configure\" button that opens the configurator (FR-2). Non-configurable products (accessories, tablets) show an \"Add to Quote\" button."
+      },
+      "cites": [
+        {
+          "anchor": "L0034-L0034",
+          "quote": "Configurable products (laptops, workstations) show a \"Configure\" button that opens the configurator (FR-2). Non-configurable products (accessories, tablets) show an \"Add to Quote\" button."
+        },
+        {
+          "anchor": "L0040-L0040",
+          "quote": "The configurator lets the buyer choose components for a configurable device. The running unit price updates immediately as options change."
+        },
+        {
+          "anchor": "L0050-L0052",
+          "quote": "1. 64 GB memory requires the Core Ultra 9 processor. If the buyer downgrades the processor while 64 GB is selected, memory is automatically changed to 32 GB and the message \"64 GB memory requires Core Ultra 9 — memory changed to 32 GB\" is shown."
+        },
+        {
+          "anchor": "L0054-L0054",
+          "quote": "The buyer sets a quantity (minimum 1, maximum 500) and clicks \"Add to Quote\"."
+        }
+      ],
+      "criteria": [
+        {
+          "text": "Processor choices are Core Ultra 5, Core Ultra 7, and Core Ultra 9, with price adjustments of +$0, +$250, and +$550 respectively.",
+          "cite": {
+            "anchor": "L0044-L0044",
+            "quote": "| Processor | Core Ultra 5 / Core Ultra 7 / Core Ultra 9 | +$0 / +$250 / +$550 |"
+          }
+        },
+        {
+          "text": "Memory choices are 16 GB, 32 GB, and 64 GB, with price adjustments of +$0, +$200, and +$500 respectively.",
+          "cite": {
+            "anchor": "L0045-L0045",
+            "quote": "| Memory | 16 GB / 32 GB / 64 GB | +$0 / +$200 / +$500 |"
+          }
+        },
+        {
+          "text": "Storage choices are 512 GB, 1 TB, 2 TB, and 4 TB, with price adjustments of +$0, +$150, +$350, and +$700 respectively.",
+          "cite": {
+            "anchor": "L0046-L0046",
+            "quote": "| Storage | 512 GB / 1 TB / 2 TB / 4 TB | +$0 / +$150 / +$350 / +$700 |"
+          }
+        },
+        {
+          "text": "Operating system choices are Windows 11 Pro and Ubuntu 24.04 LTS, with price adjustments of +$0 and −$50 respectively.",
+          "cite": {
+            "anchor": "L0047-L0047",
+            "quote": "| Operating System | Windows 11 Pro / Ubuntu 24.04 LTS | +$0 / −$50 |"
+          }
+        },
+        {
+          "text": "Running unit price updates immediately as configuration options change.",
+          "cite": {
+            "anchor": "L0040-L0040",
+            "quote": "The configurator lets the buyer choose components for a configurable device. The running unit price updates immediately as options change."
+          }
+        },
+        {
+          "text": "64 GB memory requires Core Ultra 9; if the processor is downgraded while 64 GB is selected, memory is automatically changed to 32 GB and the message `64 GB memory requires Core Ultra 9 — memory changed to 32 GB` is shown.",
+          "cite": {
+            "anchor": "L0050-L0050",
+            "quote": "1. 64 GB memory requires the Core Ultra 9 processor. If the buyer downgrades the processor while 64 GB is selected, memory is automatically changed to 32 GB and the message \"64 GB memory requires Core Ultra 9 — memory changed to 32 GB\" is shown."
+          }
+        },
+        {
+          "text": "4 TB storage is available on Workstation products only; on laptops the option is disabled with the reason `Workstation only`.",
+          "cite": {
+            "anchor": "L0051-L0051",
+            "quote": "2. 4 TB storage is available on Workstation products only. On laptops the option is shown disabled with the reason \"Workstation only\"."
+          }
+        },
+        {
+          "text": "Incompatible options are shown disabled with the reason visible next to them and are never silently hidden.",
+          "cite": {
+            "anchor": "L0052-L0052",
+            "quote": "3. Incompatible options are shown disabled with the reason visible next to them — they are never silently hidden."
+          }
+        },
+        {
+          "text": "Configured-device quantity must be between 1 and 500 before `Add to Quote`.",
+          "cite": {
+            "anchor": "L0054-L0054",
+            "quote": "The buyer sets a quantity (minimum 1, maximum 500) and clicks \"Add to Quote\"."
+          }
+        }
+      ],
+      "depends_on_hint": []
+    }
+  ]
+}

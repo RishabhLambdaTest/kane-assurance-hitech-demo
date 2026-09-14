@@ -1,25 +1,30 @@
-# Kane CLI local stores
-.context/
-.testmuai/
+# Kane CLI — commit the assurance graph and suite; ignore runtime scratch
+.context/locks/
+.context/sessions/
+.testmuai/evidence/*.tmp
 
-# Pipeline outputs
-coverage.json
-coverage-gaps.json
-context-list*.json
-context-before.json
-context-after.json
+# Pipeline outputs (CI artifacts, not source)
+coverage-report.json
+coverage-after-design.json
+run-summary.json
+regression-summary.json
+selected-tests.txt
+evidence-packs/
+merge-report.json
+invalid-packs.json
+validation-report.json
 context-graph.html
-design-gaps*.json
-execution-gaps.json
+public/
 
 # App build
 app/node_modules/
 app/.next/
 app/out/
 
-# OS
+# Logs / OS / Python
+*.log
 .DS_Store
 Thumbs.db
-
-# Node
+__pycache__/
+*.pyc
 node_modules/

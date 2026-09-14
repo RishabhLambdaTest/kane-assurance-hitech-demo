@@ -1,0 +1,9 @@
+anchor: ac-7
+combinatorial:
+  reason: 'Used negative/error coverage for incompatible selections on the rendered web form, plus state/flow coverage for the downgrade-triggered auto-correction. Used equivalence partitioning to choose one representative laptop path with two incompatible rule manifestations: laptop-only storage restriction and 64 GB memory downgrade correction. No covering array was needed because the path centers on distinct incompatibility outcomes rather than outcome-identical cross-input variation.'
+  strength: 2
+deferred_bindings: 0
+expected_how: 'expected_mode: authored'
+profile_family: unspecified
+surface_state: absent
+technique: 'Used negative/error coverage for incompatible selections on the rendered web form, plus state/flow coverage for the downgrade-triggered auto-correction. Used equivalence partitioning to choose one representative laptop path with two incompatible rule manifestations: laptop-only storage restriction and 64 GB memory downgrade correction. No covering array was needed because the path centers on distinct incompatibility outcomes rather than outcome-identical cross-input variation.'

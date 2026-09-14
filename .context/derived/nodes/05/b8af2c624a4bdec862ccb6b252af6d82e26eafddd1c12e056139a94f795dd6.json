@@ -1,0 +1,1 @@
+{"label":"ac","content":{"text":"No incompatible option is silently hidden from the configurator.","kind":"forbidden-presence","risk":"med","derived":true,"expected_answer":{"operator":"forall","operand":"an incompatible option missing from the displayed choices"}}}

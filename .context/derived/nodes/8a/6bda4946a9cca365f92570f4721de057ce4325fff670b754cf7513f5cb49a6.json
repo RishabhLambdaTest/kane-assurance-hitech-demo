@@ -1,0 +1,1 @@
+{"label":"ac","content":{"text":"Each incompatible option shows its reason next to the option.","kind":"presence","risk":"med","derived":true,"expected_answer":{"operator":"forall","operand":"every incompatible option has its reason visible next to it"}}}

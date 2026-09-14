@@ -1,0 +1,1 @@
+{"label":"ac","content":{"text":"The quantity lower bound for a configured device is 1.","kind":"bound","risk":"med","derived":true,"expected_answer":{"operator":"gte","operand":1,"unit":"items"}}}

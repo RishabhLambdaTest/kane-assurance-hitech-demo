@@ -1,0 +1,1 @@
+{"label":"ac","content":{"text":"On laptop products, the 4 TB storage option is shown disabled with the reason \"Workstation only\".","kind":"presence","risk":"med","derived":true,"expected_answer":{"operator":"exists","operand":"4 TB storage option displayed disabled with the reason \"Workstation only\""}}}

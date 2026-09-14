@@ -1,0 +1,1 @@
+{"label":"ac","content":{"text":"On workstation products, the 4 TB storage option is available for selection.","kind":"presence","risk":"med","derived":true,"expected_answer":{"operator":"exists","operand":"4 TB storage option displayed enabled and selectable"}}}

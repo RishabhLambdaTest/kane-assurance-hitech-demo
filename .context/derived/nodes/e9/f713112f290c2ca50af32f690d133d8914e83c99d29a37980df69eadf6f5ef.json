@@ -1,0 +1,1 @@
+{"label":"ac","content":{"text":"The quantity upper bound for a configured device is 500.","kind":"bound","risk":"med","derived":true,"expected_answer":{"operator":"lte","operand":500,"unit":"items"}}}

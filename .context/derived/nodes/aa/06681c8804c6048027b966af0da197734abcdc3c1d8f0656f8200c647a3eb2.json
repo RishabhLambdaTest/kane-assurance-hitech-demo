@@ -1,0 +1,1 @@
+{"label":"ac","content":{"text":"If the processor is downgraded while 64 GB memory is selected, the configurator shows the message \"64 GB memory requires Core Ultra 9 — memory changed to 32 GB\".","kind":"absolute","risk":"med","derived":true,"expected_answer":{"operator":"equals","operand":"64 GB memory requires Core Ultra 9 — memory changed to 32 GB"}}}

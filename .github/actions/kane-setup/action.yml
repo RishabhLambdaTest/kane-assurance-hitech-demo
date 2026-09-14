@@ -1,0 +1,54 @@
+name: "Set up kane-cli"
+description: "Installs kane-cli, Chrome, and authenticates against TestmuAI"
+
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/setup-node@v4
+      with:
+        node-version: "20"
+
+    - name: Install kane-cli
+      shell: bash
+      run: npm install -g @testmuai/kane-cli
+
+    - name: Set up Chrome
+      id: setup-chrome
+      uses: browser-actions/setup-chrome@v1
+      with:
+        chrome-version: stable
+
+    - name: Mask credentials
+      shell: bash
+      run: |
+        # Repo-secret values are masked automatically; a value typed into a
+        # manual workflow_dispatch run is not, so mask it explicitly here
+        # before anything else touches it.
+        if [ -n "${{ env.KANE_CLI_USERNAME }}" ]; then
+          echo "::add-mask::${{ env.KANE_CLI_USERNAME }}"
+        fi
+        if [ -n "${{ env.KANE_CLI_ACCESS_KEY }}" ]; then
+          echo "::add-mask::${{ env.KANE_CLI_ACCESS_KEY }}"
+        fi
+
+    - name: Authenticate kane-cli
+      shell: bash
+      env:
+        KANE_CLI_CHROME_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
+      run: |
+        kane-cli login --username "${{ env.KANE_CLI_USERNAME }}" --access-key "${{ env.KANE_CLI_ACCESS_KEY }}"
+        kane-cli whoami
+
+    - name: Select Test Manager project / folder
+      shell: bash
+      run: |
+        # Blank PROJECT_ID/FOLDER_ID = account default, same as a plain
+        # `kane-cli login` with no project/folder override.
+        if [ -n "${{ env.PROJECT_ID }}" ]; then
+          echo "Using project: ${{ env.PROJECT_ID }}"
+          kane-cli config project "${{ env.PROJECT_ID }}"
+        fi
+        if [ -n "${{ env.FOLDER_ID }}" ]; then
+          echo "Using folder: ${{ env.FOLDER_ID }}"
+          kane-cli config folder "${{ env.FOLDER_ID }}"
+        fi

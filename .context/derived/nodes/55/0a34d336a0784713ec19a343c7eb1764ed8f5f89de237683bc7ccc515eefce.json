@@ -1,0 +1,1 @@
+{"label":"ac","content":{"text":"The running unit price re-renders within 200 ms after a configuration option changes.","kind":"latency","risk":"med","derived":true,"expected_answer":{"operator":"lte","within":200,"unit":"ms"}}}

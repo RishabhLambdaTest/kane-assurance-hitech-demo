@@ -1,0 +1,1 @@
+{"label":"ac","content":{"text":"The memory selector offers 16 GB, 32 GB, and 64 GB with price adjustments of +$0, +$200, and +$500 respectively.","kind":"absolute","risk":"med","derived":true,"expected_answer":{"operator":"equals","operand":"Memory choices and price adjustments: 16 GB / +$0; 32 GB / +$200; 64 GB / +$500"}}}

@@ -1,0 +1,418 @@
+name: KaneAI Assurance Pipeline
+
+# Requirements-to-evidence pipeline for the NovaTech Business (Hi-Tech
+# enterprise procurement, quote-to-order) PRD:
+#   1. Ingest PRD             -> kane-cli context ingest / extract
+#   2. Design test cases      -> kane-cli design tests
+#   3. Run (author & replay)  -> kane-cli testmd run
+#   4. Coverage                -> kane-cli cover gaps
+#   5. Maintain (regression)   -> kane-cli maintain reconcile + full re-run
+#   6. Evidence                -> kane-cli evidence merge / validate
+#
+# Credentials: defaults to the LT_USERNAME / LT_ACCESS_KEY repo secrets, but
+# a manual run (workflow_dispatch) can override either one explicitly - e.g.
+# to test against a different TestmuAI/LambdaTest account without touching
+# repo secrets.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "docs/**"
+      - "app/**"
+      - ".testmuai/tests/**"
+      - ".github/workflows/assurance-pipeline.yml"
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: "0 3 * * *" # nightly regression (stage 5)
+  workflow_dispatch:
+    inputs:
+      prd_path:
+        description: "Path to the PRD to ingest (optional - defaults to docs/prd-enterprise-procurement.md)"
+        required: false
+        type: string
+      max_tests:
+        description: "Max scenario+test pairs to design per use-case (optional - blank = no ceiling, kane-cli estimates the budget itself)"
+        required: false
+        type: string
+      test_limit:
+        description: "Max number of tests to run (optional - blank = run every designed test). Stage 3 picks the first N (sorted); stage 5 (Maintain) reruns that EXACT same set rather than re-selecting."
+        required: false
+        type: string
+      project_id:
+        description: "kane-cli/LambdaTest Test Manager project ID (optional - blank = account default, same as a plain kane-cli login)"
+        required: false
+        type: string
+      folder_id:
+        description: "kane-cli/LambdaTest Test Manager folder ID within the project (optional - blank = account default)"
+        required: false
+        type: string
+      reconcile_prd:
+        description: "Path to an updated PRD to reconcile against (stage 5, optional - e.g. docs/prd-enterprise-procurement-v2.md)"
+        required: false
+        type: string
+      lt_username:
+        description: "Override LT_USERNAME for this run (optional - defaults to the repo secret)"
+        required: false
+        type: string
+      lt_access_key:
+        description: "Override LT_ACCESS_KEY for this run (optional - defaults to the repo secret). Not masked by GitHub unless you leave it blank and use the secret instead."
+        required: false
+        type: string
+
+env:
+  KANE_CLI_USER_AGENT: github-actions
+  KANE_CLI_USERNAME: ${{ inputs.lt_username || secrets.LT_USERNAME }}
+  KANE_CLI_ACCESS_KEY: ${{ inputs.lt_access_key || secrets.LT_ACCESS_KEY }}
+  PRD_PATH: ${{ inputs.prd_path || 'docs/prd-enterprise-procurement.md' }}
+  MAX_TESTS: ${{ inputs.max_tests }}
+  TEST_LIMIT: ${{ inputs.test_limit }}
+  PROJECT_ID: ${{ inputs.project_id }}
+  FOLDER_ID: ${{ inputs.folder_id }}
+
+jobs:
+  # ---------------------------------------------------------------------
+  # 1. Ingest requirements from the PRD into the .context/ assurance graph
+  # ---------------------------------------------------------------------
+  ingest-prd:
+    name: "1. Ingest PRD"
+    if: github.event_name != 'schedule'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/kane-setup
+
+      - name: Ingest PRD requirements
+        run: |
+          if [ ! -f "$PRD_PATH" ]; then
+            echo "::error::prd_path '$PRD_PATH' does not exist in the checked-out repo"
+            exit 1
+          fi
+          echo "Ingesting: $PRD_PATH"
+          kane-cli context ingest "$PRD_PATH" --mode ci
+
+      - name: Extract use-cases from ingested sources
+        run: kane-cli context extract --mode ci
+
+      - name: Approve derived use-cases (CI has no reviewer)
+        run: bash .github/scripts/approve-derived.sh
+
+      - name: List resulting use-case graph
+        run: kane-cli context list --type usecase
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: context-graph
+          path: .context/
+          retention-days: 14
+
+  # ---------------------------------------------------------------------
+  # 2. Design ACs, scenarios, and 1:1 tests for every committed use-case
+  # ---------------------------------------------------------------------
+  design-test-cases:
+    name: "2. Design test cases"
+    needs: ingest-prd
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/kane-setup
+
+      # GitHub Actions artifacts from a previous attempt are only visible to
+      # a new attempt if the job that created them is ALSO re-run - re-running
+      # just this job orphans it from job 1's upload. continue-on-error keeps
+      # that recoverable: the .context/ already checked out from git (stage 1
+      # commits its graph) is used as the fallback baseline instead of a hard
+      # failure.
+      - name: Download context graph from stage 1
+        id: download-context
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          name: context-graph
+          path: .context/
+
+      - name: Warn if falling back to the git-committed context graph
+        if: steps.download-context.outcome != 'success'
+        run: |
+          echo "::warning::context-graph artifact unavailable (stage 1 wasn't re-run in this attempt) - falling back to the .context/ already committed to the repo. Re-run stage 1 too if you need this attempt's fresh ingest."
+          test -f .context/store.json || { echo "::error::no .context/ graph available at all - run stage 1 (Ingest PRD) first"; exit 1; }
+
+      - name: Design assurance for every pending use-case
+        run: bash .github/scripts/design-pending-use-cases.sh
+
+      - name: List generated *_test.md files
+        run: find .testmuai/tests -name '*_test.md' | sort
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: design-output
+          path: |
+            .context/
+            .testmuai/tests/
+            coverage-after-design.json
+          retention-days: 14
+
+  # ---------------------------------------------------------------------
+  # 3. Run every designed test: author on first sight, replay afterwards
+  # ---------------------------------------------------------------------
+  run-author-and-replay:
+    name: "3. Run (author and replay)"
+    needs: design-test-cases
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/kane-setup
+
+      - name: Download design output from stage 2
+        id: download-design
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          name: design-output
+
+      - name: Warn if falling back to the git-committed test suite
+        if: steps.download-design.outcome != 'success'
+        run: |
+          echo "::warning::design-output artifact unavailable (stage 2 wasn't re-run in this attempt) - falling back to the *_test.md files already committed to the repo."
+          find .testmuai/tests -name '*_test.md' | grep -q . || { echo "::error::no *_test.md files available at all - run stage 2 (Design test cases) first"; exit 1; }
+
+      - uses: ./.github/actions/start-app
+
+      - name: Run all tests (author + replay)
+        id: run
+        run: bash .github/scripts/run-all-tests.sh run-summary.json
+
+      - name: Publish run summary
+        if: always()
+        run: |
+          python3 -c "
+          import json
+          rows = json.load(open('run-summary.json'))
+          print('| Test | Status | Report |')
+          print('|---|---|---|')
+          for r in rows:
+              link = f\"[open]({r['share_url']})\" if r['share_url'] else '-'
+              print(f\"| {r['test']} | {r['status']} | {link} |\")
+          " >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: run-output
+          path: |
+            .context/
+            .testmuai/tests/
+            run-summary.json
+            selected-tests.txt
+            evidence-packs/
+          retention-days: 14
+
+  # ---------------------------------------------------------------------
+  # 4. Coverage: designed x proven, from the live assurance graph
+  # ---------------------------------------------------------------------
+  coverage:
+    name: "4. Coverage"
+    needs: run-author-and-replay
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/kane-setup
+
+      - uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          name: run-output
+
+      - name: Compute dual-axis coverage
+        run: kane-cli cover gaps --mode ci --json | tee coverage-report.json
+
+      - name: Coverage summary + gate
+        run: |
+          python3 - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json, sys
+          d = json.loads(open("coverage-report.json").readlines()[0])
+          dc = d["design_completeness"]
+          print(f"## Coverage: {dc['pct']}% design-complete")
+          print(f"- ACs designed: {dc['acs_designed']}")
+          print(f"- Use-cases complete: {dc['usecases_complete']}")
+          print(f"- Use-cases still needing scenarios: {dc['ucs_needing_scenarios']}")
+          threshold = 70
+          if dc["pct"] < threshold:
+              print(f"\n**FAIL** — below the {threshold}% gate")
+              sys.exit(1)
+          PY
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: coverage-report
+          path: coverage-report.json
+          retention-days: 30
+
+  # ---------------------------------------------------------------------
+  # 5. Maintain: reconcile a changed PRD, then rerun the full regression
+  #    suite. Runs nightly (schedule) or on demand.
+  # ---------------------------------------------------------------------
+  maintain-rerun-regression:
+    name: "5. Maintain (rerun-regression)"
+    needs: coverage
+    if: always() && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/kane-setup
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: run-output
+        continue-on-error: true
+
+      - uses: ./.github/actions/start-app
+
+      - name: Reconcile an updated PRD (optional, manual dispatch only)
+        if: ${{ github.event.inputs.reconcile_prd != '' }}
+        run: |
+          SOURCE_ID=prd-enterprise-procurement
+          kane-cli maintain reconcile \
+            --from "${{ github.event.inputs.reconcile_prd }}" \
+            --source-id "$SOURCE_ID" \
+            --mode ci \
+            --plan
+          echo "::notice::reconcile plan staged — review with 'kane-cli maintain reconcile --apply' locally, nothing auto-commits in CI"
+
+      - name: Rerun the exact test set stage 3 planned
+        env:
+          # Reuse stage 3's own selection (from the run-output artifact) so
+          # this regression pass exercises the identical set it authored,
+          # not a fresh/possibly-different selection. Falls back to
+          # TEST_LIMIT (same deterministic first-N-sorted rule) if that
+          # artifact wasn't available - see "Re-running a single stage" in
+          # the README.
+          TEST_LIST_FILE: selected-tests.txt
+        run: |
+          if [ -s "$TEST_LIST_FILE" ]; then
+            echo "Reusing stage 3's planned test set ($(wc -l < "$TEST_LIST_FILE" | tr -d ' ') test(s)):"
+            cat "$TEST_LIST_FILE"
+          else
+            echo "::warning::selected-tests.txt not found from stage 3 - falling back to TEST_LIMIT/full sweep"
+          fi
+          bash .github/scripts/run-all-tests.sh regression-summary.json
+
+      - name: Publish regression summary
+        if: always()
+        run: |
+          python3 -c "
+          import json
+          rows = json.load(open('regression-summary.json'))
+          print('| Test | Status | Report |')
+          print('|---|---|---|')
+          for r in rows:
+              link = f\"[open]({r['share_url']})\" if r['share_url'] else '-'
+              print(f\"| {r['test']} | {r['status']} | {link} |\")
+          " >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: regression-output
+          path: |
+            .testmuai/tests/
+            regression-summary.json
+            evidence-packs/
+          retention-days: 30
+
+  # ---------------------------------------------------------------------
+  # 6. Evidence: merge + validate the packs from this run into one sealed,
+  #    auditable bundle.
+  # ---------------------------------------------------------------------
+  evidence:
+    name: "6. Evidence"
+    needs: [run-author-and-replay, maintain-rerun-regression]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/kane-setup
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: run-output
+          path: run-output
+        continue-on-error: true
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: regression-output
+          path: regression-output
+        continue-on-error: true
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: coverage-report
+        continue-on-error: true
+
+      - name: Merge evidence packs (only the ones that pass L1 validation)
+        run: |
+          python3 .github/scripts/merge_evidence.py \
+            "gh-${{ github.run_id }}" \
+            ".testmuai/evidence/gh-${{ github.run_id }}.evidence" \
+            run-output regression-output
+
+      - name: Validate the sealed pack
+        if: hashFiles('.testmuai/evidence/*.evidence') != ''
+        run: |
+          PACK=$(find .testmuai/evidence -name '*.evidence' | head -1)
+          kane-cli evidence validate "$PACK" --profile L1 --json | tee validation-report.json
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: assurance-evidence-pack
+          path: |
+            .testmuai/evidence/*.evidence
+            merge-report.json
+            invalid-packs.json
+            validation-report.json
+          retention-days: 90
+
+      - name: Build the static evidence report
+        if: always()
+        run: |
+          python3 .github/scripts/build-evidence-report.py \
+            --out public \
+            --run-output run-output \
+            --regression-output regression-output \
+            --coverage-report coverage-report.json \
+            --merge-report merge-report.json \
+            --invalid-packs invalid-packs.json \
+            --validation-report validation-report.json \
+            --evidence-glob '.testmuai/evidence/*.evidence' \
+            --pages-base-url "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}" \
+            --run-id "${{ github.run_id }}" \
+            --run-url "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+
+      - uses: actions/upload-pages-artifact@v3
+        if: always()
+        with:
+          path: public/
+
+  # ---------------------------------------------------------------------
+  # 7. Publish the evidence report to GitHub Pages
+  # ---------------------------------------------------------------------
+  publish-evidence-pages:
+    name: "7. Publish evidence report (GitHub Pages)"
+    needs: evidence
+    if: always()
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

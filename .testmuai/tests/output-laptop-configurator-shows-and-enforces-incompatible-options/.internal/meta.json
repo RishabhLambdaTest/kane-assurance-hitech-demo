@@ -1,0 +1,18 @@
+{
+  "test_id": "5a520618-c415-4f71-88ef-964da3af7951",
+  "project_id": "01JVVWQNN0FNJJBCNZ5B9MBCT3",
+  "folder_id": "01M1DW71JB8ZS8CE450H884TTF",
+  "org_id": "588659",
+  "session_name": "laptop-configurator-shows-and-enforces-incompatible-options",
+  "commit_id": "2f79131e-835e-45a3-83bc-b37fbbe820fd",
+  "testcase_id": "01M2FTN42GHFJKTJKRG1VS0K5R",
+  "executions": [
+    {
+      "execution_id": "91fe80a0-9ce1-4ac4-ad9e-b31167f712d7",
+      "run_kind": "author",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-09-14T11:30:02.127Z"
+    }
+  ]
+}

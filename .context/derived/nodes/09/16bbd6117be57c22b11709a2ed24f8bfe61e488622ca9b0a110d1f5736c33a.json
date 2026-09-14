@@ -1,0 +1,1 @@
+{"label":"ac","content":{"text":"Each incompatible option is shown in a disabled state.","kind":"presence","risk":"med","derived":true,"expected_answer":{"operator":"forall","operand":"every incompatible option is displayed disabled"}}}
